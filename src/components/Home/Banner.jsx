@@ -1,0 +1,816 @@
+import React, { useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
+
+/* ── Particle Canvas ── */
+function ParticleCanvas() {
+  const canvasRef = useRef(null);
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext("2d");
+    let animId;
+    const resize = () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    };
+    resize();
+    window.addEventListener("resize", resize);
+    const N = 100;
+    const particles = Array.from({ length: N }, () => ({
+      x: Math.random() * window.innerWidth,
+      y: Math.random() * window.innerHeight,
+      vx: (Math.random() - 0.5) * 0.4,
+      vy: (Math.random() - 0.5) * 0.4,
+      r: Math.random() * 1.5 + 0.3,
+      color:
+        Math.random() < 0.55
+          ? "#00f0ff"
+          : Math.random() < 0.7
+          ? "#7b2fff"
+          : "#00ff88",
+    }));
+    const draw = () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      particles.forEach((p) => {
+        p.x += p.vx;
+        p.y += p.vy;
+        if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
+        if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fillStyle = p.color;
+        ctx.globalAlpha = 0.55;
+        ctx.fill();
+      });
+      for (let i = 0; i < N; i++) {
+        for (let j = i + 1; j < N; j++) {
+          const dx = particles[i].x - particles[j].x;
+          const dy = particles[i].y - particles[j].y;
+          const d = Math.sqrt(dx * dx + dy * dy);
+          if (d < 90) {
+            ctx.beginPath();
+            ctx.moveTo(particles[i].x, particles[i].y);
+            ctx.lineTo(particles[j].x, particles[j].y);
+            ctx.strokeStyle = "#00f0ff";
+            ctx.globalAlpha = (1 - d / 90) * 0.07;
+            ctx.lineWidth = 0.5;
+            ctx.stroke();
+          }
+        }
+      }
+      ctx.globalAlpha = 1;
+      animId = requestAnimationFrame(draw);
+    };
+    draw();
+    return () => {
+      cancelAnimationFrame(animId);
+      window.removeEventListener("resize", resize);
+    };
+  }, []);
+  return (
+    <canvas
+      ref={canvasRef}
+      style={{
+        position: "fixed",
+        inset: 0,
+        zIndex: 0,
+        pointerEvents: "none",
+        opacity: 0.6,
+      }}
+    />
+  );
+}
+
+/* ── Hero 3D Canvas ── */
+function HeroCanvas() {
+  const canvasRef = useRef(null);
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext("2d");
+    let t = 0,
+      animId;
+    const W = 520,
+      H = 520;
+    canvas.width = W;
+    canvas.height = H;
+    const draw = () => {
+      ctx.clearRect(0, 0, W, H);
+      const cx = W / 2,
+        cy = H / 2;
+      // Glow orb
+      const g = ctx.createRadialGradient(cx, cy, 0, cx, cy, 70);
+      g.addColorStop(0, "rgba(0,240,255,0.75)");
+      g.addColorStop(0.5, "rgba(123,47,255,0.25)");
+      g.addColorStop(1, "transparent");
+      ctx.beginPath();
+      ctx.arc(cx, cy, 70 + Math.sin(t * 2) * 6, 0, Math.PI * 2);
+      ctx.fillStyle = g;
+      ctx.fill();
+      // DNA helix
+      const TURNS = 3,
+        STEPS = 80;
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      for (let i = 0; i <= STEPS; i++) {
+        const angle = (i / STEPS) * TURNS * Math.PI * 2 + t * 0.5;
+        const y = (i / STEPS) * H;
+        const x = cx + Math.cos(angle) * 85;
+        i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+      }
+      ctx.strokeStyle = "rgba(0,240,255,0.75)";
+      ctx.stroke();
+      ctx.beginPath();
+      for (let i = 0; i <= STEPS; i++) {
+        const angle =
+          (i / STEPS) * TURNS * Math.PI * 2 + t * 0.5 + Math.PI;
+        const y = (i / STEPS) * H;
+        const x = cx + Math.cos(angle) * 85;
+        i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+      }
+      ctx.strokeStyle = "rgba(123,47,255,0.75)";
+      ctx.stroke();
+      // Rungs
+      for (let i = 0; i <= STEPS; i += 8) {
+        const angle = (i / STEPS) * TURNS * Math.PI * 2 + t * 0.5;
+        const y = (i / STEPS) * H;
+        const x1 = cx + Math.cos(angle) * 85;
+        const x2 = cx + Math.cos(angle + Math.PI) * 85;
+        ctx.beginPath();
+        ctx.moveTo(x1, y);
+        ctx.lineTo(x2, y);
+        ctx.strokeStyle = "rgba(0,255,136,0.4)";
+        ctx.lineWidth = 1;
+        ctx.stroke();
+      }
+      // Rings
+      [
+        [105, "#00f0ff", 0.5],
+        [140, "#7b2fff", 0.38],
+        [172, "#00ff88", 0.28],
+      ].forEach(([r, color, alpha], i) => {
+        ctx.beginPath();
+        ctx.ellipse(
+          cx,
+          cy,
+          r,
+          r * 0.35,
+          t * (i % 2 === 0 ? 0.4 : -0.3) + i,
+          0,
+          Math.PI * 2
+        );
+        ctx.strokeStyle = color;
+        ctx.globalAlpha = alpha;
+        ctx.lineWidth = 1.5;
+        ctx.stroke();
+        ctx.globalAlpha = 1;
+      });
+      t += 0.012;
+      animId = requestAnimationFrame(draw);
+    };
+    draw();
+    return () => cancelAnimationFrame(animId);
+  }, []);
+  return (
+    <canvas
+      ref={canvasRef}
+      style={{
+        width: "100%",
+        height: "100%",
+        position: "absolute",
+        inset: 0,
+        pointerEvents: "none",
+      }}
+    />
+  );
+}
+
+/* ── Counter Hook ── */
+function useCounter(target, suffix, decimals, active) {
+  const [val, setVal] = useState("0" + suffix);
+  useEffect(() => {
+    if (!active) return;
+    const dur = 1800;
+    const t0 = performance.now();
+    const step = (now) => {
+      const p = Math.min((now - t0) / dur, 1);
+      const ease = 1 - Math.pow(1 - p, 3);
+      const v = target * ease;
+      setVal((decimals ? v.toFixed(1) : Math.round(v)) + suffix);
+      if (p < 1) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+  }, [active]);
+  return val;
+}
+
+/* ── Floating Stat ── */
+function FloatStat({ label, target, suffix, dec, style }) {
+  const [vis, setVis] = useState(false);
+  const ref = useRef(null);
+  useEffect(() => {
+    const t = setTimeout(() => setVis(true), 600);
+    return () => clearTimeout(t);
+  }, []);
+  const val = useCounter(target, suffix, dec, vis);
+  return (
+    <div
+      ref={ref}
+      style={{
+        position: "absolute",
+        background: "rgba(8,13,28,0.92)",
+        border: "1px solid rgba(0,240,255,0.22)",
+        borderRadius: 12,
+        padding: "12px 16px",
+        backdropFilter: "blur(20px)",
+        boxShadow: "0 16px 48px rgba(0,0,0,0.6)",
+        minWidth: 140,
+        animation: "gk-float 4s ease-in-out infinite",
+        ...style,
+      }}
+    >
+      <div
+        style={{
+          fontFamily: "'Syne',sans-serif",
+          fontSize: "1.4rem",
+          fontWeight: 800,
+          color: "#00f0ff",
+          lineHeight: 1,
+          marginBottom: 4,
+        }}
+      >
+        {val}
+      </div>
+      <div
+        style={{
+          fontFamily: "'Space Mono',monospace",
+          fontSize: ".6rem",
+          letterSpacing: ".07em",
+          color: "rgba(255,255,255,0.46)",
+          textTransform: "uppercase",
+        }}
+      >
+        {label}
+      </div>
+    </div>
+  );
+}
+
+/* ── Marquee ── */
+const MARQUEE_ITEMS = [
+  "Quantum Computing","AI & Machine Learning","Zero Trust Architecture",
+  "Quantum Key Distribution","Cybersecurity & Ethical Hacking","Quantum Cryptography",
+  "Data Analysis & Business Intelligence","Web Development & UI/UX",
+  "Quantum Computing","AI & Machine Learning","Zero Trust Architecture",
+  "Quantum Key Distribution","Cybersecurity & Ethical Hacking","Quantum Cryptography",
+  "Data Analysis & Business Intelligence","Web Development & UI/UX",
+];
+
+/* ── Main Banner Component ── */
+const Banner = () => {
+  const [visible, setVisible] = useState(false);
+  useEffect(() => {
+    const t = setTimeout(() => setVisible(true), 100);
+    return () => clearTimeout(t);
+  }, []);
+
+  return (
+    <>
+      {/* Injected keyframes */}
+      <style>{`
+        @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Space+Mono:wght@400;700&display=swap');
+        @keyframes gk-float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
+        @keyframes gk-blink { 0%,100%{opacity:1;box-shadow:0 0 6px #00ff88} 50%{opacity:.3;box-shadow:none} }
+        @keyframes gk-marquee { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+        @keyframes gk-fadein-left { from{opacity:0;transform:translateX(-32px)} to{opacity:1;transform:none} }
+        @keyframes gk-fadein-right { from{opacity:0;transform:translateX(32px)} to{opacity:1;transform:none} }
+        .gk-btn-p:hover { box-shadow: 0 0 48px rgba(0,240,255,0.55) !important; transform: translateY(-2px); }
+        .gk-btn-g:hover { background: rgba(0,240,255,0.08) !important; box-shadow: 0 0 24px rgba(0,240,255,0.2) !important; transform: translateY(-2px); }
+        .gk-svc:hover { background: rgba(255,255,255,0.07) !important; transform: perspective(800px) translateY(-6px); }
+        .gk-svc:hover img { transform: perspective(800px) rotateX(0deg) scale(1.04) !important; }
+        .gk-proc:hover { transform: translateY(-6px); border-color: rgba(0,240,255,0.25) !important; }
+        .gk-stat-card:hover::before { transform: scaleX(1) !important; }
+      `}</style>
+
+      <ParticleCanvas />
+
+      {/* ══ HERO ══ */}
+      <section
+        id="gk-home"
+        style={{
+          position: "relative",
+          minHeight: "100vh",
+          display: "flex",
+          alignItems: "center",
+          padding: "120px 6% 80px",
+          zIndex: 1,
+          background: "transparent",
+        }}
+      >
+        <div
+          style={{
+            maxWidth: 1280,
+            margin: "0 auto",
+            width: "100%",
+            display: "grid",
+            gridTemplateColumns: "1fr 1fr",
+            gap: 60,
+            alignItems: "center",
+          }}
+        >
+          {/* Text */}
+          <div
+            style={{
+              opacity: visible ? 1 : 0,
+              animation: visible ? "gk-fadein-left 0.8s ease both" : "none",
+            }}
+          >
+            <div
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: 8,
+                padding: "5px 14px",
+                fontFamily: "'Space Mono',monospace",
+                fontSize: ".68rem",
+                letterSpacing: ".1em",
+                textTransform: "uppercase",
+                color: "#00ff88",
+                background: "rgba(0,255,136,0.07)",
+                border: "1px solid rgba(0,255,136,0.2)",
+                borderRadius: 100,
+                marginBottom: 28,
+              }}
+            >
+              <span
+                style={{
+                  display: "inline-block",
+                  width: 6,
+                  height: 6,
+                  borderRadius: "50%",
+                  background: "#00ff88",
+                  animation: "gk-blink 2s ease-in-out infinite",
+                }}
+              />
+              Quantum Security Protocol Active
+            </div>
+
+            <h1
+              style={{
+                fontFamily: "'Syne',sans-serif",
+                fontSize: "clamp(2.6rem,5.5vw,4.8rem)",
+                fontWeight: 800,
+                lineHeight: 1.06,
+                marginBottom: 22,
+              }}
+            >
+              <span style={{ display: "block", color: "#fff" }}>
+                Goklyn Technologies
+              </span>
+              <span
+                style={{
+                  display: "block",
+                  background:
+                    "linear-gradient(100deg,#00f0ff 0%,#7b2fff 60%,#ff2060 100%)",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  backgroundClip: "text",
+                }}
+              >
+                Inspired by Wisdom &amp; Innovation.
+              </span>
+            </h1>
+
+            <p
+              style={{
+                fontSize: "1.05rem",
+                color: "rgba(255,255,255,0.55)",
+                lineHeight: 1.8,
+                maxWidth: 460,
+                marginBottom: 36,
+              }}
+            >
+              Your all-in-one destination for cutting-edge internships,
+              industrial project development, quantum computing, AI/ML, and
+              cybersecurity solutions that shape the future.
+            </p>
+
+            <div style={{ display: "flex", gap: 14, flexWrap: "wrap" }}>
+              <Link
+                to="/about-us"
+                className="gk-btn-p"
+                style={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: 8,
+                  padding: "13px 28px",
+                  fontFamily: "'Syne',sans-serif",
+                  fontSize: ".74rem",
+                  fontWeight: 700,
+                  letterSpacing: ".08em",
+                  color: "#04060f",
+                  background: "#00f0ff",
+                  borderRadius: 7,
+                  textDecoration: "none",
+                  boxShadow: "0 0 24px rgba(0,240,255,0.3)",
+                  transition: "box-shadow .25s,transform .2s",
+                }}
+              >
+                <i className="fa-solid fa-angle-right" />
+                Explore Goklyn
+              </Link>
+              <Link
+                to="/contact-us"
+                className="gk-btn-g"
+                style={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: 8,
+                  padding: "12px 26px",
+                  fontFamily: "'Syne',sans-serif",
+                  fontSize: ".74rem",
+                  fontWeight: 700,
+                  letterSpacing: ".08em",
+                  color: "#00f0ff",
+                  background: "transparent",
+                  border: "1px solid rgba(0,240,255,0.22)",
+                  borderRadius: 7,
+                  textDecoration: "none",
+                  transition: "background .2s,box-shadow .2s,transform .2s",
+                }}
+              >
+                <i className="fa-solid fa-envelope" />
+                Contact Us
+              </Link>
+            </div>
+          </div>
+
+          {/* Visual */}
+          <div
+            style={{
+              position: "relative",
+              opacity: visible ? 1 : 0,
+              animation: visible ? "gk-fadein-right 0.8s ease 0.15s both" : "none",
+            }}
+          >
+            <div
+              style={{
+                position: "relative",
+                borderRadius: 20,
+                overflow: "hidden",
+                border: "1px solid rgba(0,240,255,0.22)",
+                boxShadow: "0 0 80px rgba(0,240,255,0.08)",
+                height: 520,
+              }}
+            >
+              <HeroCanvas />
+              <img
+                src="/assets/newImages/home.jpg"
+                alt="Goklyn Technologies"
+                style={{
+                  position: "absolute",
+                  inset: 0,
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "cover",
+                  opacity: 0.22,
+                  mixBlendMode: "screen",
+                  pointerEvents: "none",
+                }}
+              />
+            </div>
+            {/* Floating stat cards */}
+            <FloatStat
+              label="Detection Rate"
+              target={99.9}
+              suffix="%"
+              dec={true}
+              style={{ top: "14%", left: "-8%", animationDelay: "0s" }}
+            />
+            <FloatStat
+              label="Clients Protected"
+              target={140}
+              suffix="+"
+              dec={false}
+              style={{ bottom: "14%", right: "-8%", animationDelay: "0.7s" }}
+            />
+            <FloatStat
+              label="Qubits / Op"
+              target={256}
+              suffix=""
+              dec={false}
+              style={{ top: "50%", left: "-8%", animationDelay: "1.4s" }}
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* ══ MARQUEE ══ */}
+      <div
+        style={{
+          position: "relative",
+          zIndex: 1,
+          padding: "18px 0",
+          overflow: "hidden",
+          borderTop: "1px solid rgba(0,240,255,0.1)",
+          borderBottom: "1px solid rgba(0,240,255,0.1)",
+          background: "rgba(8,13,28,0.6)",
+        }}
+      >
+        <div
+          style={{
+            display: "flex",
+            gap: 64,
+            width: "max-content",
+            animation: "gk-marquee 28s linear infinite",
+          }}
+        >
+          {MARQUEE_ITEMS.map((item, i) => (
+            <span
+              key={i}
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: 10,
+                flexShrink: 0,
+                fontFamily: "'Space Mono',monospace",
+                fontSize: ".72rem",
+                letterSpacing: ".1em",
+                textTransform: "uppercase",
+                color: "rgba(255,255,255,0.46)",
+                whiteSpace: "nowrap",
+              }}
+            >
+              <span style={{ color: "#00f0ff" }}>◆</span> {item}
+            </span>
+          ))}
+        </div>
+      </div>
+
+      {/* ══ SERVICES GRID ══ */}
+      <section
+        id="gk-services"
+        style={{
+          position: "relative",
+          zIndex: 1,
+          padding: "90px 6%",
+          background: "transparent",
+        }}
+      >
+        <div style={{ maxWidth: 1280, margin: "0 auto" }}>
+          <div style={{ textAlign: "center", marginBottom: 52 }}>
+            <div
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: 7,
+                fontFamily: "'Space Mono',monospace",
+                fontSize: ".66rem",
+                letterSpacing: ".14em",
+                textTransform: "uppercase",
+                color: "#00f0ff",
+                marginBottom: 14,
+              }}
+            >
+              <span style={{ display: "inline-block", width: 18, height: 1, background: "#00f0ff" }} />
+              Capabilities
+            </div>
+            <h2
+              style={{
+                fontFamily: "'Syne',sans-serif",
+                fontSize: "clamp(1.8rem,3.5vw,2.8rem)",
+                fontWeight: 800,
+                color: "#fff",
+                lineHeight: 1.1,
+                marginBottom: 12,
+              }}
+            >
+              Services We Can{" "}
+              <span
+                style={{
+                  background: "linear-gradient(90deg,#00f0ff,#7b2fff)",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  backgroundClip: "text",
+                  fontStyle: "normal",
+                }}
+              >
+                Help You With
+              </span>
+            </h2>
+            <p
+              style={{
+                fontSize: ".97rem",
+                color: "rgba(255,255,255,0.46)",
+                lineHeight: 1.8,
+                maxWidth: 520,
+                margin: "0 auto",
+              }}
+            >
+              From quantum cryptography to AI-driven solutions — we build and teach the technologies that power tomorrow.
+            </p>
+          </div>
+
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(3,1fr)",
+              gap: 2,
+              border: "1px solid rgba(0,240,255,0.1)",
+              borderRadius: 18,
+              overflow: "hidden",
+            }}
+          >
+            {[
+              { icon: "⚛️", title: "Quantum Computing", desc: "Combines quantum computing with machine learning algorithms to solve complex real-world problems exponentially faster.", img: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=600&q=80", tags: ["QML","CRYSTALS","PQC"], link: "/services" },
+              { icon: "🤖", title: "AI & Machine Learning", desc: "Machine learning solutions that allow computers to learn and improve from data without being explicitly programmed.", img: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=600&q=80", tags: ["ML/AI","NLP","XDR"], link: "/services" },
+              { icon: "🛡️", title: "Cybersecurity & Ethical Hacking", desc: "Full-spectrum cybersecurity including penetration testing, vulnerability assessment, and zero trust architecture.", img: "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=600&q=80", tags: ["VAPT","Red Team","ZTA"], link: "/services" },
+              { icon: "📊", title: "Data & Business Analysis", desc: "Data-driven processes and analytics that help businesses make informed decisions and optimize strategy.", img: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=600&q=80", tags: ["Analytics","BI","SQL"], link: "/services" },
+              { icon: "🌐", title: "Web Development & UI/UX", desc: "Modern web development paired with intuitive UI/UX design to deliver seamless digital experiences.", img: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=600&q=80", tags: ["React","Node","Figma"], link: "/services" },
+              { icon: "📱", title: "Digital Marketing", desc: "Social media and digital marketing strategies that grow your brand and connect you with your audience.", img: "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=600&q=80", tags: ["SEO","SMM","Content"], link: "/services" },
+            ].map((svc, i) => (
+              <div
+                key={i}
+                className="gk-svc"
+                style={{
+                  padding: "34px 28px",
+                  background: "rgba(255,255,255,0.032)",
+                  borderRight: i % 3 !== 2 ? "1px solid rgba(0,240,255,0.1)" : "none",
+                  borderBottom: i < 3 ? "1px solid rgba(0,240,255,0.1)" : "none",
+                  position: "relative",
+                  overflow: "hidden",
+                  cursor: "default",
+                  transition: "background .3s, transform .3s",
+                }}
+              >
+                <img
+                  src={svc.img}
+                  alt={svc.title}
+                  style={{
+                    width: "100%",
+                    height: 130,
+                    objectFit: "cover",
+                    borderRadius: 10,
+                    marginBottom: 18,
+                    border: "1px solid rgba(0,240,255,0.1)",
+                    filter: "brightness(0.82) saturate(1.2)",
+                    transition: "transform .4s",
+                    display: "block",
+                  }}
+                />
+                <div
+                  style={{
+                    width: 42,
+                    height: 42,
+                    borderRadius: 10,
+                    background: "rgba(0,240,255,0.08)",
+                    border: "1px solid rgba(0,240,255,0.2)",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    fontSize: "1.2rem",
+                    marginBottom: 14,
+                  }}
+                >
+                  {svc.icon}
+                </div>
+                <h3
+                  style={{
+                    fontFamily: "'Syne',sans-serif",
+                    fontSize: ".88rem",
+                    fontWeight: 700,
+                    color: "#fff",
+                    marginBottom: 9,
+                  }}
+                >
+                  {svc.title}
+                </h3>
+                <p
+                  style={{
+                    fontSize: ".83rem",
+                    color: "rgba(255,255,255,0.46)",
+                    lineHeight: 1.72,
+                    marginBottom: 14,
+                  }}
+                >
+                  {svc.desc}
+                </p>
+                <div>
+                  {svc.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      style={{
+                        display: "inline-block",
+                        fontFamily: "'Space Mono',monospace",
+                        fontSize: ".6rem",
+                        letterSpacing: ".04em",
+                        color: "#00f0ff",
+                        background: "rgba(0,240,255,0.07)",
+                        border: "1px solid rgba(0,240,255,0.15)",
+                        borderRadius: 4,
+                        padding: "2px 7px",
+                        margin: "2px 3px 2px 0",
+                      }}
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+                <div style={{ marginTop: 16 }}>
+                  <Link
+                    to={svc.link}
+                    style={{
+                      fontFamily: "'Space Mono',monospace",
+                      fontSize: ".68rem",
+                      color: "#00f0ff",
+                      textDecoration: "none",
+                      letterSpacing: ".06em",
+                    }}
+                  >
+                    Read More <i className="fa-solid fa-angle-right" />
+                  </Link>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ══ STATS BAND ══ */}
+      <div
+        style={{
+          background: "rgba(8,13,28,0.8)",
+          borderTop: "1px solid rgba(0,240,255,0.1)",
+          borderBottom: "1px solid rgba(0,240,255,0.1)",
+          position: "relative",
+          zIndex: 1,
+        }}
+      >
+        <div
+          style={{
+            maxWidth: 1280,
+            margin: "0 auto",
+            display: "grid",
+            gridTemplateColumns: "repeat(4,1fr)",
+          }}
+        >
+          {[
+            { n: "99.9%", label: "Threat Detection Rate" },
+            { n: "256", label: "Qubits Per Operation" },
+            { n: "140+", label: "Clients Protected" },
+            { n: "0.3ms", label: "Avg Response Time" },
+          ].map((s, i) => (
+            <div
+              key={i}
+              className="gk-stat-card"
+              style={{
+                padding: "38px 26px",
+                borderRight: i < 3 ? "1px solid rgba(0,240,255,0.1)" : "none",
+                position: "relative",
+                overflow: "hidden",
+                transition: "background .3s",
+              }}
+            >
+              <div
+                style={{
+                  position: "absolute",
+                  top: 0,
+                  left: 0,
+                  right: 0,
+                  height: 2,
+                  background:
+                    "linear-gradient(90deg,transparent,#00f0ff,transparent)",
+                }}
+              />
+              <div
+                style={{
+                  fontFamily: "'Syne',sans-serif",
+                  fontSize: "2.4rem",
+                  fontWeight: 800,
+                  color: "#00f0ff",
+                  lineHeight: 1,
+                  marginBottom: 8,
+                }}
+              >
+                {s.n}
+              </div>
+              <div
+                style={{
+                  fontFamily: "'Space Mono',monospace",
+                  fontSize: ".67rem",
+                  letterSpacing: ".07em",
+                  textTransform: "uppercase",
+                  color: "rgba(255,255,255,0.46)",
+                }}
+              >
+                {s.label}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </>
+  );
+};
+
+export default Banner;
