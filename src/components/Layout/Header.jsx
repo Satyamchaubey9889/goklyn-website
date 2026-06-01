@@ -53,11 +53,11 @@ const Header = () => {
           flex-shrink: 0;
         }
         .gk-nav-logo img {
-          height: 40px;
-          width: 40px;
-          object-fit: contain;
-          border-radius: 8px;
-          border: 1px solid rgba(0,240,255,0.25);
+          height: 60px;
+          width: 60px;
+          // object-fit: contain;
+          // border-radius: 8px;
+          // border: 1px solid rgba(0,240,255,0.25);
         }
         .gk-nav-logo-text {
           font-family: 'Syne', sans-serif;

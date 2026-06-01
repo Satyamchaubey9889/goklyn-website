@@ -50,11 +50,11 @@ const Footer = () => {
           margin-bottom: 18px;
         }
         .gk-ft-logo img {
-          height: 44px;
-          width: 44px;
-          object-fit: contain;
-          border-radius: 8px;
-          border: 1px solid rgba(0,240,255,0.25);
+          height: 60px;
+          width: 60px;
+          // object-fit: contain;
+          // border-radius: 8px;
+          // border: 1px solid rgba(0,240,255,0.25);
         }
         .gk-ft-logo-text {
           font-family: 'Syne', sans-serif;
@@ -294,7 +294,7 @@ const Footer = () => {
 
           {/* ── Bottom bar ── */}
           <div className="gk-ft-bottom">
-            <span className="gk-ft-copy">© 2025 GOKLYN Private Limited. All rights reserved.</span>
+            <span className="gk-ft-copy">© 2026 GOKLYN Private Limited. All rights reserved.</span>
             <span className="gk-ft-badge">PQC-ACTIVE · NIST-L5 · v4.2.1</span>
           </div>
         </div>
