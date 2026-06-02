@@ -15,7 +15,9 @@ function ParticleCanvas() {
     };
     resize();
     window.addEventListener("resize", resize);
-    const N = 100;
+
+    // Fewer particles on mobile for better performance
+    const N = window.innerWidth < 768 ? 40 : 100;
     const particles = Array.from({ length: N }, () => ({
       x: Math.random() * window.innerWidth,
       y: Math.random() * window.innerHeight,
@@ -26,8 +28,8 @@ function ParticleCanvas() {
         Math.random() < 0.55
           ? "#00f0ff"
           : Math.random() < 0.7
-          ? "#7b2fff"
-          : "#00ff88",
+            ? "#7b2fff"
+            : "#00ff88",
     }));
     const draw = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -205,7 +207,7 @@ function useCounter(target, suffix, decimals, active) {
 }
 
 /* ── Floating Stat ── */
-function FloatStat({ label, target, suffix, dec, style }) {
+function FloatStat({ label, target, suffix, dec, className, style }) {
   const [vis, setVis] = useState(false);
   const ref = useRef(null);
   useEffect(() => {
@@ -216,6 +218,7 @@ function FloatStat({ label, target, suffix, dec, style }) {
   return (
     <div
       ref={ref}
+      className={`gk-float-stat ${className || ""}`}
       style={{
         position: "absolute",
         background: "rgba(8,13,28,0.92)",
@@ -224,7 +227,7 @@ function FloatStat({ label, target, suffix, dec, style }) {
         padding: "12px 16px",
         backdropFilter: "blur(20px)",
         boxShadow: "0 16px 48px rgba(0,0,0,0.6)",
-        minWidth: 140,
+        minWidth: 130,
         animation: "gk-float 4s ease-in-out infinite",
         ...style,
       }}
@@ -232,7 +235,7 @@ function FloatStat({ label, target, suffix, dec, style }) {
       <div
         style={{
           fontFamily: "'Syne',sans-serif",
-          fontSize: "1.4rem",
+          fontSize: "1.3rem",
           fontWeight: 800,
           color: "#00f0ff",
           lineHeight: 1,
@@ -244,7 +247,7 @@ function FloatStat({ label, target, suffix, dec, style }) {
       <div
         style={{
           fontFamily: "'Space Mono',monospace",
-          fontSize: ".6rem",
+          fontSize: ".58rem",
           letterSpacing: ".07em",
           color: "rgba(255,255,255,0.46)",
           textTransform: "uppercase",
@@ -258,12 +261,12 @@ function FloatStat({ label, target, suffix, dec, style }) {
 
 /* ── Marquee ── */
 const MARQUEE_ITEMS = [
-  "Quantum Computing","AI & Machine Learning","Zero Trust Architecture",
-  "Quantum Key Distribution","Cybersecurity & Ethical Hacking","Quantum Cryptography",
-  "Data Analysis & Business Intelligence","Web Development & UI/UX",
-  "Quantum Computing","AI & Machine Learning","Zero Trust Architecture",
-  "Quantum Key Distribution","Cybersecurity & Ethical Hacking","Quantum Cryptography",
-  "Data Analysis & Business Intelligence","Web Development & UI/UX",
+  "Quantum Computing", "AI & Machine Learning", "Zero Trust Architecture",
+  "Quantum Key Distribution", "Cybersecurity & Ethical Hacking", "Quantum Cryptography",
+  "Data Analysis & Business Intelligence", "Web Development & UI/UX",
+  "Quantum Computing", "AI & Machine Learning", "Zero Trust Architecture",
+  "Quantum Key Distribution", "Cybersecurity & Ethical Hacking", "Quantum Cryptography",
+  "Data Analysis & Business Intelligence", "Web Development & UI/UX",
 ];
 
 /* ── Main Banner Component ── */
@@ -276,7 +279,7 @@ const Banner = () => {
 
   return (
     <>
-      {/* Injected keyframes */}
+      {/* Responsive stylesheet context injection */}
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Space+Mono:wght@400;700&display=swap');
         @keyframes gk-float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
@@ -290,11 +293,128 @@ const Banner = () => {
         .gk-svc:hover img { transform: perspective(800px) rotateX(0deg) scale(1.04) !important; }
         .gk-proc:hover { transform: translateY(-6px); border-color: rgba(0,240,255,0.25) !important; }
         .gk-stat-card:hover::before { transform: scaleX(1) !important; }
+
+        /* Structural Layout Definitions */
+        .gk-hero-grid {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 60px;
+          align-items: center;
+        }
+
+        .gk-services-container {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 2px;
+          border: 1px solid rgba(0,240,255,0.1);
+          border-radius: 18px;
+          overflow: hidden;
+        }
+
+        .gk-stats-grid {
+          display: grid;
+          grid-template-columns: repeat(4, 1fr);
+        }
+
+        .gk-hero-visual-wrapper {
+          position: relative;
+          max-width: 520px;
+          width: 100%;
+          margin: 0 auto;
+        }
+
+        /* 💻 Tablet and Small Laptop Optimization */
+        @media (max-width: 1024px) {
+          .gk-services-container {
+            grid-template-columns: repeat(2, 1fr);
+          }
+          .gk-stats-grid {
+            grid-template-columns: repeat(2, 1fr);
+          }
+          .gk-stat-card {
+            border-bottom: 1px solid rgba(0,240,255,0.1);
+          }
+          .gk-stat-card:nth-child(2) {
+            border-right: none !important;
+          }
+          .gk-stat-card:nth-child(3) {
+            border-bottom: none !important;
+          }
+          .gk-stat-card:nth-child(4) {
+            border-bottom: none !important;
+          }
+        }
+
+        /* 📱 Mobile UI Adjustments */
+        @media (max-width: 768px) {
+          .gk-hero-grid {
+            grid-template-columns: 1fr;
+            gap: 48px;
+            text-align: center;
+          }
+          .gk-hero-left {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+          }
+          .gk-hero-actions {
+            justify-content: center;
+          }
+          .gk-services-container {
+            grid-template-columns: 1fr;
+          }
+          .gk-svc {
+            border-right: none !important;
+            border-bottom: 1px solid rgba(0,240,255,0.1) !important;
+          }
+          .gk-svc:last-child {
+            border-bottom: none !important;
+          }
+          .gk-hero-visual-container {
+            height: 420px !important; 
+          }
+          
+          /* Anchor absolute stats over the animation box safely */
+          .gk-float-stat {
+            padding: 8px 12px !important;
+            min-width: 120px !important;
+            z-index: 10;
+          }
+          .stat-1 { top: 8% !important; left: 2% !important; }
+          .stat-2 { bottom: 8% !important; right: 2% !important; }
+          .stat-3 { top: 50% !important; left: 2% !important; }
+        }
+
+        /* 🪟 Extremely Narrow Displays */
+        @media (max-width: 480px) {
+          .gk-stats-grid {
+            grid-template-columns: 1fr;
+          }
+          .gk-stat-card {
+            border-right: none !important;
+            border-bottom: 1px solid rgba(0,240,255,0.1) !important;
+          }
+          .gk-stat-card:last-child {
+            border-bottom: none !important;
+          }
+          .gk-hero-visual-container {
+            height: 320px !important;
+          }
+          
+          /* Scale dynamically down for tiny viewports */
+          .gk-float-stat {
+            padding: 6px 10px !important;
+            min-width: 105px !important;
+          }
+          .stat-1 { top: 6% !important; left: 2% !important; }
+          .stat-2 { bottom: 6% !important; right: 2% !important; }
+          .stat-3 { top: 48% !important; left: 2% !important; }
+        }
       `}</style>
 
       <ParticleCanvas />
 
-      {/* ══ HERO ══ */}
+      {/* ══ HERO SECTION ══ */}
       <section
         id="gk-home"
         style={{
@@ -302,24 +422,16 @@ const Banner = () => {
           minHeight: "100vh",
           display: "flex",
           alignItems: "center",
-          padding: "120px 6% 80px",
+          padding: "100px 6% 60px",
           zIndex: 1,
           background: "transparent",
         }}
       >
-        <div
-          style={{
-            maxWidth: 1280,
-            margin: "0 auto",
-            width: "100%",
-            display: "grid",
-            gridTemplateColumns: "1fr 1fr",
-            gap: 60,
-            alignItems: "center",
-          }}
-        >
-          {/* Text */}
+        <div className="gk-hero-grid" style={{ maxWidth: 1280, margin: "0 auto", width: "100%" }}>
+
+          {/* Headline and Copy Elements */}
           <div
+            className="gk-hero-left"
             style={{
               opacity: visible ? 1 : 0,
               animation: visible ? "gk-fadein-left 0.8s ease both" : "none",
@@ -358,9 +470,9 @@ const Banner = () => {
             <h1
               style={{
                 fontFamily: "'Syne',sans-serif",
-                fontSize: "clamp(2.6rem,5.5vw,4.8rem)",
+                fontSize: "clamp(2.2rem, 5vw, 4.2rem)",
                 fontWeight: 800,
-                lineHeight: 1.06,
+                lineHeight: 1.1,
                 marginBottom: 22,
               }}
             >
@@ -383,9 +495,9 @@ const Banner = () => {
 
             <p
               style={{
-                fontSize: "1.05rem",
+                fontSize: "1rem",
                 color: "rgba(255,255,255,0.55)",
-                lineHeight: 1.8,
+                lineHeight: 1.7,
                 maxWidth: 460,
                 marginBottom: 36,
               }}
@@ -395,7 +507,7 @@ const Banner = () => {
               cybersecurity solutions that shape the future.
             </p>
 
-            <div style={{ display: "flex", gap: 14, flexWrap: "wrap" }}>
+            <div className="gk-hero-actions" style={{ display: "flex", gap: 14, flexWrap: "wrap" }}>
               <Link
                 to="/about-us"
                 className="gk-btn-p"
@@ -445,15 +557,16 @@ const Banner = () => {
             </div>
           </div>
 
-          {/* Visual */}
+          {/* Graphical Frame & Absolute Elements Anchor */}
           <div
+            className="gk-hero-visual-wrapper"
             style={{
-              position: "relative",
               opacity: visible ? 1 : 0,
               animation: visible ? "gk-fadein-right 0.8s ease 0.15s both" : "none",
             }}
           >
             <div
+              className="gk-hero-visual-container"
               style={{
                 position: "relative",
                 borderRadius: 20,
@@ -479,8 +592,10 @@ const Banner = () => {
                 }}
               />
             </div>
-            {/* Floating stat cards */}
+
+            {/* Bound floating stats layer */}
             <FloatStat
+              className="stat-1"
               label="Detection Rate"
               target={99.9}
               suffix="%"
@@ -488,6 +603,7 @@ const Banner = () => {
               style={{ top: "14%", left: "-8%", animationDelay: "0s" }}
             />
             <FloatStat
+              className="stat-2"
               label="Clients Protected"
               target={140}
               suffix="+"
@@ -495,6 +611,7 @@ const Banner = () => {
               style={{ bottom: "14%", right: "-8%", animationDelay: "0.7s" }}
             />
             <FloatStat
+              className="stat-3"
               label="Qubits / Op"
               target={256}
               suffix=""
@@ -502,10 +619,11 @@ const Banner = () => {
               style={{ top: "50%", left: "-8%", animationDelay: "1.4s" }}
             />
           </div>
+
         </div>
       </section>
 
-      {/* ══ MARQUEE ══ */}
+      {/* ══ MARQUEE INFOBAR ══ */}
       <div
         style={{
           position: "relative",
@@ -547,13 +665,13 @@ const Banner = () => {
         </div>
       </div>
 
-      {/* ══ SERVICES GRID ══ */}
+      {/* ══ CAPABILITIES SECTOR ══ */}
       <section
         id="gk-services"
         style={{
           position: "relative",
           zIndex: 1,
-          padding: "90px 6%",
+          padding: "80px 6%",
           background: "transparent",
         }}
       >
@@ -600,7 +718,7 @@ const Banner = () => {
             </h2>
             <p
               style={{
-                fontSize: ".97rem",
+                fontSize: ".95rem",
                 color: "rgba(255,255,255,0.46)",
                 lineHeight: 1.8,
                 maxWidth: 520,
@@ -611,23 +729,22 @@ const Banner = () => {
             </p>
           </div>
 
+          {/* Adaptable Services Grid Wrapper */}
           <div
+            className="gk-services-container"
             style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(3,1fr)",
-              gap: 2,
               border: "1px solid rgba(0,240,255,0.1)",
               borderRadius: 18,
               overflow: "hidden",
             }}
           >
             {[
-              { icon: "⚛️", title: "Quantum Computing", desc: "Combines quantum computing with machine learning algorithms to solve complex real-world problems exponentially faster.", img: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=600&q=80", tags: ["QML","CRYSTALS","PQC"], link: "/services" },
-              { icon: "🤖", title: "AI & Machine Learning", desc: "Machine learning solutions that allow computers to learn and improve from data without being explicitly programmed.", img: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=600&q=80", tags: ["ML/AI","NLP","XDR"], link: "/services" },
-              { icon: "🛡️", title: "Cybersecurity & Ethical Hacking", desc: "Full-spectrum cybersecurity including penetration testing, vulnerability assessment, and zero trust architecture.", img: "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=600&q=80", tags: ["VAPT","Red Team","ZTA"], link: "/services" },
-              { icon: "📊", title: "Data & Business Analysis", desc: "Data-driven processes and analytics that help businesses make informed decisions and optimize strategy.", img: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=600&q=80", tags: ["Analytics","BI","SQL"], link: "/services" },
-              { icon: "🌐", title: "Web Development & UI/UX", desc: "Modern web development paired with intuitive UI/UX design to deliver seamless digital experiences.", img: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=600&q=80", tags: ["React","Node","Figma"], link: "/services" },
-              { icon: "📱", title: "Digital Marketing", desc: "Social media and digital marketing strategies that grow your brand and connect you with your audience.", img: "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=600&q=80", tags: ["SEO","SMM","Content"], link: "/services" },
+              { icon: "⚛️", title: "Quantum Computing", desc: "Combines quantum computing with machine learning algorithms to solve complex real-world problems exponentially faster.", img: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=600&q=80", tags: ["QML", "CRYSTALS", "PQC"], link: "/services" },
+              { icon: "🤖", title: "AI & Machine Learning", desc: "Machine learning solutions that allow computers to learn and improve from data without being explicitly programmed.", img: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=600&q=80", tags: ["ML/AI", "NLP", "XDR"], link: "/services" },
+              { icon: "🛡️", title: "Cybersecurity & Ethical Hacking", desc: "Full-spectrum cybersecurity including penetration testing, vulnerability assessment, and zero trust architecture.", img: "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=600&q=80", tags: ["VAPT", "Red Team", "ZTA"], link: "/services" },
+              { icon: "📊", title: "Data & Business Analysis", desc: "Data-driven processes and analytics that help businesses make informed decisions and optimize strategy.", img: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=600&q=80", tags: ["Analytics", "BI", "SQL"], link: "/services" },
+              { icon: "🌐", title: "Web Development & UI/UX", desc: "Modern web development paired with intuitive UI/UX design to deliver seamless digital experiences.", img: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=600&q=80", tags: ["React", "Node", "Figma"], link: "/services" },
+              { icon: "📱", title: "Digital Marketing", desc: "Social media and digital marketing strategies that grow your brand and connect you with your audience.", img: "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=600&q=80", tags: ["SEO", "SMM", "Content"], link: "/services" },
             ].map((svc, i) => (
               <div
                 key={i}
@@ -635,8 +752,8 @@ const Banner = () => {
                 style={{
                   padding: "34px 28px",
                   background: "rgba(255,255,255,0.032)",
-                  borderRight: i % 3 !== 2 ? "1px solid rgba(0,240,255,0.1)" : "none",
-                  borderBottom: i < 3 ? "1px solid rgba(0,240,255,0.1)" : "none",
+                  borderRight: "1px solid rgba(0,240,255,0.1)",
+                  borderBottom: "1px solid rgba(0,240,255,0.1)",
                   position: "relative",
                   overflow: "hidden",
                   cursor: "default",
@@ -648,7 +765,7 @@ const Banner = () => {
                   alt={svc.title}
                   style={{
                     width: "100%",
-                    height: 130,
+                    height: 140,
                     objectFit: "cover",
                     borderRadius: 10,
                     marginBottom: 18,
@@ -677,7 +794,7 @@ const Banner = () => {
                 <h3
                   style={{
                     fontFamily: "'Syne',sans-serif",
-                    fontSize: ".88rem",
+                    fontSize: ".95rem",
                     fontWeight: 700,
                     color: "#fff",
                     marginBottom: 9,
@@ -695,7 +812,7 @@ const Banner = () => {
                 >
                   {svc.desc}
                 </p>
-                <div>
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '4px' }}>
                   {svc.tags.map((tag) => (
                     <span
                       key={tag}
@@ -709,7 +826,6 @@ const Banner = () => {
                         border: "1px solid rgba(0,240,255,0.15)",
                         borderRadius: 4,
                         padding: "2px 7px",
-                        margin: "2px 3px 2px 0",
                       }}
                     >
                       {tag}
@@ -736,7 +852,7 @@ const Banner = () => {
         </div>
       </section>
 
-      {/* ══ STATS BAND ══ */}
+      {/* ══ STATS HIGHLIGHT DATA BLOCK ══ */}
       <div
         style={{
           background: "rgba(8,13,28,0.8)",
@@ -746,14 +862,7 @@ const Banner = () => {
           zIndex: 1,
         }}
       >
-        <div
-          style={{
-            maxWidth: 1280,
-            margin: "0 auto",
-            display: "grid",
-            gridTemplateColumns: "repeat(4,1fr)",
-          }}
-        >
+        <div className="gk-stats-grid" style={{ maxWidth: 1280, margin: "0 auto" }}>
           {[
             { n: "99.9%", label: "Threat Detection Rate" },
             { n: "256", label: "Qubits Per Operation" },
@@ -765,10 +874,11 @@ const Banner = () => {
               className="gk-stat-card"
               style={{
                 padding: "38px 26px",
-                borderRight: i < 3 ? "1px solid rgba(0,240,255,0.1)" : "none",
+                borderRight: "1px solid rgba(0,240,255,0.1)",
                 position: "relative",
                 overflow: "hidden",
                 transition: "background .3s",
+                textAlign: "center",
               }}
             >
               <div
@@ -785,7 +895,7 @@ const Banner = () => {
               <div
                 style={{
                   fontFamily: "'Syne',sans-serif",
-                  fontSize: "2.4rem",
+                  fontSize: "2.2rem",
                   fontWeight: 800,
                   color: "#00f0ff",
                   lineHeight: 1,

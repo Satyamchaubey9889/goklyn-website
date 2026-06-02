@@ -3,7 +3,7 @@ import React from 'react'
 const ProjectBanner = () => {
     return (
         <>
-            <section className="banner-section position-relative" style={{paddingTop : '200px'}}>
+            <section className="banner-section position-relative" style={{ paddingTop: '200px' }}>
                 <div className="container">
                     <div className="row">
                         <div className="col-lg-6 col-md-6 col-sm-12 col-12">
@@ -23,7 +23,7 @@ const ProjectBanner = () => {
                         <div className="col-lg-6 col-md-6 col-sm-12 col-12">
                             <div className="banner_image position-relative">
                                 <figure className="banner_main_image mb-0 left_right_shape">
-                                    <img src="/assets/newImages/projects.jpg" alt="" style={{borderRadius:'45px', width:'100%', objectFit:'contain'}} />
+                                    <img src="/assets/newImages/projects.jpg" alt="" style={{ borderRadius: '45px', width: '100%', objectFit: 'contain' }} />
                                 </figure>
                                 <figure className="banner_image_bottom_shape mb-0 position-absolute top_bottom_shape">
                                     <img src="/assets/images/sub_banner_image_bottom_shape.png" alt="" className="img-fluid" />
