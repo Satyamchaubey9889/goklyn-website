@@ -42,7 +42,7 @@ const Tastimonial = () => {
                             </div>
                         </div>
                     </div>
-                    {/* <div className="row" data-aos="fade-up">
+                    <div className="row" data-aos="fade-up">
                         <Slider {...settings} className='vs-carousel' >
                             <div className="item px-2">
                                 <div className="testimonials_box">
@@ -123,8 +123,8 @@ const Tastimonial = () => {
                                 </div>
                             </div>
                         </Slider>
-                    </div> */}
-                    <p className='text-center text-white'>Coming Soon..</p>
+                    </div>
+                    {/* <p className='text-center text-white'>Coming Soon..</p> */}
                     <figure className="testimonials_background_shape mb-0 position-absolute left_right_shape">
                         <img src="/assets/images/testimonial_background_shape.jpg" alt="" />
                     </figure>
