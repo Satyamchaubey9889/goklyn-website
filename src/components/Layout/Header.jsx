@@ -89,7 +89,7 @@ const Header = () => {
           font-size: .7rem;
           letter-spacing: .06em;
           text-transform: uppercase;
-          color: rgba(255,255,255,0.5);
+          color: rgb(255, 255, 255);
           text-decoration: none;
           border-radius: 6px;
           border: none;
@@ -132,7 +132,7 @@ const Header = () => {
           font-size: .68rem;
           letter-spacing: .05em;
           text-transform: uppercase;
-          color: rgba(255,255,255,0.5);
+          color: rgb(255, 255, 255);
           text-decoration: none;
           border-radius: 6px;
           transition: color .18s, background .18s;
@@ -327,7 +327,7 @@ const Header = () => {
           </li>
           <li>
             <button
-              className={["/about-us","/our-team","/career"].includes(path) ? "gk-active" : ""}
+              className={["/about-us", "/our-team", "/career"].includes(path) ? "gk-active" : ""}
               onClick={() => setCompanyOpen(o => !o)}
               onBlur={() => setTimeout(() => setCompanyOpen(false), 150)}
             >
@@ -336,7 +336,7 @@ const Header = () => {
             <div className={`gk-dropdown ${companyOpen ? "open" : ""}`}>
               <Link to="/about-us" className={path === "/about-us" ? "gk-active" : ""}>About</Link>
               <Link to="/our-team" className={path === "/our-team" ? "gk-active" : ""}>Our Team</Link>
-              <Link to="/career"   className={path === "/career"   ? "gk-active" : ""}>Careers</Link>
+              <Link to="/career" className={path === "/career" ? "gk-active" : ""}>Careers</Link>
             </div>
           </li>
           <li>
@@ -367,12 +367,12 @@ const Header = () => {
 
       {/* ── Mobile Drawer ── */}
       <nav className={`gk-mobile-menu ${mobileOpen ? "open" : ""}`}>
-        <Link to="/"           className={path === "/"           ? "gk-active" : ""}>Home</Link>
-        <Link to="/about-us"   className={path === "/about-us"   ? "gk-active" : ""}>About</Link>
-        <Link to="/our-team"   className={path === "/our-team"   ? "gk-active" : ""}>Our Team</Link>
-        <Link to="/career"     className={path === "/career"     ? "gk-active" : ""}>Careers</Link>
-        <Link to="/services"   className={path === "/services"   ? "gk-active" : ""}>Services</Link>
-        <Link to="/portfolio"  className={path === "/portfolio"  ? "gk-active" : ""}>Projects</Link>
+        <Link to="/" className={path === "/" ? "gk-active" : ""}>Home</Link>
+        <Link to="/about-us" className={path === "/about-us" ? "gk-active" : ""}>About</Link>
+        <Link to="/our-team" className={path === "/our-team" ? "gk-active" : ""}>Our Team</Link>
+        <Link to="/career" className={path === "/career" ? "gk-active" : ""}>Careers</Link>
+        <Link to="/services" className={path === "/services" ? "gk-active" : ""}>Services</Link>
+        <Link to="/portfolio" className={path === "/portfolio" ? "gk-active" : ""}>Projects</Link>
         <Link to="/contact-us" className={path === "/contact-us" ? "gk-active" : ""}>Contact Us</Link>
         <div className="gk-mobile-divider" />
         <ul className="gk-mobile-socials">

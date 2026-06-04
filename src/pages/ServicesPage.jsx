@@ -4,17 +4,18 @@ import Service from '../components/common/Service'
 import WhoWeAre from '../components/common/WhoWeAre'
 import Tastimonial from '../components/common/Tastimonial'
 import Combo from '../components/common/Combo'
+import SecurityProcess from '../components/Services/SecurityProcess'
 // import Meet from '../components/common/Meet'
 
 const ServicesPage = () => {
   return (
     <div>
-        <ServicesBanner/>
-        <Service/>
-        <WhoWeAre/>
-        <Tastimonial/>
-        <Combo/>
-        {/* <Meet/> */}
+      <ServicesBanner />
+      <Service />
+      <SecurityProcess />
+      <WhoWeAre />
+      <Tastimonial />
+      {/* <Meet/> */}
     </div>
   )
 }

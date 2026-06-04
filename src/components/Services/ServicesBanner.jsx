@@ -1,386 +1,416 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react'
+import { Link } from 'react-router-dom'
 
-const WORKFLOW_STEPS = [
-    {
-        phase: "01",
-        title: "Threat Synthesis",
-        subtitle: "AI Vector Vulnerability Scanning",
-        img: "https://images.unsplash.com/photo-1601597111158-2fceff292cdc?w=600&q=80",
-        desc: "Automated models run deep behavioral analysis layers to simulate state-level security vectors and discover anomalies."
-    },
-    {
-        phase: "02",
-        title: "Quantum Modeling",
-        subtitle: "PQC Migration Analytics",
-        img: "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=600&q=80",
-        desc: "Data structures pass into simulated matrix environments to evaluate mathematical resiliency against algorithmic cryptanalysis."
-    },
-    {
-        phase: "03",
-        title: "Deployment Layer",
-        subtitle: "NIST-L5 Cryptographic Injection",
-        img: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=600&q=80",
-        desc: "Production targets safely accept active lattice-based encryption algorithms, implementing robust multi-layer defense perimeters."
+const STATS = [
+  { val: "99.9%", label: "Detection Rate" },
+  { val: "256", label: "Qubits / Op" },
+  { val: "140+", label: "Clients Protected" },
+  { val: "0.3ms", label: "Response Time" },
+]
+
+const MARQUEE = [
+  'Post-Quantum Cryptography', 'CRYSTALS-Kyber-1024', 'Zero Trust Architecture',
+  'Quantum Key Distribution', 'AI Threat Intelligence', 'Surface Code Error Correction',
+  'NIST Level 5 Security', 'Grover Algorithm Defense', 'Ethical Hacking', 'QPen Framework',
+  'Post-Quantum Cryptography', 'CRYSTALS-Kyber-1024', 'Zero Trust Architecture',
+  'Quantum Key Distribution', 'AI Threat Intelligence', 'Surface Code Error Correction',
+  'NIST Level 5 Security', 'Grover Algorithm Defense', 'Ethical Hacking', 'QPen Framework',
+]
+
+/* ─── 3D ROTATING CUBE CANVAS ──────────────── */
+function CubeCanvas() {
+  const ref = useRef(null)
+  useEffect(() => {
+    const canvas = ref.current
+    if (!canvas) return
+    const ctx = canvas.getContext('2d')
+    const W = canvas.width = 560
+    const H = canvas.height = 560
+    let t = 0, animId
+
+    const project = (x, y, z, rx, ry) => {
+      const cosY = Math.cos(ry), sinY = Math.sin(ry)
+      const x1 = x * cosY - z * sinY
+      const z1 = x * sinY + z * cosY
+      const cosX = Math.cos(rx), sinX = Math.sin(rx)
+      const y1 = y * cosX - z1 * sinX
+      const z2 = y * sinX + z1 * cosX
+      const fov = 520
+      const scale = fov / (fov + z2 + 200)
+      return { x: W / 2 + x1 * scale, y: H / 2 + y1 * scale, z: z2, scale }
     }
-];
 
+    const drawLine = (p1, p2, color, alpha, width = 1) => {
+      ctx.beginPath()
+      ctx.moveTo(p1.x, p1.y)
+      ctx.lineTo(p2.x, p2.y)
+      ctx.strokeStyle = color
+      ctx.globalAlpha = alpha
+      ctx.lineWidth = width
+      ctx.stroke()
+      ctx.globalAlpha = 1
+    }
+
+    const drawDot = (p, color, r = 3) => {
+      ctx.beginPath()
+      ctx.arc(p.x, p.y, r * p.scale, 0, Math.PI * 2)
+      ctx.fillStyle = color
+      ctx.globalAlpha = 0.9
+      ctx.fill()
+      ctx.globalAlpha = 1
+    }
+
+    const SIZE = 110
+    const verts = [
+      [-SIZE, -SIZE, -SIZE], [SIZE, -SIZE, -SIZE], [SIZE, SIZE, -SIZE], [-SIZE, SIZE, -SIZE],
+      [-SIZE, -SIZE, SIZE], [SIZE, -SIZE, SIZE], [SIZE, SIZE, SIZE], [-SIZE, SIZE, SIZE],
+    ]
+    const edges = [
+      [0, 1], [1, 2], [2, 3], [3, 0], [4, 5], [5, 6], [6, 7], [7, 4],
+      [0, 4], [1, 5], [2, 6], [3, 7],
+    ]
+
+    const S2 = 55
+    const verts2 = [
+      [-S2, -S2, -S2], [S2, -S2, -S2], [S2, S2, -S2], [-S2, S2, -S2],
+      [-S2, -S2, S2], [S2, -S2, S2], [S2, S2, S2], [-S2, S2, S2],
+    ]
+
+    const orbitals = Array.from({ length: 60 }, (_, i) => ({
+      angle: (i / 60) * Math.PI * 2,
+      radius: 140 + Math.random() * 60,
+      tiltX: Math.random() * Math.PI,
+      tiltZ: Math.random() * Math.PI,
+      speed: 0.008 + Math.random() * 0.012,
+      color: Math.random() < 0.5 ? '#00f0ff' : Math.random() < 0.5 ? '#7b2fff' : '#00ff88',
+      size: 0.8 + Math.random() * 1.4,
+    }))
+
+    const nodes = Array.from({ length: 18 }, (_, i) => ({
+      x: (Math.random() - 0.5) * 300,
+      y: (Math.random() - 0.5) * 300,
+      z: (Math.random() - 0.5) * 300,
+      vx: (Math.random() - 0.5) * 0.4,
+      vy: (Math.random() - 0.5) * 0.4,
+      vz: (Math.random() - 0.5) * 0.4,
+      color: Math.random() < 0.5 ? '#00f0ff' : '#7b2fff',
+    }))
+
+    const draw = () => {
+      ctx.clearRect(0, 0, W, H)
+      const rx = t * 0.22
+      const ry = t * 0.35
+
+      const grd = ctx.createRadialGradient(W / 2, H / 2, 0, W / 2, H / 2, 130)
+      grd.addColorStop(0, 'rgba(0,240,255,0.12)')
+      grd.addColorStop(0.5, 'rgba(123,47,255,0.06)')
+      grd.addColorStop(1, 'transparent')
+      ctx.fillStyle = grd
+      ctx.beginPath()
+      ctx.arc(W / 2, H / 2, 130, 0, Math.PI * 2)
+      ctx.fill()
+
+      nodes.forEach(n => {
+        n.x += n.vx; n.y += n.vy; n.z += n.vz
+        if (Math.abs(n.x) > 150) n.vx *= -1
+        if (Math.abs(n.y) > 150) n.vy *= -1
+        if (Math.abs(n.z) > 150) n.vz *= -1
+      })
+      nodes.forEach((n, i) => {
+        const p = project(n.x, n.y, n.z, rx, ry)
+        nodes.forEach((m, j) => {
+          if (j <= i) return
+          const pm = project(m.x, m.y, m.z, rx, ry)
+          const dx = p.x - pm.x, dy = p.y - pm.y
+          const d = Math.sqrt(dx * dx + dy * dy)
+          if (d < 90) drawLine(p, pm, '#00f0ff', (1 - d / 90) * 0.12, 0.5)
+        })
+        drawDot(p, n.color, n.color === '#00f0ff' ? 2 : 1.5)
+      })
+
+      const vp = verts.map(([x, y, z]) => project(x, y, z, rx, ry))
+      edges.forEach(([a, b]) => drawLine(vp[a], vp[b], '#00f0ff', 0.55, 1.2))
+      verts.forEach((_, i) => drawDot(vp[i], '#00f0ff', 3.5))
+
+      const vp2 = verts2.map(([x, y, z]) => project(x, y, z, rx * 1.5, ry * 1.3))
+      edges.forEach(([a, b]) => drawLine(vp2[a], vp2[b], '#7b2fff', 0.45, 1))
+      verts2.forEach((_, i) => drawDot(vp2[i], '#7b2fff', 2.5))
+
+        ;[0, 1, 2, 3, 4, 5, 6, 7].forEach(i => drawLine(vp[i], vp2[i], '#00ff88', 0.12, 0.5))
+
+      orbitals.forEach(o => {
+        o.angle += o.speed
+        const cx = o.radius * Math.cos(o.angle) * Math.cos(o.tiltZ)
+        const cy = o.radius * Math.sin(o.angle) * Math.cos(o.tiltX)
+        const cz = o.radius * Math.sin(o.tiltX) * Math.cos(o.angle) * 0.5
+        const p = project(cx, cy, cz, rx * 0.3, ry * 0.3)
+        ctx.beginPath()
+        ctx.arc(p.x, p.y, o.size * p.scale, 0, Math.PI * 2)
+        ctx.fillStyle = o.color
+        ctx.globalAlpha = 0.65
+        ctx.fill()
+        ctx.globalAlpha = 1
+      })
+
+      const ringR = 160 + Math.sin(t * 1.2) * 20
+      ctx.beginPath()
+      ctx.ellipse(W / 2, H / 2, ringR, ringR * 0.3, t * 0.4, 0, Math.PI * 2)
+      ctx.strokeStyle = '#00f0ff'
+      ctx.globalAlpha = 0.18
+      ctx.lineWidth = 1.5
+      ctx.stroke()
+      ctx.globalAlpha = 1
+
+      ctx.beginPath()
+      ctx.ellipse(W / 2, H / 2, ringR * 0.75, ringR * 0.22, -t * 0.3 + 1, 0, Math.PI * 2)
+      ctx.strokeStyle = '#7b2fff'
+      ctx.globalAlpha = 0.15
+      ctx.lineWidth = 1
+      ctx.stroke()
+      ctx.globalAlpha = 1
+
+      t += 0.012
+      animId = requestAnimationFrame(draw)
+    }
+    draw()
+    return () => cancelAnimationFrame(animId)
+  }, [])
+  return (
+    <canvas ref={ref}
+      style={{ width: '100%', height: '100%', position: 'absolute', inset: 0, pointerEvents: 'none' }}
+    />
+  )
+}
+
+/* ─── WAVE CANVAS ───────────────────────────── */
+export function WaveCanvas({ color = '#00f0ff' }) {
+  const ref = useRef(null)
+  useEffect(() => {
+    const canvas = ref.current
+    if (!canvas) return
+    const ctx = canvas.getContext('2d')
+    let t = 0, animId
+    const resize = () => {
+      canvas.width = canvas.offsetWidth
+      canvas.height = canvas.offsetHeight
+    }
+    resize()
+    const draw = () => {
+      const W = canvas.width, H = canvas.height
+      ctx.clearRect(0, 0, W, H)
+      for (let y = 0; y < H; y += 24) {
+        ctx.beginPath()
+        for (let x = 0; x <= W; x += 3) {
+          const w = Math.sin(x * 0.015 + t + y * 0.02) * 10
+            + Math.cos(x * 0.01 + t * 0.7 + y * 0.015) * 6
+          x === 0 ? ctx.moveTo(x, y + w) : ctx.lineTo(x, y + w)
+        }
+        ctx.strokeStyle = color
+        ctx.globalAlpha = 0.1 + Math.sin(y * 0.015 + t) * 0.05
+        ctx.lineWidth = 1
+        ctx.stroke()
+      }
+      ctx.globalAlpha = 1
+      t += 0.016
+      animId = requestAnimationFrame(draw)
+    }
+    draw()
+    return () => cancelAnimationFrame(animId)
+  }, [color])
+  return <canvas ref={ref} style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', pointerEvents: 'none', borderRadius: 'inherit' }} />
+}
+
+/* ─── MAIN BANNER COMPONENT ─────────────────── */
 const ServicesBanner = () => {
-    const canvasRef = useRef(null);
-    const [activeStep, setActiveStep] = useState(0);
+  const [heroVis, setHeroVis] = useState(false)
+  useEffect(() => { const t = setTimeout(() => setHeroVis(true), 100); return () => clearTimeout(t) }, [])
 
-    useEffect(() => {
-        const canvas = canvasRef.current;
-        if (!canvas) return;
-        const ctx = canvas.getContext('2d');
-        let animationFrameId;
-
-        let width = canvas.width = canvas.parentElement.offsetWidth || 500;
-        let height = canvas.height = 400;
-
-        const nodes = [];
-        const numNodes = 28;
-        for (let i = 0; i < numNodes; i++) {
-            nodes.push({
-                x: (Math.random() - 0.5) * 220,
-                y: (Math.random() - 0.5) * 220,
-                z: (Math.random() - 0.5) * 220
-            });
-        }
-
-        let angleX = 0.006;
-        let angleY = 0.009;
-
-        const rotateX = (node, angle) => {
-            const cos = Math.cos(angle);
-            const sin = Math.sin(angle);
-            const y1 = node.y * cos - node.z * sin;
-            const z1 = node.z * cos + node.y * sin;
-            node.y = y1; node.z = z1;
-        };
-
-        const rotateY = (node, angle) => {
-            const cos = Math.cos(angle);
-            const sin = Math.sin(angle);
-            const x1 = node.x * cos - node.z * sin;
-            const z1 = node.z * cos + node.x * sin;
-            node.x = x1; node.z = z1;
-        };
-
-        const renderLoop = () => {
-            ctx.clearRect(0, 0, width, height);
-
-            ctx.strokeStyle = 'rgba(0, 240, 255, 0.03)';
-            ctx.lineWidth = 1;
-            for (let i = 0; i < width; i += 40) {
-                ctx.beginPath(); ctx.moveTo(i, 0); ctx.lineTo(i, height); ctx.stroke();
-            }
-            for (let j = 0; j < height; j += 40) {
-                ctx.beginPath(); ctx.moveTo(0, j); ctx.lineTo(width, j); ctx.stroke();
-            }
-
-            const projected = nodes.map(node => {
-                rotateX(node, angleX);
-                rotateY(node, angleY);
-                const fov = 320;
-                const distance = 280;
-                const scale = fov / (fov + node.z + distance);
-                return {
-                    x: (node.x * scale) + width / 2,
-                    y: (node.y * scale) + height / 2,
-                    scale: scale,
-                    z: node.z
-                };
-            });
-
-            ctx.lineWidth = 0.8;
-            for (let i = 0; i < projected.length; i++) {
-                for (let j = i + 1; j < projected.length; j++) {
-                    const dist = Math.hypot(projected[i].x - projected[j].x, projected[i].y - projected[j].y);
-                    if (dist < 110) {
-                        const alpha = (1 - dist / 110) * 0.22 * projected[i].scale;
-                        ctx.strokeStyle = `rgba(123, 47, 255, ${alpha})`;
-                        ctx.beginPath(); ctx.moveTo(projected[i].x, projected[i].y);
-                        ctx.lineTo(projected[j].x, projected[j].y); ctx.stroke();
-                    }
-                }
-            }
-
-            projected.forEach(p => {
-                const radius = Math.max(1, p.scale * 3.5);
-                const alpha = Math.min(1, Math.max(0.2, (p.z + 220) / 440));
-                ctx.beginPath(); ctx.arc(p.x, p.y, radius, 0, Math.PI * 2);
-                ctx.fillStyle = `rgba(0, 240, 255, ${alpha})`;
-                ctx.shadowBlur = 12; ctx.shadowColor = '#00f0ff';
-                ctx.fill(); ctx.shadowBlur = 0;
-            });
-
-            animationFrameId = requestAnimationFrame(renderLoop);
-        };
-
-        renderLoop();
-
-        const handleResize = () => {
-            if (!canvas) return;
-            width = canvas.width = canvas.parentElement.offsetWidth || 500;
-            height = canvas.height = 400;
-        };
-        window.addEventListener('resize', handleResize);
-
-        return () => {
-            cancelAnimationFrame(animationFrameId);
-            window.removeEventListener('resize', handleResize);
-        };
-    }, []);
-
-    return (
-        <>
-            <style>{`
+  return (
+    <>
+      <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Space+Mono:wght@400;700&display=swap');
+        #svc-page { background:#04060f; overflow-x:hidden; font-family:'Inter',sans-serif; }
+        @keyframes sv-fadein-left  { from{opacity:0;transform:translateX(-32px)} to{opacity:1;transform:none} }
+        @keyframes sv-fadein-right { from{opacity:0;transform:translateX(32px)}  to{opacity:1;transform:none} }
+        @keyframes sv-float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
+        @keyframes sv-marquee { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+        @keyframes sv-pulse { 0%,100%{box-shadow:0 0 0 0 rgba(0,240,255,0.4)} 50%{box-shadow:0 0 0 8px rgba(0,240,255,0)} }
+        @keyframes sv-blink { 0%,100%{opacity:1;box-shadow:0 0 6px #00ff88} 50%{opacity:.3;box-shadow:none} }
 
-        #sv-banner-section {
-          padding: 140px 6% 90px;
-          background: #04060f;
-          position: relative; z-index: 1;
-          border-bottom: 1px solid rgba(0,240,255,0.08);
-          overflow: hidden;
+        #sv-hero {
+          padding:140px 6% 90px; position:relative; z-index:1;
+          border-bottom:1px solid rgba(0,240,255,0.08);
         }
-
-        #sv-banner-section::before {
+        #sv-hero::before {
           content:''; position:absolute; inset:0; pointer-events:none;
           background:
-            radial-gradient(ellipse at 80% 20%, rgba(123,47,255,0.09) 0%, transparent 60%),
+            radial-gradient(ellipse at 75% 25%, rgba(123,47,255,0.09) 0%, transparent 55%),
             radial-gradient(ellipse at 15% 75%, rgba(0,240,255,0.06) 0%, transparent 50%);
         }
-
-        .sv-inner { max-width: 1280px; margin: 0 auto; }
-        
         .sv-hero-grid {
-          display: grid; grid-template-columns: 1.1fr 0.9fr;
-          gap: 56px; align-items: center; margin-bottom: 100px;
+          max-width:1280px; margin:0 auto;
+          display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center;
         }
+        .sv-pill {
+          display:inline-flex; align-items:center; gap:8px; padding:5px 14px;
+          font-family:'Space Mono',monospace; font-size:.68rem; letter-spacing:.1em;
+          text-transform:uppercase; color:#00ff88; background:rgba(0,255,136,0.07);
+          border:1px solid rgba(0,255,136,0.2); border-radius:100px; margin-bottom:24px;
+        }
+        .sv-pill-dot { width:6px; height:6px; border-radius:50%; background:#00ff88; animation:sv-blink 2s ease-in-out infinite; }
+        #sv-hero h1 {
+          font-family:'Syne',sans-serif; font-size:clamp(2.4rem,5vw,4.4rem);
+          font-weight:800; line-height:1.05; margin-bottom:20px;
+        }
+        #sv-hero h1 .white { color:#fff; display:block; }
+        #sv-hero h1 .grad {
+          display:block;
+          background:linear-gradient(100deg,#00f0ff 0%,#7b2fff 55%,#ff2060 100%);
+          -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+        }
+        .sv-desc { font-size:1rem; color:rgba(255,255,255,0.46); line-height:1.82; max-width:480px; margin-bottom:36px; }
+        .sv-btns { display:flex; gap:14px; flex-wrap:wrap; }
+        .sv-btn-p {
+          display:inline-flex; align-items:center; gap:8px; padding:13px 28px;
+          font-family:'Syne',sans-serif; font-size:.76rem; font-weight:700;
+          letter-spacing:.07em; color:#04060f; background:#00f0ff; border-radius:8px;
+          text-decoration:none; box-shadow:0 0 24px rgba(0,240,255,0.28);
+          transition:box-shadow .25s,transform .2s;
+        }
+        .sv-btn-p:hover { box-shadow:0 0 48px rgba(0,240,255,0.5); transform:translateY(-2px); color:#04060f; }
+        .sv-btn-g {
+          display:inline-flex; align-items:center; gap:8px; padding:12px 26px;
+          font-family:'Syne',sans-serif; font-size:.76rem; font-weight:700;
+          letter-spacing:.07em; color:#00f0ff; background:transparent;
+          border:1px solid rgba(0,240,255,0.25); border-radius:8px;
+          text-decoration:none; transition:background .2s,box-shadow .2s,transform .2s;
+        }
+        .sv-btn-g:hover { background:rgba(0,240,255,0.07); box-shadow:0 0 24px rgba(0,240,255,0.18); transform:translateY(-2px); color:#00f0ff; }
 
-        .sv-breadcrumb {
-          display: inline-flex; align-items: center; gap: 8px;
-          padding: 5px 14px; font-family: 'Space Mono', monospace;
-          font-size: .68rem; letter-spacing: .1em; text-transform: uppercase;
-          color: #00ff88; background: rgba(0,255,136,0.07);
-          border: 1px solid rgba(0,255,136,0.2); border-radius: 100px; margin-bottom: 24px;
+        .sv-canvas-wrap {
+          position:relative; border-radius:20px; overflow:hidden;
+          border:1px solid rgba(0,240,255,0.22);
+          box-shadow:0 0 80px rgba(0,240,255,0.08);
+          height:520px; background:#04060f;
         }
-        .sv-breadcrumb-dot {
-          width:6px; height:6px; border-radius:50%; background:#00ff88;
-          animation: sv-blink 2s ease-in-out infinite;
+        .sv-fstat {
+          position:absolute; background:rgba(8,13,28,0.92);
+          border:1px solid rgba(0,240,255,0.22); border-radius:12px;
+          padding:12px 16px; backdrop-filter:blur(20px);
+          box-shadow:0 16px 48px rgba(0,0,0,0.6); min-width:130px;
+          animation:sv-float 4s ease-in-out infinite;
         }
-        @keyframes sv-blink {
-          0%,100%{opacity:1;box-shadow:0 0 6px #00ff88} 50%{opacity:.3;box-shadow:none}
-        }
+        .sv-fstat-val { font-family:'Syne',sans-serif; font-size:1.3rem; font-weight:800; color:#00f0ff; line-height:1; margin-bottom:3px; }
+        .sv-fstat-lbl { font-family:'Space Mono',monospace; font-size:.58rem; letter-spacing:.07em; color:rgba(255,255,255,0.44); text-transform:uppercase; }
 
-        .sv-hero-title {
-          font-family: 'Syne', sans-serif; font-size: clamp(2.4rem, 5vw, 4.2rem);
-          font-weight: 800; line-height: 1.05; margin-bottom: 20px; color: #fff;
-        }
-        .sv-hero-title span {
-          display: block;
-          background: linear-gradient(100deg, #00f0ff 0%, #7b2fff 55%, #ff2060 100%);
-          -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-        }
-        .sv-hero-desc {
-          font-size: 1rem; color: rgba(255,255,255,0.48); line-height: 1.82; max-width: 540px;
-        }
+        #sv-stats { background:rgba(8,13,28,0.8); border-top:1px solid rgba(0,240,255,0.08); border-bottom:1px solid rgba(0,240,255,0.08); position:relative; z-index:1; }
+        .sv-stats-grid { max-width:1280px; margin:0 auto; display:grid; grid-template-columns:repeat(4,1fr); }
+        .sv-stat { padding:36px 26px; border-right:1px solid rgba(0,240,255,0.08); position:relative; overflow:hidden; transition:background .3s; }
+        .sv-stat:last-child { border-right:none; }
+        .sv-stat:hover { background:rgba(0,240,255,0.03); }
+        .sv-stat::before { content:''; position:absolute; top:0; left:0; right:0; height:2px; background:linear-gradient(90deg,transparent,#00f0ff,transparent); transform:scaleX(0); transition:transform .4s; }
+        .sv-stat:hover::before { transform:scaleX(1); }
+        .sv-stat-val { font-family:'Syne',sans-serif; font-size:2.4rem; font-weight:800; color:#00f0ff; line-height:1; margin-bottom:7px; }
+        .sv-stat-lbl { font-family:'Space Mono',monospace; font-size:.66rem; letter-spacing:.07em; text-transform:uppercase; color:rgba(255,255,255,0.42); }
 
-        .sv-canvas-wrapper {
-          position: relative; width: 100%; border-radius: 24px;
-          background: rgba(255, 255, 255, 0.015); border: 1px solid rgba(0, 240, 255, 0.12);
-          box-shadow: 0 0 50px rgba(0, 240, 255, 0.04), inset 0 0 24px rgba(255,255,255,0.02);
-          overflow: hidden; backdrop-filter: blur(10px);
-        }
-        .sv-canvas-wrapper::after {
-          content: 'QUANTUM_CORE_ACTIVE'; position: absolute; bottom: 16px; right: 20px;
-          font-family: 'Space Mono', monospace; font-size: 0.58rem; color: rgba(0, 240, 255, 0.4); letter-spacing: 0.15em;
-        }
-        .sv-3d-canvas { display: block; width: 100%; height: auto; }
+        .sv-marquee-wrap { padding:16px 0; overflow:hidden; border-top:1px solid rgba(0,240,255,0.08); border-bottom:1px solid rgba(0,240,255,0.08); background:rgba(8,13,28,0.5); position:relative; z-index:1; }
+        .sv-marquee-track { display:flex; gap:56px; width:max-content; animation:sv-marquee 30s linear infinite; }
+        .sv-marquee-item { display:inline-flex; align-items:center; gap:9px; font-family:'Space Mono',monospace; font-size:.7rem; letter-spacing:.1em; text-transform:uppercase; color:rgba(255,255,255,0.42); white-space:nowrap; flex-shrink:0; }
 
-        /* ── INTERACTIVE 3D WORKFLOW LAYERS ── */
-        .sv-wf-heading-block {
-          text-align: center; margin-bottom: 60px;
+        @media (max-width:991px) {
+          .sv-hero-grid { grid-template-columns:1fr; gap:40px; }
+          .sv-canvas-wrap { height:360px; }
+          .sv-fstat { display:none; }
+          .sv-stats-grid { grid-template-columns:1fr 1fr; }
         }
-        .sv-wf-container {
-          display: grid; grid-template-columns: 1fr 1.2fr; gap: 64px; align-items: center;
-        }
-        
-        .sv-wf-selectors {
-          display: flex; flex-direction: column; gap: 16px;
-        }
-        .sv-wf-tab {
-          padding: 24px; border-radius: 16px; background: rgba(255,255,255,0.015);
-          border: 1px solid rgba(255,255,255,0.04); text-align: left; cursor: pointer;
-          transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1); position: relative;
-        }
-        .sv-wf-tab::before {
-          content: ''; position: absolute; left: 0; top: 15%; bottom: 15%; width: 3px;
-          background: #00f0ff; transform: scaleY(0); transition: transform 0.3s;
-        }
-        .sv-wf-tab.active {
-          background: rgba(0, 240, 255, 0.03); border-color: rgba(0, 240, 255, 0.2);
-          transform: translateX(10px);
-        }
-        .sv-wf-tab.active::before { transform: scaleY(1); }
-        
-        .sv-wf-tab-num {
-          font-family: 'Space Mono', monospace; font-size: 0.75rem; color: #7b2fff;
-          font-weight: 700; margin-bottom: 4px; display: block;
-        }
-        .sv-wf-tab-title {
-          font-family: 'Syne', sans-serif; font-size: 1.15rem; font-weight: 700; color: #fff; margin-bottom: 6px;
-        }
-        .sv-wf-tab-sub {
-          font-size: 0.84rem; color: rgba(255,255,255,0.4); margin: 0; line-height: 1.5;
-        }
-
-        /* ── 3D TRANSFORM IMAGE CONTAINER ── */
-        .sv-wf-viewports {
-          position: relative; perspective: 1000px; width: 100%; height: 380px;
-        }
-        .sv-wf-perspective-box {
-          width: 100%; height: 100%; position: relative;
-          transform-style: preserve-3d; transform: rotateY(-12deg) rotateX(8deg);
-          transition: transform 0.5s ease;
-        }
-        .sv-wf-viewports:hover .sv-wf-perspective-box {
-          transform: rotateY(-4deg) rotateX(4deg);
-        }
-
-        .sv-wf-display-card {
-          position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; pointer-events: none;
-          transition: opacity 0.4s ease, transform 0.4s ease; transform: translateZ(-50px);
-        }
-        .sv-wf-display-card.active {
-          opacity: 1; pointer-events: auto; transform: translateZ(0);
-        }
-
-        .sv-wf-img-frame {
-          width: 100%; height: 100%; border-radius: 20px; overflow: hidden;
-          border: 1px solid rgba(0, 240, 255, 0.2); position: relative;
-          box-shadow: 0 30px 60px rgba(0,0,0,0.6), 0 0 40px rgba(123,47,255,0.1);
-        }
-        .sv-wf-img-frame img {
-          width: 100%; height: 100%; object-fit: cover; filter: brightness(0.7) contrast(1.1);
-        }
-        .sv-wf-img-frame::after {
-          content: ''; position: absolute; inset: 0;
-          background: linear-gradient(to bottom, transparent 40%, rgba(4,6,15,0.95));
-        }
-
-        .sv-wf-overlay-meta {
-          position: absolute; bottom: 32px; left: 32px; right: 32px; z-index: 3;
-        }
-        .sv-wf-meta-lbl {
-          font-family: 'Space Mono', monospace; font-size: 0.65rem; color: #00ff88;
-          text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 6px; display: block;
-        }
-        .sv-wf-meta-desc {
-          font-size: 0.9rem; color: rgba(255,255,255,0.7); margin: 0; line-height: 1.6;
-        }
-
-        /* Scanline Animation Effects */
-        .sv-scanline {
-          position: absolute; inset: 0; pointer-events: none; background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 240, 255, 0.08) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
-          background-size: 100% 4px, 6px 100%; z-index: 2;
-        }
-
-        /* ── Responsive Adaptations ── */
-        @media (max-width: 991px) {
-          .sv-hero-grid { grid-template-columns: 1fr; gap: 48px; margin-bottom: 70px; }
-          .sv-canvas-wrapper { max-width: 550px; margin: 0 auto; }
-          .sv-wf-container { grid-template-columns: 1fr; gap: 40px; }
-          .sv-wf-viewports { height: 320px; max-width: 550px; margin: 0 auto; }
-          .sv-wf-perspective-box { transform: none !important; }
-        }
-
-        @media (max-width: 768px) {
-          #sv-banner-section { padding: 100px 24px 60px; }
-        }
-
-        @media (max-width: 480px) {
-          .sv-wf-overlay-meta { bottom: 20px; left: 20px; right: 20px; }
-          .sv-wf-meta-desc { font-size: 0.82rem; }
+        @media (max-width:600px) {
+          #sv-hero { padding:110px 5% 60px; }
+          .sv-stats-grid { grid-template-columns:1fr 1fr; }
         }
       `}</style>
 
-            <section id="sv-banner-section">
-                <div className="sv-inner">
+      <div id="svc-page">
+        {/* ══ HERO ══ */}
+        <section id="sv-hero">
+          <div className="sv-hero-grid">
+            {/* Text */}
+            <div style={{ opacity: heroVis ? 1 : 0, animation: heroVis ? 'sv-fadein-left 0.8s ease both' : 'none' }}>
+              <div className="sv-pill">
+                <span className="sv-pill-dot" />
+                NIST Level-5 Certified Solutions
+              </div>
+              <h1>
+                <span className="white">Quantum-Grade</span>
+                <span className="grad">Services & Solutions.</span>
+              </h1>
+              <p className="sv-desc">
+                From post-quantum cryptography and AI threat intelligence to full-stack
+                development and digital marketing — we build and teach the technologies
+                that power tomorrow's digital world.
+              </p>
+              <div className="sv-btns">
+                <a href="mailto:hr@goklyn.in" className="sv-btn-p">
+                  <i className="fa-solid fa-shield-halved" />
+                  Get Protected
+                </a>
+                <Link to="/contact-us" className="sv-btn-g">
+                  <i className="fa-solid fa-envelope" />
+                  Contact Us
+                </Link>
+              </div>
+            </div>
 
-                    {/* ── MAIN INTERACTIVE HERO BANNER ── */}
-                    <div className="sv-hero-grid">
-                        <div>
-                            <div className="sv-breadcrumb">
-                                <span className="sv-breadcrumb-dot" />
-                                Home &nbsp;›&nbsp; Capabilities &nbsp;›&nbsp; Services
-                            </div>
-                            <h1 className="sv-hero-title">
-                                Cyber-Quantum <span>Infrastructure</span>
-                            </h1>
-                            <p className="sv-hero-desc">
-                                At GOKLYN Technologies, we architect resilient, next-generation frameworks
-                                designed to shield institutional layers against modern paradigms. From post-quantum
-                                cryptography implementations to zero-day threat synthesis modules, we secure systemic structures.
-                            </p>
-                        </div>
-
-                        <div>
-                            <div className="sv-canvas-wrapper">
-                                <canvas ref={canvasRef} className="sv-3d-canvas" />
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* ── DYNAMIC WORKFLOW PRESENTATION LAYER ── */}
-                    <div className="sv-wf-heading-block">
-                        <div className="tm-tag">Secured Operations Pipeline</div>
-                        <h2 className="tm-h2">Architectural <em>System Workflow</em></h2>
-                    </div>
-
-                    <div className="sv-wf-container">
-                        {/* Pipeline Selection Blocks */}
-                        <div className="sv-wf-selectors">
-                            {WORKFLOW_STEPS.map((step, idx) => (
-                                <button
-                                    key={idx}
-                                    className={`sv-wf-tab ${activeStep === idx ? 'active' : ''}`}
-                                    onClick={() => setActiveStep(idx)}
-                                >
-                                    <span className="sv-wf-tab-num">PHASE_//_{step.phase}</span>
-                                    <div className="sv-wf-tab-title">{step.title}</div>
-                                    <p className="sv-wf-tab-sub">{step.subtitle}</p>
-                                </button>
-                            ))}
-                        </div>
-
-                        {/* Interactive Perspective 3D Image Display Panel */}
-                        <div className="sv-wf-viewports">
-                            <div className="sv-wf-perspective-box">
-                                {WORKFLOW_STEPS.map((step, idx) => (
-                                    <div
-                                        key={idx}
-                                        className={`sv-wf-display-card ${activeStep === idx ? 'active' : ''}`}
-                                    >
-                                        <div className="sv-wf-img-frame">
-                                            <div className="sv-scanline" />
-                                            <img src={step.img} alt={step.title} />
-                                            <div className="sv-wf-overlay-meta">
-                                                <span className="sv-wf-meta-lbl">Operational Matrix Log</span>
-                                                <p className="sv-wf-meta-desc">{step.desc}</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-                    </div>
-
+            {/* 3D Visual */}
+            <div style={{ opacity: heroVis ? 1 : 0, animation: heroVis ? 'sv-fadein-right 0.8s ease 0.15s both' : 'none', position: 'relative' }}>
+              <div className="sv-canvas-wrap">
+                <CubeCanvas />
+                <WaveCanvas color="#00f0ff" />
+                <img
+                  src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&q=80"
+                  alt=""
+                  style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', opacity: .12, mixBlendMode: 'screen', pointerEvents: 'none' }}
+                />
+              </div>
+              {/* floating stats */}
+              {[
+                { val: '99.9%', lbl: 'Detection Rate', style: { top: '12%', left: '-6%', animationDelay: '0s' } },
+                { val: '256', lbl: 'Qubits / Op', style: { top: '50%', left: '-6%', animationDelay: '1.2s' } },
+                { val: '0.3ms', lbl: 'Response Time', style: { bottom: '12%', right: '-6%', animationDelay: '0.6s' } },
+              ].map((s, i) => (
+                <div key={i} className="sv-fstat" style={s.style}>
+                  <div className="sv-fstat-val">{s.val}</div>
+                  <div className="sv-fstat-lbl">{s.lbl}</div>
                 </div>
-            </section>
-        </>
-    );
-};
+              ))}
+            </div>
+          </div>
+        </section>
 
-export default ServicesBanner;
+        {/* ══ STATS ══ */}
+        <div id="sv-stats">
+          <div className="sv-stats-grid">
+            {STATS.map((s, i) => (
+              <div className="sv-stat" key={i}>
+                <div className="sv-stat-val">{s.val}</div>
+                <div className="sv-stat-lbl">{s.label}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* ══ MARQUEE ══ */}
+        <div className="sv-marquee-wrap">
+          <div className="sv-marquee-track">
+            {MARQUEE.map((item, i) => (
+              <span key={i} className="sv-marquee-item">
+                <span style={{ color: '#00f0ff' }}>◆</span> {item}
+              </span>
+            ))}
+          </div>
+        </div>
+      </div>
+    </>
+  )
+}
+
+export default ServicesBanner

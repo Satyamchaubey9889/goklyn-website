@@ -6,9 +6,8 @@ import Team from '../components/Team/Team'
 const TeamPage = () => {
   return (
     <div>
-        <Team/>
-        <Statistics/>
-        <Combo/>
+      <Team />
+
     </div>
   )
 }
