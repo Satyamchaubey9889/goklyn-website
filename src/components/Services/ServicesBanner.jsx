@@ -372,7 +372,7 @@ const ServicesBanner = () => {
                 />
               </div>
               {/* floating stats */}
-              {[
+              {/* {[
                 { val: '99.9%', lbl: 'Detection Rate', style: { top: '12%', left: '-6%', animationDelay: '0s' } },
                 { val: '256', lbl: 'Qubits / Op', style: { top: '50%', left: '-6%', animationDelay: '1.2s' } },
                 { val: '0.3ms', lbl: 'Response Time', style: { bottom: '12%', right: '-6%', animationDelay: '0.6s' } },
@@ -381,13 +381,13 @@ const ServicesBanner = () => {
                   <div className="sv-fstat-val">{s.val}</div>
                   <div className="sv-fstat-lbl">{s.lbl}</div>
                 </div>
-              ))}
+              ))} */}
             </div>
           </div>
         </section>
 
         {/* ══ STATS ══ */}
-        <div id="sv-stats">
+        {/* <div id="sv-stats">
           <div className="sv-stats-grid">
             {STATS.map((s, i) => (
               <div className="sv-stat" key={i}>
@@ -396,7 +396,7 @@ const ServicesBanner = () => {
               </div>
             ))}
           </div>
-        </div>
+        </div> */}
 
         {/* ══ MARQUEE ══ */}
         <div className="sv-marquee-wrap">

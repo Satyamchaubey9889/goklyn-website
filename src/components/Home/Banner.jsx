@@ -437,7 +437,7 @@ const Banner = () => {
               animation: visible ? "gk-fadein-left 0.8s ease both" : "none",
             }}
           >
-            <div
+            {/* <div
               style={{
                 display: "inline-flex",
                 alignItems: "center",
@@ -465,7 +465,7 @@ const Banner = () => {
                 }}
               />
               Quantum Security Protocol Active
-            </div>
+            </div> */}
 
             <h1
               style={{
@@ -477,7 +477,7 @@ const Banner = () => {
               }}
             >
               <span style={{ display: "block", color: "#fff" }}>
-                Goklyn Technologies
+                Goklyn
               </span>
               <span
                 style={{
@@ -593,7 +593,7 @@ const Banner = () => {
               />
             </div>
 
-            {/* Bound floating stats layer */}
+            {/* Bound floating stats layer
             <FloatStat
               className="stat-1"
               label="Detection Rate"
@@ -617,7 +617,7 @@ const Banner = () => {
               suffix=""
               dec={false}
               style={{ top: "50%", left: "-8%", animationDelay: "1.4s" }}
-            />
+            /> */}
           </div>
 
         </div>
@@ -740,7 +740,7 @@ const Banner = () => {
           >
             {[
               { icon: "⚛️", title: "Quantum Computing", desc: "Combines quantum computing with machine learning algorithms to solve complex real-world problems exponentially faster.", img: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=600&q=80", tags: ["QML", "CRYSTALS", "PQC"], link: "/services" },
-              { icon: "🤖", title: "AI & Machine Learning", desc: "Machine learning solutions that allow computers to learn and improve from data without being explicitly programmed.", img: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=600&q=80", tags: ["ML/AI", "NLP", "XDR"], link: "/services" },
+              // { icon: "🤖", title: "AI & Machine Learning", desc: "Machine learning solutions that allow computers to learn and improve from data without being explicitly programmed.", img: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=600&q=80", tags: ["ML/AI", "NLP", "XDR"], link: "/services" },
               { icon: "🛡️", title: "Cybersecurity & Ethical Hacking", desc: "Full-spectrum cybersecurity including penetration testing, vulnerability assessment, and zero trust architecture.", img: "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=600&q=80", tags: ["VAPT", "Red Team", "ZTA"], link: "/services" },
               { icon: "📊", title: "Data & Business Analysis", desc: "Data-driven processes and analytics that help businesses make informed decisions and optimize strategy.", img: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=600&q=80", tags: ["Analytics", "BI", "SQL"], link: "/services" },
               { icon: "🌐", title: "Web Development & UI/UX", desc: "Modern web development paired with intuitive UI/UX design to deliver seamless digital experiences.", img: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=600&q=80", tags: ["React", "Node", "Figma"], link: "/services" },
@@ -852,7 +852,7 @@ const Banner = () => {
         </div>
       </section>
 
-      {/* ══ STATS HIGHLIGHT DATA BLOCK ══ */}
+      {/* ══ STATS HIGHLIGHT DATA BLOCK ══
       <div
         style={{
           background: "rgba(8,13,28,0.8)",
@@ -918,7 +918,7 @@ const Banner = () => {
             </div>
           ))}
         </div>
-      </div>
+      </div> */}
     </>
   );
 };

@@ -5,105 +5,105 @@ import "slick-carousel/slick/slick-theme.css";
 import Slider from 'react-slick';
 
 const SERVICES_DATA = [
-    {
-        id: "qml",
-        icon: "⚛️",
-        title: "Quantum ML & Cryptography",
-        desc: "Integrating high-performance quantum algorithms with classical machine learning models to develop resilient post-quantum data protection perimeters.",
-        tags: ["QML", "NIST Level-5", "BB84"],
-        img: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=700&q=85"
-    },
-    {
-        id: "aiml",
-        icon: "🧠",
-        title: "Artificial Intelligence & ML",
-        desc: "Architecting deep transformer-based layers and predictive analytics systems to parse datasets without requiring explicit static programming parameters.",
-        tags: ["PyTorch", "Transformers", "Neural Nets"],
-        img: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=700&q=85"
-    },
-    {
-        id: "cyber",
-        icon: "🛡️",
-        title: "Cybersecurity & Ethical Hacking",
-        desc: "Proactively scanning system vectors using automated scripts to flag structural architectural vulnerabilities and apply real-time zero-day mitigations.",
-        tags: ["PenTesting", "Zero-Trust", "SOC Pipelines"],
-        img: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=700&q=85"
-    },
-    {
-        id: "ba",
-        icon: "📊",
-        title: "Data & Business Analysis",
-        desc: "Converting structural information repositories into real-time visual streams to empower predictive data modeling and modern strategic analysis.",
-        tags: ["Python BI", "Predictive Systems", "Databases"],
-        img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=700&q=85"
-    },
-    {
-        id: "web",
-        icon: "🌐",
-        title: "Web Development & UI/UX",
-        desc: "Engineering highly responsive web interfaces with custom micro-frontend structures, combining production-ready performance with interface design standards.",
-        tags: ["Next.js", "Tailwind CSS", "Figma Frameworks"],
-        img: "https://images.unsplash.com/photo-1547658719-da2b51169166?w=700&q=85"
-    },
-    {
-        id: "mktg",
-        icon: "📈",
-        title: "Digital Growth & Marketing",
-        desc: "Optimizing audience interaction across network matrices using predictive automation tools to scale target performance metrics reliably.",
-        tags: ["Growth Engines", "Data Attribution", "SEO Matrices"],
-        img: "https://images.unsplash.com/photo-1533750349088-cd871a92f312?w=700&q=85"
-    }
+  {
+    id: "qml",
+    icon: "⚛️",
+    title: "Quantum ML & Cryptography",
+    desc: "Integrating high-performance quantum algorithms with classical machine learning models to develop resilient post-quantum data protection perimeters.",
+    tags: ["QML", "NIST Level-5", "BB84"],
+    img: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=700&q=85"
+  },
+  // {
+  //     id: "aiml",
+  //     icon: "🧠",
+  //     title: "Artificial Intelligence & ML",
+  //     desc: "Architecting deep transformer-based layers and predictive analytics systems to parse datasets without requiring explicit static programming parameters.",
+  //     tags: ["PyTorch", "Transformers", "Neural Nets"],
+  //     img: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=700&q=85"
+  // },
+  {
+    id: "cyber",
+    icon: "🛡️",
+    title: "Cybersecurity & Ethical Hacking",
+    desc: "Proactively scanning system vectors using automated scripts to flag structural architectural vulnerabilities and apply real-time zero-day mitigations.",
+    tags: ["PenTesting", "Zero-Trust", "SOC Pipelines"],
+    img: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=700&q=85"
+  },
+  {
+    id: "ba",
+    icon: "📊",
+    title: "Data & Business Analysis",
+    desc: "Converting structural information repositories into real-time visual streams to empower predictive data modeling and modern strategic analysis.",
+    tags: ["Python BI", "Predictive Systems", "Databases"],
+    img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=700&q=85"
+  },
+  {
+    id: "web",
+    icon: "🌐",
+    title: "Web Development & UI/UX",
+    desc: "Engineering highly responsive web interfaces with custom micro-frontend structures, combining production-ready performance with interface design standards.",
+    tags: ["Next.js", "Tailwind CSS", "Figma Frameworks"],
+    img: "https://images.unsplash.com/photo-1547658719-da2b51169166?w=700&q=85"
+  },
+  {
+    id: "mktg",
+    icon: "📈",
+    title: "Digital Growth & Marketing",
+    desc: "Optimizing audience interaction across network matrices using predictive automation tools to scale target performance metrics reliably.",
+    tags: ["Growth Engines", "Data Attribution", "SEO Matrices"],
+    img: "https://images.unsplash.com/photo-1533750349088-cd871a92f312?w=700&q=85"
+  }
 ];
 
 const Service = () => {
-    const location = useLocation();
-    const isHomePage = location.pathname === "/";
-    const sliderRef = useRef(null);
-    const [isPaused, setIsPaused] = useState(false);
+  const location = useLocation();
+  const isHomePage = location.pathname === "/";
+  const sliderRef = useRef(null);
+  const [isPaused, setIsPaused] = useState(false);
 
-    const handleSliderClick = () => {
-        if (isPaused) {
-            sliderRef.current.slickPlay();
-            setIsPaused(false);
-        } else {
-            sliderRef.current.slickPause();
-            setIsPaused(true);
-        }
-    };
+  const handleSliderClick = () => {
+    if (isPaused) {
+      sliderRef.current.slickPlay();
+      setIsPaused(false);
+    } else {
+      sliderRef.current.slickPause();
+      setIsPaused(true);
+    }
+  };
 
-    const sliderSettings = {
-        dots: true,
-        infinite: true,
-        speed: 500,
-        cssEase: "cubic-bezier(0.45, 0, 0.2, 1)",
-        slidesToShow: 3,
-        slidesToScroll: 1,
-        autoplay: true,
-        autoplaySpeed: 1800,
-        arrows: false,
-        pauseOnHover: false,
-        pauseOnDotsHover: false,
-        responsive: [
-            {
-                breakpoint: 1024,
-                settings: { slidesToShow: 2, slidesToScroll: 1 },
-            },
-            {
-                breakpoint: 768,
-                settings: { slidesToShow: 1, slidesToScroll: 1 },
-            },
-            {
-                breakpoint: 480,
-                settings: { slidesToShow: 1, slidesToScroll: 1, dots: false },
-            },
-        ],
-    };
+  const sliderSettings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    cssEase: "cubic-bezier(0.45, 0, 0.2, 1)",
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 1800,
+    arrows: false,
+    pauseOnHover: false,
+    pauseOnDotsHover: false,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: { slidesToShow: 2, slidesToScroll: 1 },
+      },
+      {
+        breakpoint: 768,
+        settings: { slidesToShow: 1, slidesToScroll: 1 },
+      },
+      {
+        breakpoint: 480,
+        settings: { slidesToShow: 1, slidesToScroll: 1, dots: false },
+      },
+    ],
+  };
 
-    const activeServicesList = isHomePage ? SERVICES_DATA.slice(0, 3) : SERVICES_DATA;
+  const activeServicesList = isHomePage ? SERVICES_DATA.slice(0, 3) : SERVICES_DATA;
 
-    return (
-        <>
-            <style>{`
+  return (
+    <>
+      <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Space+Mono:wght@400;700&display=swap');
 
         #sv-page-section {
@@ -342,79 +342,79 @@ const Service = () => {
         }
       `}</style>
 
-            <section id="sv-page-section">
-                <div className="sv-inner">
+      <section id="sv-page-section">
+        <div className="sv-inner">
 
-                    <div style={{ textAlign: isHomePage ? "left" : "center" }}>
-                        <div className="sv-tag">What We Can Do</div>
-                        <h2 className="sv-h2">
-                            Capabilities &amp; <em>Services Matrix</em>
-                        </h2>
+          <div style={{ textAlign: isHomePage ? "left" : "center" }}>
+            <div className="sv-tag">What We Can Do</div>
+            <h2 className="sv-h2">
+              Capabilities &amp; <em>Services Matrix</em>
+            </h2>
+          </div>
+
+          {isHomePage ? (
+            <div className="sv-static-grid">
+              {activeServicesList.map((service) => (
+                <div className="sv-box" key={service.id}>
+                  <div className="sv-img-mask">
+                    <img src={service.img} alt={service.title} loading="lazy" />
+                  </div>
+                  <div className="sv-card-body">
+                    <div className="sv-meta-header">
+                      <span className="sv-icon-lbl">{service.icon}</span>
+                      <h4>{service.title}</h4>
                     </div>
-
-                    {isHomePage ? (
-                        <div className="sv-static-grid">
-                            {activeServicesList.map((service) => (
-                                <div className="sv-box" key={service.id}>
-                                    <div className="sv-img-mask">
-                                        <img src={service.img} alt={service.title} loading="lazy" />
-                                    </div>
-                                    <div className="sv-card-body">
-                                        <div className="sv-meta-header">
-                                            <span className="sv-icon-lbl">{service.icon}</span>
-                                            <h4>{service.title}</h4>
-                                        </div>
-                                        <p>{service.desc}</p>
-                                        <div className="sv-tag-row">
-                                            {service.tags.map(t => <span key={t} className="sv-mini-tag">{t}</span>)}
-                                        </div>
-                                        <Link to="/services" className="sv-link-btn">
-                                            Analyze Matrix <i className="fa-solid fa-angle-right"></i>
-                                        </Link>
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                    ) : (
-                        <div className={`sv-slider-outer${isPaused ? ' is-paused' : ''}`}>
-                            <span className="sv-pause-badge">⏸ Paused — click to resume</span>
-                            <div className="sv-slider-wrap" onClick={handleSliderClick}>
-                                <Slider ref={sliderRef} {...sliderSettings}>
-                                    {activeServicesList.map((service) => (
-                                        <div className="sv-card-wrapper" key={service.id}>
-                                            <div className="sv-box">
-                                                <div className="sv-img-mask">
-                                                    <img src={service.img} alt={service.title} loading="lazy" />
-                                                </div>
-                                                <div className="sv-card-body">
-                                                    <div className="sv-meta-header">
-                                                        <span className="sv-icon-lbl">{service.icon}</span>
-                                                        <h4>{service.title}</h4>
-                                                    </div>
-                                                    <p>{service.desc}</p>
-                                                    <div className="sv-tag-row">
-                                                        {service.tags.map(t => <span key={t} className="sv-mini-tag">{t}</span>)}
-                                                    </div>
-                                                    <Link
-                                                        to="/contact-us"
-                                                        className="sv-link-btn"
-                                                        onClick={e => e.stopPropagation()}
-                                                    >
-                                                        Analyze Matrix <i className="fa-solid fa-angle-right"></i>
-                                                    </Link>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    ))}
-                                </Slider>
-                            </div>
-                        </div>
-                    )}
-
+                    <p>{service.desc}</p>
+                    <div className="sv-tag-row">
+                      {service.tags.map(t => <span key={t} className="sv-mini-tag">{t}</span>)}
+                    </div>
+                    <Link to="/services" className="sv-link-btn">
+                      Analyze Matrix <i className="fa-solid fa-angle-right"></i>
+                    </Link>
+                  </div>
                 </div>
-            </section>
-        </>
-    );
+              ))}
+            </div>
+          ) : (
+            <div className={`sv-slider-outer${isPaused ? ' is-paused' : ''}`}>
+              <span className="sv-pause-badge">⏸ Paused — click to resume</span>
+              <div className="sv-slider-wrap" onClick={handleSliderClick}>
+                <Slider ref={sliderRef} {...sliderSettings}>
+                  {activeServicesList.map((service) => (
+                    <div className="sv-card-wrapper" key={service.id}>
+                      <div className="sv-box">
+                        <div className="sv-img-mask">
+                          <img src={service.img} alt={service.title} loading="lazy" />
+                        </div>
+                        <div className="sv-card-body">
+                          <div className="sv-meta-header">
+                            <span className="sv-icon-lbl">{service.icon}</span>
+                            <h4>{service.title}</h4>
+                          </div>
+                          <p>{service.desc}</p>
+                          <div className="sv-tag-row">
+                            {service.tags.map(t => <span key={t} className="sv-mini-tag">{t}</span>)}
+                          </div>
+                          <Link
+                            to="/contact-us"
+                            className="sv-link-btn"
+                            onClick={e => e.stopPropagation()}
+                          >
+                            Analyze Matrix <i className="fa-solid fa-angle-right"></i>
+                          </Link>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </Slider>
+              </div>
+            </div>
+          )}
+
+        </div>
+      </section>
+    </>
+  );
 };
 
 export default Service;
