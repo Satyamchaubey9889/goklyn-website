@@ -1,11 +1,9 @@
 import React from 'react'
 
 const ProjectBanner = () => {
-    return (
-        <>
-            <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Space+Mono:wght@400;700&display=swap');
-
+  return (
+    <>
+      <style>{`
         #pj-banner-section {
           padding: 160px 6% 100px;
           background: #04060f;
@@ -35,7 +33,7 @@ const ProjectBanner = () => {
 
         .pj-breadcrumb {
           display: inline-flex; align-items: center; gap: 8px;
-          padding: 5px 14px; font-family: 'Space Mono', monospace;
+          padding: 5px 14px; font-family: 'Poppins', sans-serif;
           font-size: .68rem; letter-spacing: .1em; text-transform: uppercase;
           color: #00f0ff; background: rgba(0,240,255,0.07);
           border: 1px solid rgba(0,240,255,0.2); border-radius: 100px; margin-bottom: 24px;
@@ -59,7 +57,7 @@ const ProjectBanner = () => {
         }
 
         .pj-hero-title {
-          font-family: 'Syne', sans-serif;
+          font-family: 'Montserrat', sans-serif;
           font-size: clamp(2.4rem, 5vw, 4.2rem);
           font-weight: 800; line-height: 1.05; margin-bottom: 20px;
           color: #fff;
@@ -113,7 +111,7 @@ const ProjectBanner = () => {
           position: absolute; bottom: 20px; left: 20px; z-index: 2;
           background: rgba(4,6,15,0.9); border: 1px solid rgba(0,240,255,0.25);
           border-radius: 10px; padding: 10px 16px; backdrop-filter: blur(16px);
-          font-family: 'Space Mono', monospace; font-size: 0.58rem;
+          font-family: 'Poppins', sans-serif; font-size: 0.58rem;
           color: #00f0ff; letter-spacing: 0.1em;
         }
 
@@ -132,45 +130,43 @@ const ProjectBanner = () => {
         }
       `}</style>
 
-            <section id="pj-banner-section">
-                <div className="pj-inner">
-                    <div className="pj-hero-grid">
+      <section id="pj-banner-section">
+        <div className="pj-inner">
+          <div className="pj-hero-grid">
 
-                        {/* Core Content Layout Block */}
-                        <div>
-                            <div className="pj-breadcrumb">
-                                <span className="pj-breadcrumb-dot" />
-                                Home &nbsp;<i className="fa-solid fa-angles-right"></i>&nbsp; <span className="sub_span">Projects</span>
-                            </div>
+            {/* Core Content Layout Block */}
+            <div>
+              <div className="pj-breadcrumb">
+                <span className="pj-breadcrumb-dot" />
+                Home &nbsp;<i className="fa-solid fa-angles-right"></i>&nbsp; <span className="sub_span">Projects</span>
+              </div>
 
-                            <h1 className="pj-hero-title">
-                                Projects
-                            </h1>
+              <h1 className="pj-hero-title">
+                Projects
+              </h1>
 
-                            <p className="pj-hero-desc">
-                                Discover our latest projects and see how we can help you achieve your goals.
-                            </p>
+              <p className="pj-hero-desc">
+                Discover our latest projects and see how we can help you achieve your goals.
+              </p>
 
-                            <p className="pj-hero-desc" style={{ color: "rgba(255,255,255,0.38)", fontSize: "0.95rem" }}>
-                                "Our projects focus on building scalable, efficient, and secure solutions across various domains, including web development, cybersecurity, networking, and quantum computing. We leverage modern technologies and best practices to create high-performance applications with seamless user experiences.
-                            </p>
-                        </div>
+              <p className="pj-hero-desc" style={{ color: "rgba(255,255,255,0.38)", fontSize: "0.95rem" }}>
+                "Our projects focus on building scalable, efficient, and secure solutions across various domains, including web development, cybersecurity, networking, and quantum computing. We leverage modern technologies and best practices to create high-performance applications with seamless user experiences.
+              </p>
+            </div>
 
-                        {/* Graphic Framework Layout Block */}
-                        <div>
-                            <div className="pj-image-frame">
-                                <img src="/assets/newImages/projects.jpg" alt="Goklyn Cryptographic Development Blueprints" />
-                                <div className="pj-img-indicator">
-                                    MATRIX_MODULE // SECURED
-                                </div>
-                            </div>
-                        </div>
+            {/* Graphic Framework Layout Block */}
+            <div>
+              <div className="pj-image-frame">
+                <img src="/assets/newImages/projects.jpg" alt="Goklyn Cryptographic Development Blueprints" />
 
-                    </div>
-                </div>
-            </section>
-        </>
-    )
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+    </>
+  )
 }
 
 export default ProjectBanner;

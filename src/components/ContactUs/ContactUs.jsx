@@ -1,30 +1,87 @@
-import React from 'react'
+import React, { useState } from 'react'
+
+const API_URL = process.env.REACT_APP_API_URL
+    ? `${process.env.REACT_APP_API_URL}/api/contact`
+    : 'http://localhost:5000/api/contact'
 
 const ContactUs = () => {
+    const [formData, setFormData] = useState({
+        fullname: '',
+        phone: '',
+        emailaddress: '',
+        msg: '',
+    })
+    const [status, setStatus] = useState({ state: 'idle', message: '' }) // idle | submitting | success | error
+    const [fieldErrors, setFieldErrors] = useState({})
+
+    const handleChange = (e) => {
+        const { name, value } = e.target
+        setFormData((prev) => ({ ...prev, [name]: value }))
+    }
+
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+        setStatus({ state: 'submitting', message: '' })
+        setFieldErrors({})
+
+        try {
+            const res = await fetch(API_URL, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    fullname: formData.fullname,
+                    email: formData.emailaddress,
+                    phone: formData.phone,
+                    message: formData.msg,
+                }),
+            })
+
+            const data = await res.json()
+
+            if (!res.ok) {
+                if (data.errors && Array.isArray(data.errors)) {
+                    const errs = {}
+                    data.errors.forEach((er) => {
+                        errs[er.field] = er.message
+                    })
+                    setFieldErrors(errs)
+                }
+                setStatus({ state: 'error', message: data.message || 'Something went wrong. Please try again.' })
+                return
+            }
+
+            setStatus({ state: 'success', message: data.message || "Thanks for reaching out! We'll get back to you shortly." })
+            setFormData({ fullname: '', phone: '', emailaddress: '', msg: '' })
+        } catch (err) {
+            setStatus({
+                state: 'error',
+                message: "Couldn't reach the server. Please check your connection and try again.",
+            })
+        }
+    }
+
     return (
         <>
             <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Space+Mono:wght@400;700&display=swap');
-
         #ct-page {
           background: #04060f;
           min-height: 100vh;
           overflow-x: hidden;
-          font-family: 'Inter', sans-serif;
+          font-family: 'Poppins', sans-serif;
         }
 
         /* ── shared structural parameters ── */
         .ct-inner { max-width: 1280px; margin: 0 auto; }
         .ct-tag {
           display: inline-flex; align-items: center; gap: 7px;
-          font-family: 'Space Mono', monospace; font-size: .66rem;
+          font-family: 'Poppins', sans-serif; font-size: .66rem;
           letter-spacing: .14em; text-transform: uppercase; color: #00f0ff;
           margin-bottom: 14px;
         }
         .ct-tag::before { content:''; width:14px; height:1px; background:#00f0ff; flex-shrink:0; }
 
         .ct-h2 {
-          font-family: 'Syne', sans-serif;
+          font-family: 'Montserrat', sans-serif;
           font-size: clamp(1.7rem, 3.5vw, 2.7rem);
           font-weight: 800; color: #fff; line-height: 1.1; margin-bottom: 32px;
         }
@@ -47,7 +104,7 @@ const ContactUs = () => {
         }
         .ct-breadcrumb {
           display: inline-flex; align-items: center; gap: 8px;
-          padding: 5px 14px; font-family: 'Space Mono', monospace;
+          padding: 5px 14px; font-family: 'Poppins', sans-serif;
           font-size: .68rem; letter-spacing: .1em; text-transform: uppercase;
           color: #00f0ff; background: rgba(0,240,255,0.07);
           border: 1px solid rgba(0,240,255,0.2); border-radius: 100px; margin-bottom: 24px;
@@ -62,7 +119,7 @@ const ContactUs = () => {
           0%,100%{opacity:1;box-shadow:0 0 6px #00f0ff} 50%{opacity:.3;box-shadow:none}
         }
         .ct-hero-title {
-          font-family: 'Syne', sans-serif; font-size: clamp(2.4rem, 5vw, 4.2rem);
+          font-family: 'Montserrat', sans-serif; font-size: clamp(2.4rem, 5vw, 4.2rem);
           font-weight: 800; line-height: 1.05; margin-bottom: 20px; color: hsl(0, 0%, 100%);
           display: block;
           background: linear-gradient(100deg, #00f0ff 0%, #7b2fff 55%, #ff2060 100%);
@@ -121,7 +178,7 @@ const ContactUs = () => {
           color: #00f0ff; font-size: 1.1rem; flex-shrink: 0;
         }
         .ct-info-box h5 {
-          font-family: 'Space Mono', monospace; font-size: 0.65rem;
+          font-family: 'Poppins', sans-serif; font-size: 0.65rem;
           color: rgba(255,255,255,0.35); text-transform: uppercase; letter-spacing: 0.05em;
           margin: 0 0 4px 0;
         }
@@ -141,7 +198,7 @@ const ContactUs = () => {
           background: linear-gradient(90deg, transparent, #7b2fff, transparent);
         }
         .ct-form-panel h4 {
-          font-family: 'Syne', sans-serif; font-size: 1.35rem; font-weight: 800;
+          font-family: 'Montserrat', sans-serif; font-size: 1.35rem; font-weight: 800;
           color: #fff; margin-bottom: 28px;
         }
 
@@ -166,7 +223,7 @@ const ContactUs = () => {
 
         .ct-submit-btn {
           display: inline-flex; align-items: center; gap: 8px; padding: 14px 32px;
-          font-family: 'Syne', sans-serif; font-size: .78rem; font-weight: 700;
+          font-family: 'Montserrat', sans-serif; font-size: .78rem; font-weight: 700;
           letter-spacing: .07em; color: #04060f; background: #00f0ff; border-radius: 8px;
           border: none; cursor: pointer; text-transform: uppercase;
           box-shadow: 0 0 24px rgba(0,240,255,0.22);
@@ -178,6 +235,25 @@ const ContactUs = () => {
         }
         .ct-submit-btn i { font-size: 0.65rem; transition: transform 0.2s; }
         .ct-submit-btn:hover i { transform: translateX(3px); }
+        .ct-submit-btn:disabled {
+          opacity: 0.6; cursor: not-allowed; transform: none;
+          box-shadow: 0 0 24px rgba(0,240,255,0.22);
+        }
+
+        .ct-field-error {
+          color: #ff5470; font-size: 0.76rem; margin-top: -14px; margin-bottom: 14px;
+        }
+
+        .ct-status-msg {
+          margin-bottom: 20px; padding: 12px 16px; border-radius: 10px;
+          font-size: 0.85rem; line-height: 1.5;
+        }
+        .ct-status-msg.success {
+          background: rgba(0, 230, 130, 0.08); border: 1px solid rgba(0, 230, 130, 0.3); color: #4fffb0;
+        }
+        .ct-status-msg.error {
+          background: rgba(255, 60, 90, 0.08); border: 1px solid rgba(255, 60, 90, 0.3); color: #ff8597;
+        }
 
         /* ── Responsive Viewports ── */
         @media (max-width: 991px) {
@@ -245,7 +321,7 @@ const ContactUs = () => {
                                         </div>
                                         <div>
                                             <h5>Email Us:</h5>
-                                            <p><a href="mailto:hr@goklyn.in">hr@goklyn.in</a></p>
+                                            <p><a href="mailto:contact@goklyn.in">contact@goklyn.in</a></p>
                                         </div>
                                     </div>
 
@@ -265,16 +341,86 @@ const ContactUs = () => {
                             <div>
                                 <div className="ct-form-panel">
                                     <h4>Send us a Message</h4>
-                                    <form method="POST" action="#" onSubmit={(e) => e.preventDefault()}>
+
+                                    {status.state === 'success' && (
+                                        <div className="ct-status-msg success">
+                                            <i className="fa-solid fa-circle-check" style={{ marginRight: 8 }} />
+                                            {status.message}
+                                        </div>
+                                    )}
+                                    {status.state === 'error' && (
+                                        <div className="ct-status-msg error">
+                                            <i className="fa-solid fa-circle-exclamation" style={{ marginRight: 8 }} />
+                                            {status.message}
+                                        </div>
+                                    )}
+
+                                    <form onSubmit={handleSubmit} noValidate>
                                         <div className="ct-form-row">
-                                            <input type="text" name="fullname" id="name" className="ct-input-field" placeholder="Name:" required />
-                                            <input type="tel" name="phone" id="phonenum" className="ct-input-field" placeholder="Phone:" />
-                                            <input type="email" name="emailaddress" id="emailaddrs" className="ct-input-field" placeholder="Email:" required />
-                                            <textarea rows="4" name="msg" id="comment" className="ct-input-field" placeholder="Message:" required></textarea>
+                                            <input
+                                                type="text"
+                                                name="fullname"
+                                                id="name"
+                                                className="ct-input-field"
+                                                placeholder="Name:"
+                                                value={formData.fullname}
+                                                onChange={handleChange}
+                                                disabled={status.state === 'submitting'}
+                                                required
+                                            />
+                                            {fieldErrors.fullname && <div className="ct-field-error">{fieldErrors.fullname}</div>}
+
+                                            <input
+                                                type="tel"
+                                                name="phone"
+                                                id="phonenum"
+                                                className="ct-input-field"
+                                                placeholder="Phone:"
+                                                value={formData.phone}
+                                                onChange={handleChange}
+                                                disabled={status.state === 'submitting'}
+                                            />
+                                            {fieldErrors.phone && <div className="ct-field-error">{fieldErrors.phone}</div>}
+
+                                            <input
+                                                type="email"
+                                                name="emailaddress"
+                                                id="emailaddrs"
+                                                className="ct-input-field"
+                                                placeholder="Email:"
+                                                value={formData.emailaddress}
+                                                onChange={handleChange}
+                                                disabled={status.state === 'submitting'}
+                                                required
+                                            />
+                                            {fieldErrors.email && <div className="ct-field-error">{fieldErrors.email}</div>}
+
+                                            <textarea
+                                                rows="4"
+                                                name="msg"
+                                                id="comment"
+                                                className="ct-input-field"
+                                                placeholder="Message:"
+                                                value={formData.msg}
+                                                onChange={handleChange}
+                                                disabled={status.state === 'submitting'}
+                                                required
+                                            ></textarea>
+                                            {fieldErrors.message && <div className="ct-field-error">{fieldErrors.message}</div>}
                                         </div>
 
-                                        <button type="submit" name="get_started" id="started" className="ct-submit-btn">
-                                            Submit Now <i className="fa-solid fa-angle-right" />
+                                        <button
+                                            type="submit"
+                                            name="get_started"
+                                            id="started"
+                                            className="ct-submit-btn"
+                                            disabled={status.state === 'submitting'}
+                                        >
+                                            {status.state === 'submitting' ? (
+                                                <>Sending <i className="fa-solid fa-spinner fa-spin" /></>
+                                            ) : (
+                                                <>Submit Now <i className="fa-solid fa-angle-right" /></>
+                                            )}
                                         </button>
                                     </form>
                                 </div>

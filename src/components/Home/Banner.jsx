@@ -234,7 +234,7 @@ function FloatStat({ label, target, suffix, dec, className, style }) {
     >
       <div
         style={{
-          fontFamily: "'Syne',sans-serif",
+          fontFamily: "'Montserrat',sans-serif",
           fontSize: "1.3rem",
           fontWeight: 800,
           color: "#00f0ff",
@@ -246,7 +246,7 @@ function FloatStat({ label, target, suffix, dec, className, style }) {
       </div>
       <div
         style={{
-          fontFamily: "'Space Mono',monospace",
+          fontFamily: "'Poppins',sans-serif",
           fontSize: ".58rem",
           letterSpacing: ".07em",
           color: "rgba(255,255,255,0.46)",
@@ -281,7 +281,6 @@ const Banner = () => {
     <>
       {/* Responsive stylesheet context injection */}
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Space+Mono:wght@400;700&display=swap');
         @keyframes gk-float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
         @keyframes gk-blink { 0%,100%{opacity:1;box-shadow:0 0 6px #00ff88} 50%{opacity:.3;box-shadow:none} }
         @keyframes gk-marquee { from{transform:translateX(0)} to{transform:translateX(-50%)} }
@@ -323,7 +322,7 @@ const Banner = () => {
           margin: 0 auto;
         }
 
-        /* 💻 Tablet and Small Laptop Optimization */
+        /* Tablet and Small Laptop Optimization */
         @media (max-width: 1024px) {
           .gk-services-container {
             grid-template-columns: repeat(2, 1fr);
@@ -345,7 +344,7 @@ const Banner = () => {
           }
         }
 
-        /* 📱 Mobile UI Adjustments */
+        /* Mobile UI Adjustments */
         @media (max-width: 768px) {
           .gk-hero-grid {
             grid-template-columns: 1fr;
@@ -385,7 +384,7 @@ const Banner = () => {
           .stat-3 { top: 50% !important; left: 2% !important; }
         }
 
-        /* 🪟 Extremely Narrow Displays */
+        /* Extremely Narrow Displays */
         @media (max-width: 480px) {
           .gk-stats-grid {
             grid-template-columns: 1fr;
@@ -443,7 +442,7 @@ const Banner = () => {
                 alignItems: "center",
                 gap: 8,
                 padding: "5px 14px",
-                fontFamily: "'Space Mono',monospace",
+                fontFamily: "'Poppins',sans-serif",
                 fontSize: ".68rem",
                 letterSpacing: ".1em",
                 textTransform: "uppercase",
@@ -469,7 +468,7 @@ const Banner = () => {
 
             <h1
               style={{
-                fontFamily: "'Syne',sans-serif",
+                fontFamily: "'Montserrat',sans-serif",
                 fontSize: "clamp(2.2rem, 5vw, 4.2rem)",
                 fontWeight: 800,
                 lineHeight: 1.1,
@@ -503,8 +502,8 @@ const Banner = () => {
               }}
             >
               Your all-in-one destination for cutting-edge internships,
-              industrial project development, quantum computing, AI/ML, and
-              cybersecurity solutions that shape the future.
+              industrial project development, quantum computing, and
+              cybersecurity solutions and seminars that shape the future.
             </p>
 
             <div className="gk-hero-actions" style={{ display: "flex", gap: 14, flexWrap: "wrap" }}>
@@ -516,7 +515,7 @@ const Banner = () => {
                   alignItems: "center",
                   gap: 8,
                   padding: "13px 28px",
-                  fontFamily: "'Syne',sans-serif",
+                  fontFamily: "'Montserrat',sans-serif",
                   fontSize: ".74rem",
                   fontWeight: 700,
                   letterSpacing: ".08em",
@@ -539,7 +538,7 @@ const Banner = () => {
                   alignItems: "center",
                   gap: 8,
                   padding: "12px 26px",
-                  fontFamily: "'Syne',sans-serif",
+                  fontFamily: "'Montserrat',sans-serif",
                   fontSize: ".74rem",
                   fontWeight: 700,
                   letterSpacing: ".08em",
@@ -651,7 +650,7 @@ const Banner = () => {
                 alignItems: "center",
                 gap: 10,
                 flexShrink: 0,
-                fontFamily: "'Space Mono',monospace",
+                fontFamily: "'Poppins',sans-serif",
                 fontSize: ".72rem",
                 letterSpacing: ".1em",
                 textTransform: "uppercase",
@@ -682,7 +681,7 @@ const Banner = () => {
                 display: "inline-flex",
                 alignItems: "center",
                 gap: 7,
-                fontFamily: "'Space Mono',monospace",
+                fontFamily: "'Poppins',sans-serif",
                 fontSize: ".66rem",
                 letterSpacing: ".14em",
                 textTransform: "uppercase",
@@ -695,7 +694,7 @@ const Banner = () => {
             </div>
             <h2
               style={{
-                fontFamily: "'Syne',sans-serif",
+                fontFamily: "'Montserrat',sans-serif",
                 fontSize: "clamp(1.8rem,3.5vw,2.8rem)",
                 fontWeight: 800,
                 color: "#fff",
@@ -739,12 +738,62 @@ const Banner = () => {
             }}
           >
             {[
-              { icon: "⚛️", title: "Quantum Computing", desc: "Combines quantum computing with machine learning algorithms to solve complex real-world problems exponentially faster.", img: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=600&q=80", tags: ["QML", "CRYSTALS", "PQC"], link: "/services" },
-              // { icon: "🤖", title: "AI & Machine Learning", desc: "Machine learning solutions that allow computers to learn and improve from data without being explicitly programmed.", img: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=600&q=80", tags: ["ML/AI", "NLP", "XDR"], link: "/services" },
-              { icon: "🛡️", title: "Cybersecurity & Ethical Hacking", desc: "Full-spectrum cybersecurity including penetration testing, vulnerability assessment, and zero trust architecture.", img: "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=600&q=80", tags: ["VAPT", "Red Team", "ZTA"], link: "/services" },
-              { icon: "📊", title: "Data & Business Analysis", desc: "Data-driven processes and analytics that help businesses make informed decisions and optimize strategy.", img: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=600&q=80", tags: ["Analytics", "BI", "SQL"], link: "/services" },
-              { icon: "🌐", title: "Web Development & UI/UX", desc: "Modern web development paired with intuitive UI/UX design to deliver seamless digital experiences.", img: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=600&q=80", tags: ["React", "Node", "Figma"], link: "/services" },
-              { icon: "📱", title: "Digital Marketing", desc: "Social media and digital marketing strategies that grow your brand and connect you with your audience.", img: "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=600&q=80", tags: ["SEO", "SMM", "Content"], link: "/services" },
+              {
+                icon: "fa-solid fa-atom",
+                title: "Quantum Computing",
+                desc: "Integrating high-performance quantum algorithms with classical machine learning models to develop resilient post-quantum data protection perimeters.",
+                img: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=700&q=85",
+                tags: ["QML", "NIST Level-5", "BB84"],
+                link: "/services"
+              },
+              {
+                icon: "fa-solid fa-shield-halved",
+                title: "Cybersecurity",
+                desc: "Proactively scanning system vectors using automated scripts to flag structural architectural vulnerabilities and apply real-time zero-day mitigations.",
+                img: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=700&q=85",
+                tags: ["PenTesting", "Zero-Trust", "SOC Pipelines"],
+                link: "/services"
+              },
+              {
+                icon: "fa-solid fa-chart-column",
+                title: "Data & Business Analysis",
+                desc: "Converting structural information repositories into real-time visual streams to empower predictive data modeling and modern strategic analysis.",
+                img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=700&q=85",
+                tags: ["Python BI", "Predictive Systems", "Databases"],
+                link: "/services"
+              },
+              {
+                icon: "fa-solid fa-globe",
+                title: "Web Development & UI/UX",
+                desc: "Engineering highly responsive web interfaces with custom micro-frontend structures, combining production-ready performance with interface design standards.",
+                img: "https://images.unsplash.com/photo-1547658719-da2b51169166?w=700&q=85",
+                tags: ["Next.js", "Tailwind CSS", "Figma Frameworks"],
+                link: "/services"
+              },
+
+              {
+                icon: "fa-solid fa-chalkboard-user",
+                title: "Cybersecurity Seminars & Training",
+                desc: "Hands-on workshops, bootcamps, and corporate training sessions covering ethical hacking, penetration testing, and zero-trust security — designed for students, professionals, and enterprise teams.",
+                img: "/assets/newImages/career.jpg",
+                tags: ["Workshops", "Bootcamps", "Corporate Training"],
+                link: "/services"
+              },
+              {
+                icon: "fa-solid fa-graduation-cap",
+                title: "Quantum Computing Seminars & Training",
+                desc: "Structured seminars and certification programs that take students and professionals from quantum fundamentals through to post-quantum cryptography and QML implementation.",
+                img: "/assets/newImages/teams.jpg",
+                tags: ["Bootcamps", "Certification", "QML Curriculum"],
+                link: "/services"
+              }, {
+                icon: "fa-solid fa-chart-line",
+                title: "Digital Growth & Marketing",
+                desc: "Optimizing audience interaction across network matrices using predictive automation tools to scale target performance metrics reliably.",
+                img: "https://images.unsplash.com/photo-1533750349088-cd871a92f312?w=700&q=85",
+                tags: ["Growth Engines", "Data Attribution", "SEO Matrices"],
+                link: "/services"
+              }
             ].map((svc, i) => (
               <div
                 key={i}
@@ -787,13 +836,14 @@ const Banner = () => {
                     justifyContent: "center",
                     fontSize: "1.2rem",
                     marginBottom: 14,
+                    color: "#00f0ff",
                   }}
                 >
-                  {svc.icon}
+                  <i className={svc.icon}></i>
                 </div>
                 <h3
                   style={{
-                    fontFamily: "'Syne',sans-serif",
+                    fontFamily: "'Montserrat',sans-serif",
                     fontSize: ".95rem",
                     fontWeight: 700,
                     color: "#fff",
@@ -818,7 +868,7 @@ const Banner = () => {
                       key={tag}
                       style={{
                         display: "inline-block",
-                        fontFamily: "'Space Mono',monospace",
+                        fontFamily: "'Poppins',sans-serif",
                         fontSize: ".6rem",
                         letterSpacing: ".04em",
                         color: "#00f0ff",
@@ -836,7 +886,7 @@ const Banner = () => {
                   <Link
                     to={svc.link}
                     style={{
-                      fontFamily: "'Space Mono',monospace",
+                      fontFamily: "'Poppins',sans-serif",
                       fontSize: ".68rem",
                       color: "#00f0ff",
                       textDecoration: "none",
@@ -894,7 +944,7 @@ const Banner = () => {
               />
               <div
                 style={{
-                  fontFamily: "'Syne',sans-serif",
+                  fontFamily: "'Montserrat',sans-serif",
                   fontSize: "2.2rem",
                   fontWeight: 800,
                   color: "#00f0ff",
@@ -906,7 +956,7 @@ const Banner = () => {
               </div>
               <div
                 style={{
-                  fontFamily: "'Space Mono',monospace",
+                  fontFamily: "'Poppins',sans-serif",
                   fontSize: ".67rem",
                   letterSpacing: ".07em",
                   textTransform: "uppercase",

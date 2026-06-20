@@ -3,7 +3,7 @@ import React, { useState, useRef, useEffect } from 'react'
 const WORK_STEPS = [
     {
         num: "01",
-        icon: "🔍",
+        icon: "fa-solid fa-magnifying-glass",
         title: "Cryptographic Discovery (CBOM)",
         short: "Inventory every algorithm, certificate, key, and library across your entire infrastructure.",
         detail: "You cannot protect what you cannot see. We build a complete Cryptographic Bill of Materials covering every endpoint, service, and dependency.",
@@ -11,7 +11,7 @@ const WORK_STEPS = [
     },
     {
         num: "02",
-        icon: "📡",
+        icon: "fa-solid fa-satellite-dish",
         title: "Quantum Risk Assessment",
         short: "Score your exposure using Mosca's Inequality and identify harvest-window timelines.",
         detail: "We identify HNDL-vulnerable (Harvest-Now-Decrypt-Later) data, calculate your migration urgency against quantum timelines, and map regulatory deadlines.",
@@ -19,7 +19,7 @@ const WORK_STEPS = [
     },
     {
         num: "03",
-        icon: "🗺️",
+        icon: "fa-solid fa-map",
         title: "Migration Roadmap",
         short: "A phased, prioritized plan tied to your actual data shelf life — not a generic checklist.",
         detail: "Every system is sequenced by risk and data sensitivity. We design classical-quantum hybrid architectures where a full cutover isn't yet practical.",
@@ -27,7 +27,7 @@ const WORK_STEPS = [
     },
     {
         num: "04",
-        icon: "⚙️",
+        icon: "fa-solid fa-gear",
         title: "Implementation & Integration",
         short: "Deploy CRYSTALS-Kyber, ML-KEM, and ML-DSA across your stack.",
         detail: "We integrate NIST-standardized post-quantum algorithms, deploy QKD where warranted, and build in crypto-agility so future algorithm transitions are seamless.",
@@ -35,7 +35,7 @@ const WORK_STEPS = [
     },
     {
         num: "05",
-        icon: "📊",
+        icon: "fa-solid fa-chart-column",
         title: "Continuous Monitoring & Compliance",
         short: "24/7 SOC coverage with ongoing alignment to global regulatory frameworks.",
         detail: "Real-time threat intelligence feeds, automated compliance checks, and continuous alignment with NIST, SEBI, RBI, ISO, NIS2, and DORA standards.",
@@ -106,7 +106,7 @@ function WorkStepCard({ step, index, total }) {
                     alignItems: 'center',
                     justifyContent: 'center',
                     flexShrink: 0,
-                    fontFamily: "'Syne',sans-serif",
+                    fontFamily: "'Montserrat',sans-serif",
                     fontSize: '1.05rem',
                     fontWeight: 800,
                     color: expanded ? '#00f0ff' : 'rgba(255,255,255,0.5)',
@@ -121,7 +121,7 @@ function WorkStepCard({ step, index, total }) {
                     <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 12 }}>
                         <div>
                             <h3 style={{
-                                fontFamily: "'Syne',sans-serif",
+                                fontFamily: "'Montserrat',sans-serif",
                                 fontSize: '1.02rem',
                                 fontWeight: 700,
                                 color: '#fff',
@@ -130,7 +130,7 @@ function WorkStepCard({ step, index, total }) {
                                 alignItems: 'center',
                                 gap: 10,
                             }}>
-                                <span style={{ fontSize: '1.2rem' }}>{step.icon}</span>
+                                <span style={{ fontSize: '1.2rem' }}><i className={step.icon}></i></span>
                                 {step.title}
                             </h3>
                             <p style={{
@@ -177,7 +177,7 @@ function WorkStepCard({ step, index, total }) {
                                 {step.tags.map(tag => (
                                     <span key={tag} style={{
                                         display: 'inline-block',
-                                        fontFamily: "'Space Mono',monospace",
+                                        fontFamily: "'Poppins',sans-serif",
                                         fontSize: '.62rem',
                                         letterSpacing: '.04em',
                                         color: '#00f0ff',
@@ -205,8 +205,6 @@ const HowWeWork = () => {
     return (
         <>
             <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Space+Mono:wght@400&display=swap');
-
         #how-we-work {
           padding: 90px 6%;
           background: rgba(8,13,28,0.65);
@@ -235,7 +233,7 @@ const HowWeWork = () => {
           display: inline-flex;
           align-items: center;
           gap: 7px;
-          font-family: 'Space Mono', monospace;
+          font-family: 'Poppins', sans-serif;
           font-size: .66rem;
           letter-spacing: .14em;
           text-transform: uppercase;
@@ -250,7 +248,7 @@ const HowWeWork = () => {
           flex-shrink: 0;
         }
         .hww-h2 {
-          font-family: 'Syne', sans-serif;
+          font-family: 'Montserrat', sans-serif;
           font-size: clamp(1.7rem, 3.5vw, 2.7rem);
           font-weight: 800;
           color: #fff;
@@ -280,7 +278,7 @@ const HowWeWork = () => {
         .hww-hint {
           text-align: center;
           margin-top: 28px;
-          font-family: 'Space Mono', monospace;
+          font-family: 'Poppins', sans-serif;
           font-size: .68rem;
           letter-spacing: .06em;
           color: rgba(255,255,255,0.3);

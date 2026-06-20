@@ -5,15 +5,13 @@ const Footer = () => {
   return (
     <>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Space+Mono:wght@400&display=swap');
-
         #gk-footer {
           background: #04060f;
           border-top: 1px solid rgba(0,240,255,0.12);
           position: relative;
           z-index: 1;
           padding: 60px 0 0;
-          font-family: 'Inter', sans-serif;
+          font-family: 'Poppins', sans-serif;
           overflow: hidden;
         }
         #gk-footer::before {
@@ -57,7 +55,7 @@ const Footer = () => {
           // border: 1px solid rgba(0,240,255,0.25);
         }
         .gk-ft-logo-text {
-          font-family: 'Syne', sans-serif;
+          font-family: 'Montserrat', sans-serif;
           font-size: 1.25rem;
           font-weight: 800;
           color: #00f0ff;
@@ -100,7 +98,7 @@ const Footer = () => {
         }
 
         .gk-ft-col h4 {
-          font-family: 'Syne', sans-serif;
+          font-family: 'Montserrat', sans-serif;
           font-size: .68rem;
           font-weight: 700;
           letter-spacing: .14em;
@@ -194,13 +192,13 @@ const Footer = () => {
           gap: 10px;
         }
         .gk-ft-copy {
-          font-family: 'Space Mono', monospace;
+          font-family: 'Poppins', sans-serif;
           font-size: .65rem;
           color: rgba(255,255,255,0.28);
           letter-spacing: .04em;
         }
         .gk-ft-badge {
-          font-family: 'Space Mono', monospace;
+          font-family: 'Poppins', sans-serif;
           font-size: .6rem;
           color: rgba(0,240,255,0.35);
           border: 1px solid rgba(0,240,255,0.1);
@@ -279,7 +277,7 @@ const Footer = () => {
                   <span className="gk-ft-ci">
                     <i className="fa-solid fa-envelope"></i>
                   </span>
-                  <a href="mailto:contact@goklyn.com">contact@goklyn.com</a>
+                  <a href="mailto:contact@goklyn.in">contact@goklyn.in</a>
                 </li>
                 <li>
                   <span className="gk-ft-ci">

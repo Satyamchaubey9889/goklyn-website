@@ -5,8 +5,6 @@ const Portfolio = () => {
     return (
         <>
             <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Space+Mono:wght@400;700&display=swap');
-
         #pf-matrix-section {
           padding: 90px 6%;
           background: #04060f;
@@ -20,14 +18,14 @@ const Portfolio = () => {
 
         .pf-tag {
           display: inline-flex; align-items: center; gap: 7px;
-          font-family: 'Space Mono', monospace; font-size: .66rem;
+          font-family: 'Poppins', sans-serif; font-size: .66rem;
           letter-spacing: .14em; text-transform: uppercase; color: #00f0ff;
           margin-bottom: 14px;
         }
         .pf-tag::before { content:''; width:14px; height:1px; background:#00f0ff; flex-shrink:0; }
 
         .pf-h2 {
-          font-family: 'Syne', sans-serif;
+          font-family: 'Montserrat', sans-serif;
           font-size: clamp(1.7rem, 3.5vw, 2.7rem);
           font-weight: 800; color: #fff; line-height: 1.1; margin-bottom: 52px;
         }
@@ -72,13 +70,13 @@ const Portfolio = () => {
         .pf-terminal-card:hover::before { transform: scaleX(1); }
 
         .pf-card-lbl {
-          font-family: 'Space Mono', monospace; font-size: 0.62rem;
+          font-family: 'Poppins', sans-serif; font-size: 0.62rem;
           letter-spacing: 0.08em; text-transform: uppercase; color: #7b2fff;
           margin-bottom: 8px; display: block;
         }
 
         .pf-terminal-card h4 {
-          font-family: 'Syne', sans-serif; font-size: 1.35rem; font-weight: 800;
+          font-family: 'Montserrat', sans-serif; font-size: 1.35rem; font-weight: 800;
           color: #fff; margin-bottom: 16px;
         }
 
@@ -93,7 +91,7 @@ const Portfolio = () => {
           display: flex; flex-wrap: wrap; gap: 6px;
         }
         .pf-mini-chip {
-          font-family: 'Space Mono', monospace; font-size: 0.58rem;
+          font-family: 'Poppins', sans-serif; font-size: 0.58rem;
           color: #00f0ff; background: rgba(0,240,255,0.06);
           border: 1px solid rgba(0,240,255,0.15);
           padding: 3px 9px; border-radius: 4px;
@@ -101,7 +99,7 @@ const Portfolio = () => {
 
         .pf-telemetry-node {
           position: absolute; bottom: 24px; right: 28px;
-          font-family: 'Space Mono', monospace; font-size: 0.55rem;
+          font-family: 'Poppins', sans-serif; font-size: 0.55rem;
           color: rgba(0, 240, 255, 0.15); letter-spacing: 0.1em;
           pointer-events: none; user-select: none;
         }

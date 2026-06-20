@@ -228,8 +228,7 @@ const ServicesBanner = () => {
   return (
     <>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Space+Mono:wght@400;700&display=swap');
-        #svc-page { background:#04060f; overflow-x:hidden; font-family:'Inter',sans-serif; }
+        #svc-page { background:#04060f; overflow-x:hidden; font-family:'Poppins',sans-serif; }
         @keyframes sv-fadein-left  { from{opacity:0;transform:translateX(-32px)} to{opacity:1;transform:none} }
         @keyframes sv-fadein-right { from{opacity:0;transform:translateX(32px)}  to{opacity:1;transform:none} }
         @keyframes sv-float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
@@ -253,13 +252,13 @@ const ServicesBanner = () => {
         }
         .sv-pill {
           display:inline-flex; align-items:center; gap:8px; padding:5px 14px;
-          font-family:'Space Mono',monospace; font-size:.68rem; letter-spacing:.1em;
+          font-family:'Poppins',sans-serif; font-size:.68rem; letter-spacing:.1em;
           text-transform:uppercase; color:#00ff88; background:rgba(0,255,136,0.07);
           border:1px solid rgba(0,255,136,0.2); border-radius:100px; margin-bottom:24px;
         }
         .sv-pill-dot { width:6px; height:6px; border-radius:50%; background:#00ff88; animation:sv-blink 2s ease-in-out infinite; }
         #sv-hero h1 {
-          font-family:'Syne',sans-serif; font-size:clamp(2.4rem,5vw,4.4rem);
+          font-family:'Montserrat',sans-serif; font-size:clamp(2.4rem,5vw,4.4rem);
           font-weight:800; line-height:1.05; margin-bottom:20px;
         }
         #sv-hero h1 .white { color:#fff; display:block; }
@@ -272,7 +271,7 @@ const ServicesBanner = () => {
         .sv-btns { display:flex; gap:14px; flex-wrap:wrap; }
         .sv-btn-p {
           display:inline-flex; align-items:center; gap:8px; padding:13px 28px;
-          font-family:'Syne',sans-serif; font-size:.76rem; font-weight:700;
+          font-family:'Montserrat',sans-serif; font-size:.76rem; font-weight:700;
           letter-spacing:.07em; color:#04060f; background:#00f0ff; border-radius:8px;
           text-decoration:none; box-shadow:0 0 24px rgba(0,240,255,0.28);
           transition:box-shadow .25s,transform .2s;
@@ -280,7 +279,7 @@ const ServicesBanner = () => {
         .sv-btn-p:hover { box-shadow:0 0 48px rgba(0,240,255,0.5); transform:translateY(-2px); color:#04060f; }
         .sv-btn-g {
           display:inline-flex; align-items:center; gap:8px; padding:12px 26px;
-          font-family:'Syne',sans-serif; font-size:.76rem; font-weight:700;
+          font-family:'Montserrat',sans-serif; font-size:.76rem; font-weight:700;
           letter-spacing:.07em; color:#00f0ff; background:transparent;
           border:1px solid rgba(0,240,255,0.25); border-radius:8px;
           text-decoration:none; transition:background .2s,box-shadow .2s,transform .2s;
@@ -300,8 +299,8 @@ const ServicesBanner = () => {
           box-shadow:0 16px 48px rgba(0,0,0,0.6); min-width:130px;
           animation:sv-float 4s ease-in-out infinite;
         }
-        .sv-fstat-val { font-family:'Syne',sans-serif; font-size:1.3rem; font-weight:800; color:#00f0ff; line-height:1; margin-bottom:3px; }
-        .sv-fstat-lbl { font-family:'Space Mono',monospace; font-size:.58rem; letter-spacing:.07em; color:rgba(255,255,255,0.44); text-transform:uppercase; }
+        .sv-fstat-val { font-family:'Montserrat',sans-serif; font-size:1.3rem; font-weight:800; color:#00f0ff; line-height:1; margin-bottom:3px; }
+        .sv-fstat-lbl { font-family:'Poppins',sans-serif; font-size:.58rem; letter-spacing:.07em; color:rgba(255,255,255,0.44); text-transform:uppercase; }
 
         #sv-stats { background:rgba(8,13,28,0.8); border-top:1px solid rgba(0,240,255,0.08); border-bottom:1px solid rgba(0,240,255,0.08); position:relative; z-index:1; }
         .sv-stats-grid { max-width:1280px; margin:0 auto; display:grid; grid-template-columns:repeat(4,1fr); }
@@ -310,12 +309,12 @@ const ServicesBanner = () => {
         .sv-stat:hover { background:rgba(0,240,255,0.03); }
         .sv-stat::before { content:''; position:absolute; top:0; left:0; right:0; height:2px; background:linear-gradient(90deg,transparent,#00f0ff,transparent); transform:scaleX(0); transition:transform .4s; }
         .sv-stat:hover::before { transform:scaleX(1); }
-        .sv-stat-val { font-family:'Syne',sans-serif; font-size:2.4rem; font-weight:800; color:#00f0ff; line-height:1; margin-bottom:7px; }
-        .sv-stat-lbl { font-family:'Space Mono',monospace; font-size:.66rem; letter-spacing:.07em; text-transform:uppercase; color:rgba(255,255,255,0.42); }
+        .sv-stat-val { font-family:'Montserrat',sans-serif; font-size:2.4rem; font-weight:800; color:#00f0ff; line-height:1; margin-bottom:7px; }
+        .sv-stat-lbl { font-family:'Poppins',sans-serif; font-size:.66rem; letter-spacing:.07em; text-transform:uppercase; color:rgba(255,255,255,0.42); }
 
         .sv-marquee-wrap { padding:16px 0; overflow:hidden; border-top:1px solid rgba(0,240,255,0.08); border-bottom:1px solid rgba(0,240,255,0.08); background:rgba(8,13,28,0.5); position:relative; z-index:1; }
         .sv-marquee-track { display:flex; gap:56px; width:max-content; animation:sv-marquee 30s linear infinite; }
-        .sv-marquee-item { display:inline-flex; align-items:center; gap:9px; font-family:'Space Mono',monospace; font-size:.7rem; letter-spacing:.1em; text-transform:uppercase; color:rgba(255,255,255,0.42); white-space:nowrap; flex-shrink:0; }
+        .sv-marquee-item { display:inline-flex; align-items:center; gap:9px; font-family:'Poppins',sans-serif; font-size:.7rem; letter-spacing:.1em; text-transform:uppercase; color:rgba(255,255,255,0.42); white-space:nowrap; flex-shrink:0; }
 
         @media (max-width:991px) {
           .sv-hero-grid { grid-template-columns:1fr; gap:40px; }

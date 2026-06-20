@@ -7,23 +7,15 @@ import Slider from 'react-slick';
 const SERVICES_DATA = [
   {
     id: "qml",
-    icon: "⚛️",
+    icon: "fa-solid fa-atom",
     title: "Quantum ML & Cryptography",
     desc: "Integrating high-performance quantum algorithms with classical machine learning models to develop resilient post-quantum data protection perimeters.",
     tags: ["QML", "NIST Level-5", "BB84"],
     img: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=700&q=85"
   },
-  // {
-  //     id: "aiml",
-  //     icon: "🧠",
-  //     title: "Artificial Intelligence & ML",
-  //     desc: "Architecting deep transformer-based layers and predictive analytics systems to parse datasets without requiring explicit static programming parameters.",
-  //     tags: ["PyTorch", "Transformers", "Neural Nets"],
-  //     img: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=700&q=85"
-  // },
   {
     id: "cyber",
-    icon: "🛡️",
+    icon: "fa-solid fa-shield-halved",
     title: "Cybersecurity & Ethical Hacking",
     desc: "Proactively scanning system vectors using automated scripts to flag structural architectural vulnerabilities and apply real-time zero-day mitigations.",
     tags: ["PenTesting", "Zero-Trust", "SOC Pipelines"],
@@ -31,7 +23,7 @@ const SERVICES_DATA = [
   },
   {
     id: "ba",
-    icon: "📊",
+    icon: "fa-solid fa-chart-column",
     title: "Data & Business Analysis",
     desc: "Converting structural information repositories into real-time visual streams to empower predictive data modeling and modern strategic analysis.",
     tags: ["Python BI", "Predictive Systems", "Databases"],
@@ -39,7 +31,7 @@ const SERVICES_DATA = [
   },
   {
     id: "web",
-    icon: "🌐",
+    icon: "fa-solid fa-globe",
     title: "Web Development & UI/UX",
     desc: "Engineering highly responsive web interfaces with custom micro-frontend structures, combining production-ready performance with interface design standards.",
     tags: ["Next.js", "Tailwind CSS", "Figma Frameworks"],
@@ -47,11 +39,27 @@ const SERVICES_DATA = [
   },
   {
     id: "mktg",
-    icon: "📈",
+    icon: "fa-solid fa-chart-line",
     title: "Digital Growth & Marketing",
     desc: "Optimizing audience interaction across network matrices using predictive automation tools to scale target performance metrics reliably.",
     tags: ["Growth Engines", "Data Attribution", "SEO Matrices"],
     img: "https://images.unsplash.com/photo-1533750349088-cd871a92f312?w=700&q=85"
+  },
+  {
+    id: "cyber-seminar",
+    icon: "fa-solid fa-chalkboard-user",
+    title: "Cybersecurity Seminars & Training",
+    desc: "Hands-on workshops, bootcamps, and corporate training sessions covering ethical hacking, penetration testing, and zero-trust security — designed for students, professionals, and enterprise teams.",
+    tags: ["Workshops", "Bootcamps", "Corporate Training"],
+    img: "/assets/newImages/career.jpg"
+  },
+  {
+    id: "quantum-seminar",
+    icon: "fa-solid fa-graduation-cap",
+    title: "Quantum Computing Seminars & Training",
+    desc: "Structured seminars and certification programs that take students and professionals from quantum fundamentals through to post-quantum cryptography and QML implementation.",
+    tags: ["Bootcamps", "Certification", "QML Curriculum"],
+    img: "/assets/newImages/teams.jpg"
   }
 ];
 
@@ -104,8 +112,6 @@ const Service = () => {
   return (
     <>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Space+Mono:wght@400;700&display=swap');
-
         #sv-page-section {
           padding: 100px 6% 120px;
           background: #04060f;
@@ -146,7 +152,7 @@ const Service = () => {
 
         .sv-tag {
           display: inline-flex; align-items: center; gap: 8px;
-          font-family: 'Space Mono', monospace; font-size: .65rem;
+          font-family: 'Poppins', sans-serif; font-size: .65rem;
           letter-spacing: .18em; text-transform: uppercase; color: #00f0ff;
           margin-bottom: 16px;
         }
@@ -162,7 +168,7 @@ const Service = () => {
         }
 
         .sv-h2 {
-          font-family: 'Syne', sans-serif;
+          font-family: 'Montserrat', sans-serif;
           font-size: clamp(1.8rem, 3.6vw, 2.85rem);
           font-weight: 800; color: #fff; line-height: 1.08; margin-bottom: 56px;
         }
@@ -261,10 +267,11 @@ const Service = () => {
           border: 1px solid rgba(0,240,255,0.12);
           border-radius: 8px;
           flex-shrink: 0;
+          color: #00f0ff;
         }
 
         .sv-box h4 {
-          font-family: 'Syne', sans-serif; font-size: 1.08rem; font-weight: 700;
+          font-family: 'Montserrat', sans-serif; font-size: 1.08rem; font-weight: 700;
           color: #fff; margin: 0; line-height: 1.25;
         }
 
@@ -278,7 +285,7 @@ const Service = () => {
           display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 20px;
         }
         .sv-mini-tag {
-          font-family: 'Space Mono', monospace; font-size: 0.56rem;
+          font-family: 'Poppins', sans-serif; font-size: 0.56rem;
           color: #7b2fff; background: rgba(123,47,255,0.07);
           border: 1px solid rgba(123,47,255,0.2);
           padding: 3px 9px; border-radius: 4px; letter-spacing: 0.04em;
@@ -291,7 +298,7 @@ const Service = () => {
 
         .sv-link-btn {
           display: inline-flex; align-items: center; gap: 7px;
-          font-family: 'Space Mono', monospace; font-size: 0.7rem;
+          font-family: 'Poppins', sans-serif; font-size: 0.7rem;
           color: #00f0ff; text-decoration: none; font-weight: 700;
           letter-spacing: 0.08em; text-transform: uppercase;
           transition: color .2s, gap .2s;
@@ -305,7 +312,7 @@ const Service = () => {
         .sv-pause-badge {
           position: absolute;
           top: 0; right: 0;
-          font-family: 'Space Mono', monospace;
+          font-family: 'Poppins', sans-serif;
           font-size: 0.58rem;
           letter-spacing: 0.1em;
           text-transform: uppercase;
@@ -361,7 +368,7 @@ const Service = () => {
                   </div>
                   <div className="sv-card-body">
                     <div className="sv-meta-header">
-                      <span className="sv-icon-lbl">{service.icon}</span>
+                      <span className="sv-icon-lbl"><i className={service.icon}></i></span>
                       <h4>{service.title}</h4>
                     </div>
                     <p>{service.desc}</p>
@@ -388,7 +395,7 @@ const Service = () => {
                         </div>
                         <div className="sv-card-body">
                           <div className="sv-meta-header">
-                            <span className="sv-icon-lbl">{service.icon}</span>
+                            <span className="sv-icon-lbl"><i className={service.icon}></i></span>
                             <h4>{service.title}</h4>
                           </div>
                           <p>{service.desc}</p>

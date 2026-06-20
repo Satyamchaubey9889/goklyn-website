@@ -21,10 +21,9 @@ Project:  Immersive AI
 13. Footer Section
 */
 
-@import url("../../../css2");
 
 body {
-  font-family: "Manrope", sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 :root {
   --e-global-color-primary: #ffffff;
@@ -91,7 +90,7 @@ p {
   font-weight: 600;
 }
 a {
-  font-family: "Manrope", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-size: 16px;
   line-height: 16px;
   font-weight: 600;
@@ -319,7 +318,7 @@ header {
   left: 0;
 }
 .banner-section-outer .banner-section .banner-section-content p {
-  font-family: "Montserrat", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-size: 24px;
   line-height: 38px;
   font-weight: 600;
@@ -450,7 +449,7 @@ header {
   font-weight: 600;
   margin-bottom: 8px;
   line-height: 24px;
-  font-family: "Montserrat", sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 .statistics_section .statistics_box .text {
   color: var(--e-global-color-light-grayish-blue);
@@ -616,7 +615,7 @@ header {
   margin-left: -1px;
 }
 .aboutus_image .image_box_wrapper .image_content_wrapper p {
-  font-family: "Montserrat", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-size: 16px;
   line-height: 20px;
   font-weight: 600;
@@ -834,7 +833,7 @@ header {
   );
 }
 .portfolio_section .portfolio_box p {
-  font-family: "Montserrat", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-size: 18px;
   line-height: 28px;
   font-weight: 600;
@@ -878,7 +877,7 @@ header {
   color: var(--e-global-color-black);
 }
 .portfolio_section .portfolio_image_box span {
-  font-family: "Manrope", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-size: 12px;
   line-height: 14px;
   font-weight: 400;
@@ -981,7 +980,7 @@ header {
   right: 48px;
 }
 .testimonials_section .testimonials_box p span {
-  font-family: "Manrope", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-size: 26px;
   line-height: 30px;
   font-weight: 700;
@@ -1366,7 +1365,7 @@ header {
   margin-left: -32px;
 }
 .middle-portion .footer-info-content input {
-  font-family: "Manrope", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: 400;
   font-size: 14px;
   line-height: 14px;
@@ -1415,7 +1414,7 @@ header {
   transition: all 0.3s ease-in-out;
 }
 .middle-portion .footer-info-content ul li span {
-  font-family: "Manrope", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: 400;
   font-size: 12px;
   line-height: 20px;
@@ -1495,7 +1494,7 @@ header {
   margin-bottom: 24px;
 }
 .sub-banner-section-outer .banner-section .banner-section-content p {
-  font-family: "Montserrat", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-size: 20px;
   line-height: 36px;
   font-weight: 400;
@@ -1997,7 +1996,7 @@ header {
   margin-bottom: 38px;
 }
 .contact_info_section .contact_info_form_content input {
-  font-family: "Manrope", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: 400;
   font-size: 18px;
   line-height: 28px;
@@ -2013,7 +2012,7 @@ header {
   box-shadow: none;
 }
 .contact_info_section .contact_info_form_content textarea {
-  font-family: "Manrope", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: 400;
   font-size: 18px;
   line-height: 28px;
@@ -2174,7 +2173,7 @@ header {
     color: black;
     text-decoration: none;
     font-size: 2rem;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Poppins', sans-serif;
 }
 
 .toggler:checked ~ .menu > div > ul{
@@ -2306,7 +2305,7 @@ header {
   text-transform: capitalize;
   font-size: 23px;
   font-weight: 900;
-  font-family: myriad-pro, Arial;
+  font-family: 'Poppins', Arial, sans-serif;
 }
 
 /* .main_header .top_rightmenu .nav-menu ul li a::after {
@@ -2360,7 +2359,7 @@ header {
   color: var(--e-global-color-mostly-black);
   font-size: 15px;
   text-transform: capitalize;
-  font-family: myriad-pro, Arial;
+  font-family: 'Poppins', Arial, sans-serif;
 }
 /* header.main_header.fixed-top.scrolled .nav_bar ul.d-flex.menubar li a {
     color: #fff;

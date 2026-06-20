@@ -2,72 +2,60 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 const founders = [
-    {
-        name: "Mohit Sharma",
-        role: "Director",
-        initials: "MS",
-        img: "/assets/newImages/Mohit_sharma.jpeg",
-        bio: "Leads Goklyn with a mission to revolutionize technology in the medical field, blending medical expertise with cutting-edge technical advancements.",
-        tags: ["Leadership", "MedTech", "Innovation"],
-    },
-    {
-        name: "Monika Sharma",
-        role: "Director & Founder",
-        initials: "MS",
-        img: "/assets/newImages/Monika_sharma.jpeg",
-        bio: "Holds a B.Sc. in Physics (Hons) and B.Tech in Computer Science. Leads advancements in networking, cybersecurity, cryptography, quantum computing, and quantum machine learning.",
-        tags: ["Quantum Computing", "Cybersecurity", "Cryptography"],
-    },
+  {
+    name: "Mohit Sharma",
+    role: "Director",
+    initials: "MS",
+    img: "/assets/newImages/Mohit_sharma.jpeg",
+    bio: "Leads Goklyn with a mission to revolutionize technology in the medical field, blending medical expertise with cutting-edge technical advancements.",
+    tags: ["Leadership", "MedTech", "Innovation"],
+  },
+  {
+    name: "Monika Sharma",
+    role: "Director & Founder",
+    initials: "MS",
+    img: "/assets/newImages/Monika_sharma.jpeg",
+    bio: "Holds a B.Sc. in Physics (Hons) and B.Tech in Computer Science. Leads advancements in networking, cybersecurity, cryptography, quantum computing, and quantum machine learning.",
+    tags: ["Quantum Computing", "Cybersecurity", "Cryptography"],
+  },
 ]
 
-const STATS = [
-    { val: "140+", label: "Clients Protected" },
-    { val: "99.9%", label: "Threat Detection" },
-    { val: "256", label: "Qubits / Op" },
-    { val: "2018", label: "Founded" },
-]
+
 
 const FEATURES = [
-    { icon: "⚛️", title: "Quantum Computing", desc: "Harnessing quantum algorithms for exponential speedups in cryptanalysis, optimization, and threat modeling beyond classical limits." },
-    { icon: "🛡️", title: "Post-Quantum Cryptography", desc: "NIST-standardized CRYSTALS-Kyber and Dilithium implementations protecting data against both classical and quantum adversaries." },
-    { icon: "🔍", title: "AI Threat Intelligence", desc: "Transformer-based anomaly detection trained on billions of threat events for real-time zero-day identification before exploitation." },
-    { icon: "🌐", title: "Zero Trust Architecture", desc: "Never trust, always verify. Micro-segmented networks with continuous identity verification and behavioral analytics." },
-    { icon: "🔑", title: "Quantum Key Distribution", desc: "Physically unbreakable communication using quantum entanglement and BB84 protocol with satellite-assisted long-distance QKD." },
-    { icon: "📊", title: "24/7 Quantum SOC", desc: "Sub-millisecond response times with our hybrid classical-quantum threat pipeline processing millions of events per second." },
+  { icon: "fa-solid fa-atom", title: "Quantum Computing", desc: "Harnessing quantum algorithms for exponential speedups in cryptanalysis, optimization, and threat modeling beyond classical limits." },
+  { icon: "fa-solid fa-shield-halved", title: "Post-Quantum Cryptography", desc: "NIST-standardized CRYSTALS-Kyber and Dilithium implementations protecting data against both classical and quantum adversaries." },
+  { icon: "fa-solid fa-magnifying-glass", title: "AI Threat Intelligence", desc: "Transformer-based anomaly detection trained on billions of threat events for real-time zero-day identification before exploitation." },
+  { icon: "fa-solid fa-globe", title: "Zero Trust Architecture", desc: "Never trust, always verify. Micro-segmented networks with continuous identity verification and behavioral analytics." },
+  { icon: "fa-solid fa-key", title: "Quantum Key Distribution", desc: "Physically unbreakable communication using quantum entanglement and BB84 protocol with satellite-assisted long-distance QKD." },
+  { icon: "fa-solid fa-chart-column", title: "24/7 Quantum SOC", desc: "Sub-millisecond response times with our hybrid classical-quantum threat pipeline processing millions of events per second." },
 ]
 
 const TIMELINE = [
-    { year: "2018", title: "Founded", desc: "Goklyn Technologies established with a mission to bridge academia and industry through quantum and cybersecurity research." },
-    { year: "2020", title: "First QKD Deployment", desc: "Successfully deployed quantum key distribution infrastructure for a government-grade secure communication network." },
-    { year: "2022", title: "AI SOC Launch", desc: "Launched 24/7 AI-powered Security Operations Center with sub-200ms threat neutralization capabilities." },
-    { year: "2024", title: "PQC Certification", desc: "Achieved NIST Level-5 post-quantum cryptography certification across all client infrastructure." },
-    { year: "2025", title: "140+ Clients", desc: "Protecting critical infrastructure across fintech, govtech, and healthcare sectors globally." },
-]
+  { year: "2025", title: "Founded", desc: "Goklyn Technologies established with a mission to bridge academia and industry through quantum and cybersecurity research." }]
 
 const AboutUs = () => {
-    return (
-        <>
-            <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Space+Mono:wght@400;700&display=swap');
-
+  return (
+    <>
+      <style>{`
         #about-page {
           background: #04060f;
           min-height: 100vh;
           overflow-x: hidden;
-          font-family: 'Inter', sans-serif;
+          font-family: 'Poppins', sans-serif;
         }
 
         /* ── shared ── */
         .ab-inner { max-width: 1280px; margin: 0 auto; }
         .ab-tag {
           display: inline-flex; align-items: center; gap: 7px;
-          font-family: 'Space Mono', monospace; font-size: .66rem;
+          font-family: 'Poppins', sans-serif; font-size: .66rem;
           letter-spacing: .14em; text-transform: uppercase; color: #00f0ff;
           margin-bottom: 14px;
         }
         .ab-tag::before { content:''; width:14px; height:1px; background:#00f0ff; flex-shrink:0; }
         .ab-h2 {
-          font-family: 'Syne', sans-serif;
+          font-family: 'Montserrat', sans-serif;
           font-size: clamp(1.7rem, 3.5vw, 2.7rem);
           font-weight: 800; color: #fff; line-height: 1.1; margin-bottom: 14px;
         }
@@ -99,7 +87,7 @@ const AboutUs = () => {
         }
         .ab-breadcrumb {
           display: inline-flex; align-items: center; gap: 8px;
-          padding: 5px 14px; font-family: 'Space Mono', monospace;
+          padding: 5px 14px; font-family: 'Poppins', sans-serif;
           font-size: .68rem; letter-spacing: .1em; text-transform: uppercase;
           color: #00ff88; background: rgba(0,255,136,0.07);
           border: 1px solid rgba(0,255,136,0.2); border-radius: 100px; margin-bottom: 24px;
@@ -112,7 +100,7 @@ const AboutUs = () => {
           0%,100%{opacity:1;box-shadow:0 0 6px #00ff88} 50%{opacity:.3;box-shadow:none}
         }
         #ab-hero h1 {
-          font-family: 'Syne', sans-serif;
+          font-family: 'Montserrat', sans-serif;
           font-size: clamp(2.4rem, 5vw, 4.2rem);
           font-weight: 800; line-height: 1.05; margin-bottom: 20px;
         }
@@ -129,7 +117,7 @@ const AboutUs = () => {
         .ab-btns { display: flex; gap: 14px; flex-wrap: wrap; }
         .ab-btn-p {
           display:inline-flex; align-items:center; justify-content:center; gap:8px; padding:13px 28px;
-          font-family:'Syne',sans-serif; font-size:.76rem; font-weight:700;
+          font-family:'Montserrat',sans-serif; font-size:.76rem; font-weight:700;
           letter-spacing:.07em; color:#04060f; background:#00f0ff; border-radius:8px;
           text-decoration:none; box-shadow:0 0 24px rgba(0,240,255,0.28);
           transition:box-shadow .25s,transform .2s;
@@ -137,7 +125,7 @@ const AboutUs = () => {
         .ab-btn-p:hover { box-shadow:0 0 48px rgba(0,240,255,0.5); transform:translateY(-2px); }
         .ab-btn-g {
           display:inline-flex; align-items:center; justify-content:center; gap:8px; padding:12px 26px;
-          font-family:'Syne',sans-serif; font-size:.76rem; font-weight:700;
+          font-family:'Montserrat',sans-serif; font-size:.76rem; font-weight:700;
           letter-spacing:.07em; color:#00f0ff; background:transparent;
           border:1px solid rgba(0,240,255,0.25); border-radius:8px;
           text-decoration:none; transition:background .2s,box-shadow .2s,transform .2s;
@@ -164,11 +152,11 @@ const AboutUs = () => {
           border-radius:10px; padding:12px 16px; backdrop-filter:blur(16px);
         }
         .ab-img-badge-val {
-          font-family:'Syne',sans-serif; font-size:1.5rem; font-weight:800;
+          font-family:'Montserrat',sans-serif; font-size:1.5rem; font-weight:800;
           color:#00f0ff; line-height:1; margin-bottom:3px;
         }
         .ab-img-badge-lbl {
-          font-family:'Space Mono',monospace; font-size:.58rem;
+          font-family:'Poppins',sans-serif; font-size:.58rem;
           letter-spacing:.07em; text-transform:uppercase; color:rgba(255,255,255,0.45);
         }
 
@@ -195,11 +183,11 @@ const AboutUs = () => {
         }
         .ab-stat:hover::before { transform:scaleX(1); }
         .ab-stat-val {
-          font-family:'Syne',sans-serif; font-size:2.4rem; font-weight:800;
+          font-family:'Montserrat',sans-serif; font-size:2.4rem; font-weight:800;
           color:#00f0ff; line-height:1; margin-bottom:7px;
         }
         .ab-stat-lbl {
-          font-family:'Space Mono',monospace; font-size:.67rem;
+          font-family:'Poppins',sans-serif; font-size:.67rem;
           letter-spacing:.07em; text-transform:uppercase; color:rgba(255,255,255,0.42);
         }
 
@@ -239,8 +227,8 @@ const AboutUs = () => {
           transition:border-color .3s,background .3s;
         }
         .ab-list li:hover { border-color:rgba(0,240,255,0.22); background:rgba(0,240,255,0.04); }
-        .ab-list-icon { font-size:1.2rem; flex-shrink:0; margin-top:1px; }
-        .ab-list-title { font-family:'Syne',sans-serif; font-size:.85rem; font-weight:700; color:#fff; margin-bottom:3px; }
+        .ab-list-icon { font-size:1.2rem; flex-shrink:0; margin-top:1px; color:#00f0ff; }
+        .ab-list-title { font-family:'Montserrat',sans-serif; font-size:.85rem; font-weight:700; color:#fff; margin-bottom:3px; }
         .ab-list-sub { font-size:.82rem; color:rgba(255,255,255,0.44); line-height:1.65; }
 
         /* ── FEATURES GRID ── */
@@ -272,10 +260,10 @@ const AboutUs = () => {
         }
         .ab-feat:hover::before { transform:scaleX(1); }
         .ab-feat-icon {
-          font-size:1.8rem; margin-bottom:14px; display:block;
+          font-size:1.8rem; margin-bottom:14px; display:block; color:#00f0ff;
         }
         .ab-feat h4 {
-          font-family:'Syne',sans-serif; font-size:.9rem; font-weight:700;
+          font-family:'Montserrat',sans-serif; font-size:.9rem; font-weight:700;
           color:#fff; margin-bottom:9px;
         }
         .ab-feat p { font-size:.84rem; color:rgba(255,255,255,0.44); line-height:1.75; margin:0; }
@@ -311,11 +299,11 @@ const AboutUs = () => {
           display:block;
         }
         .ab-founder-name {
-          font-family:'Syne',sans-serif; font-size:1.05rem; font-weight:800;
+          font-family:'Montserrat',sans-serif; font-size:1.05rem; font-weight:800;
           color:#fff; margin-bottom:4px;
         }
         .ab-founder-role {
-          font-family:'Space Mono',monospace; font-size:.68rem;
+          font-family:'Poppins',sans-serif; font-size:.68rem;
           letter-spacing:.07em; text-transform:uppercase; color:#00f0ff;
           margin-bottom:14px;
         }
@@ -325,7 +313,7 @@ const AboutUs = () => {
         }
         .ab-founder-tags { display:flex; gap:6px; flex-wrap:wrap; justify-content:center; }
         .ab-ftag {
-          font-family:'Space Mono',monospace; font-size:.6rem;
+          font-family:'Poppins',sans-serif; font-size:.6rem;
           letter-spacing:.04em; color:#00f0ff;
           background:rgba(0,240,255,0.07); border:1px solid rgba(0,240,255,0.15);
           border-radius:4px; padding:3px 9px;
@@ -357,12 +345,12 @@ const AboutUs = () => {
           box-shadow:0 0 12px rgba(0,240,255,0.4);
         }
         .ab-tl-year {
-          font-family:'Space Mono',monospace; font-size:.68rem;
+          font-family:'Poppins',sans-serif; font-size:.68rem;
           letter-spacing:.1em; color:#00f0ff; text-transform:uppercase;
           margin-bottom:5px;
         }
         .ab-tl-title {
-          font-family:'Syne',sans-serif; font-size:1rem; font-weight:700;
+          font-family:'Montserrat',sans-serif; font-size:1rem; font-weight:700;
           color:#fff; margin-bottom:6px;
         }
         .ab-tl-desc { font-size:.88rem; color:rgba(255,255,255,0.44); line-height:1.75; }
@@ -382,10 +370,10 @@ const AboutUs = () => {
           width:52px; height:52px; border-radius:12px;
           background:rgba(0,240,255,0.08); border:1px solid rgba(0,240,255,0.18);
           display:flex; align-items:center; justify-content:center;
-          font-size:1.4rem; margin-bottom:20px;
+          font-size:1.4rem; margin-bottom:20px; color:#00f0ff;
         }
         .ab-mv-card h3 {
-          font-family:'Syne',sans-serif; font-size:1.1rem; font-weight:800;
+          font-family:'Montserrat',sans-serif; font-size:1.1rem; font-weight:800;
           color:#fff; margin-bottom:12px;
         }
         .ab-mv-card p { font-size:.92rem; color:rgba(255,255,255,0.46); line-height:1.8; margin:0; }
@@ -403,7 +391,7 @@ const AboutUs = () => {
         }
         #ab-cta .inner { max-width:600px; margin:0 auto; position:relative; z-index:1; }
         #ab-cta h2 {
-          font-family:'Syne',sans-serif; font-size:clamp(1.6rem,3vw,2.4rem);
+          font-family:'Montserrat',sans-serif; font-size:clamp(1.6rem,3vw,2.4rem);
           font-weight:800; color:#fff; margin-bottom:14px;
         }
         #ab-cta h2 em {
@@ -453,221 +441,204 @@ const AboutUs = () => {
         }
       `}</style>
 
-            <div id="about-page">
+      <div id="about-page">
 
-                {/* ── HERO ── */}
-                <section id="ab-hero">
-                    <div className="ab-inner">
-                        <div className="ab-hero-grid">
-                            <div>
-                                <div className="ab-breadcrumb">
-                                    <span className="ab-breadcrumb-dot" />
-                                    Home &nbsp;›&nbsp; About Us
-                                </div>
-                                <h1>
-                                    <span className="white">About</span>
-                                    <span className="grad">Goklyn Technologies</span>
-                                </h1>
-                                <p className="hero-desc">
-                                    We're building a platform where education meets quantum technology
-                                    and where innovation drives progress. Bridging academia and industry
-                                    through cutting-edge cybersecurity and quantum computing.
-                                </p>
-                                <div className="ab-btns">
-                                    <Link to="/services" className="ab-btn-p">
-                                        <i className="fa-solid fa-shield-halved" />
-                                        Our Services
-                                    </Link>
-                                    <Link to="/contact-us" className="ab-btn-g">
-                                        <i className="fa-solid fa-envelope" />
-                                        Get In Touch
-                                    </Link>
-                                </div>
-                            </div>
-                            <div className="ab-hero-img">
-                                <img src="/assets/newImages/about-us.jpg" alt="About Goklyn Technologies" />
-                                <div className="ab-img-badge">
-                                    <div className="ab-img-badge-val">NIST-L5</div>
-                                    <div className="ab-img-badge-lbl">Certified Security</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                {/* ── STATS ── */}
-                <div id="ab-stats">
-                    <div className="ab-inner">
-                        <div className="ab-stats-grid">
-                            {STATS.map((s, i) => (
-                                <div className="ab-stat" key={i}>
-                                    <div className="ab-stat-val">{s.val}</div>
-                                    <div className="ab-stat-lbl">{s.label}</div>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
+        {/* ── HERO ── */}
+        <section id="ab-hero">
+          <div className="ab-inner">
+            <div className="ab-hero-grid">
+              <div>
+                <div className="ab-breadcrumb">
+                  <span className="ab-breadcrumb-dot" />
+                  Home &nbsp;›&nbsp; About Us
                 </div>
-
-                {/* ── WHO WE ARE ── */}
-                <section id="ab-who">
-                    <div className="ab-inner">
-                        <div className="ab-who-grid">
-                            <div className="ab-who-img">
-                                <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&q=80" alt="Quantum technology" />
-                                <div className="ab-who-img-overlay" />
-                                <div className="ab-who-badge">
-                                    <div style={{ fontFamily: "'Syne',sans-serif", fontSize: "1.5rem", fontWeight: 800, color: "#7b2fff", lineHeight: 1, marginBottom: 3 }}>256</div>
-                                    <div style={{ fontFamily: "'Space Mono',monospace", fontSize: ".6rem", color: "rgba(255,255,255,0.44)", letterSpacing: ".07em", textTransform: "uppercase" }}>Logical Qubits</div>
-                                </div>
-                            </div>
-                            <div>
-                                <div className="ab-tag">Why Choose Us</div>
-                                <h2 className="ab-h2">
-                                    Goklyn <em>Private Limited</em>
-                                </h2>
-                                <p className="ab-sub">
-                                    At GOKLYN Technologies, we are committed to creating an inclusive
-                                    and innovative ecosystem that fosters learning, collaboration, and
-                                    technological advancement — empowering students from tier-3 and
-                                    tier-4 colleges to become industry-ready.
-                                </p>
-                                <ul className="ab-list">
-                                    {[
-                                        { icon: "⚛️", title: "Quantum-First Approach", sub: "Every solution built on post-quantum cryptographic primitives for future-proof security." },
-                                        { icon: "🎓", title: "Academia–Industry Bridge", sub: "Real-world project exposure for students through partnerships with startups, enterprises, and government bodies." },
-                                        { icon: "🔬", title: "Research-Driven Innovation", sub: "Continuous R&D in quantum ML, QKD networks, and AI-powered threat intelligence." },
-                                    ].map((item, i) => (
-                                        <li key={i}>
-                                            <span className="ab-list-icon">{item.icon}</span>
-                                            <div>
-                                                <div className="ab-list-title">{item.title}</div>
-                                                <div className="ab-list-sub">{item.sub}</div>
-                                            </div>
-                                        </li>
-                                    ))}
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                {/* ── FEATURES ── */}
-                <section id="ab-features">
-                    <div className="ab-inner">
-                        <div style={{ textAlign: "center", marginBottom: 52 }}>
-                            <div className="ab-tag" style={{ justifyContent: "center" }}>Core Capabilities</div>
-                            <h2 className="ab-h2">What We <em>Specialise In</em></h2>
-                            <p className="ab-sub" style={{ margin: "0 auto" }}>
-                                From quantum cryptography to AI-driven security operations — the technologies we build and teach.
-                            </p>
-                        </div>
-                        <div className="ab-feat-grid">
-                            {FEATURES.map((f, i) => (
-                                <div className="ab-feat" key={i}>
-                                    <span className="ab-feat-icon">{f.icon}</span>
-                                    <h4>{f.title}</h4>
-                                    <p>{f.desc}</p>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                </section>
-
-                {/* ── MISSION / VISION ── */}
-                <section id="ab-mv">
-                    <div className="ab-inner">
-                        <div style={{ textAlign: "center", marginBottom: 52 }}>
-                            <div className="ab-tag" style={{ justifyContent: "center" }}>Purpose</div>
-                            <h2 className="ab-h2">Our <em>Mission & Vision</em></h2>
-                        </div>
-                        <div className="ab-mv-grid">
-                            <div className="ab-mv-card">
-                                <div className="mv-icon">🎯</div>
-                                <h3>Our Mission</h3>
-                                <p>To create an accessible and innovative tech ecosystem where students, startups, and enterprises come together to shape the future of quantum technology and cybersecurity.</p>
-                            </div>
-                            <div className="ab-mv-card">
-                                <div className="mv-icon">🌌</div>
-                                <h3>Our Vision</h3>
-                                <p>To empower individuals and organizations with quantum-grade skills, tools, and technologies needed to drive success and innovation in the post-quantum digital age.</p>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                {/* ── TIMELINE ── */}
-                <section id="ab-timeline">
-                    <div className="ab-inner">
-                        <div style={{ textAlign: "center", marginBottom: 56 }}>
-                            <div className="ab-tag" style={{ justifyContent: "center" }}>Our Journey</div>
-                            <h2 className="ab-h2">Building the <em>Quantum Future</em></h2>
-                        </div>
-                        <div className="ab-timeline">
-                            {TIMELINE.map((t, i) => (
-                                <div className="ab-tl-item" key={i}>
-                                    <div className="ab-tl-dot" />
-                                    <div className="ab-tl-year">{t.year}</div>
-                                    <div className="ab-tl-title">{t.title}</div>
-                                    <div className="ab-tl-desc">{t.desc}</div>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                </section>
-
-                {/* ── FOUNDERS ── */}
-                <section id="ab-founders">
-                    <div className="ab-inner">
-                        <div style={{ textAlign: "center", marginBottom: 52 }}>
-                            <div className="ab-tag" style={{ justifyContent: "center" }}>Leadership</div>
-                            <h2 className="ab-h2">The Visionaries Behind <em>GOKLYN</em></h2>
-                            <p className="ab-sub" style={{ margin: "0 auto" }}>
-                                Tech enthusiasts and industry veterans with a shared vision of bridging academia and industry through quantum innovation and cybersecurity excellence.
-                            </p>
-                        </div>
-                        <div className="ab-founders-grid">
-                            {founders.map((f, i) => (
-                                <div className="ab-founder-card" key={i}>
-                                    <img src={f.img} alt={f.name} className="ab-founder-avatar" />
-                                    <div className="ab-founder-name">{f.name}</div>
-                                    <div className="ab-founder-role">{f.role}</div>
-                                    <p className="ab-founder-bio">{f.bio}</p>
-                                    <div className="ab-founder-tags">
-                                        {f.tags.map(tag => <span key={tag} className="ab-ftag">{tag}</span>)}
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                </section>
-
-                {/* ── CTA ── */}
-                <section id="ab-cta">
-                    <div className="inner">
-                        <div className="ab-tag" style={{ justifyContent: "center" }}>Get Started</div>
-                        <h2>Ready to Go <em>Quantum Secure?</em></h2>
-                        <p>
-                            Join 140+ organizations and students that trust Goklyn to defend their
-                            digital future and accelerate their careers with real-world quantum and
-                            cybersecurity experience.
-                        </p>
-                        <div className="ab-btns" style={{ justifyContent: "center" }}>
-                            <a href="mailto:hr@goklyn.in" className="ab-btn-p">
-                                <i className="fa-solid fa-envelope" />
-                                Contact Us
-                            </a>
-                            <Link to="/services" className="ab-btn-g">
-                                <i className="fa-solid fa-arrow-right" />
-                                View Services
-                            </Link>
-                        </div>
-                    </div>
-                </section>
-
+                <h1>
+                  <span className="white">About</span>
+                  <span className="grad">Goklyn Technologies</span>
+                </h1>
+                <p className="hero-desc">
+                  We're building a platform where education meets quantum technology
+                  and where innovation drives progress. Bridging academia and industry
+                  through cutting-edge cybersecurity and quantum computing.
+                </p>
+                <div className="ab-btns">
+                  <Link to="/services" className="ab-btn-p">
+                    <i className="fa-solid fa-shield-halved" />
+                    Our Services
+                  </Link>
+                  <Link to="/contact-us" className="ab-btn-g">
+                    <i className="fa-solid fa-envelope" />
+                    Get In Touch
+                  </Link>
+                </div>
+              </div>
+              <div className="ab-hero-img">
+                <img src="/assets/newImages/about-us.jpg" alt="About Goklyn Technologies" />
+              </div>
             </div>
-        </>
-    )
+          </div>
+        </section>
+
+
+        {/* ── WHO WE ARE ── */}
+        <section id="ab-who">
+          <div className="ab-inner">
+            <div className="ab-who-grid">
+              <div className="ab-who-img">
+                <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&q=80" alt="Quantum technology" />
+                <div className="ab-who-img-overlay" />
+                <div className="ab-who-badge">
+                  <div style={{ fontFamily: "'Montserrat',sans-serif", fontSize: "1.5rem", fontWeight: 800, color: "#7b2fff", lineHeight: 1, marginBottom: 3 }}>256</div>
+                  <div style={{ fontFamily: "'Poppins',sans-serif", fontSize: ".6rem", color: "rgba(255,255,255,0.44)", letterSpacing: ".07em", textTransform: "uppercase" }}>Logical Qubits</div>
+                </div>
+              </div>
+              <div>
+                <div className="ab-tag">Why Choose Us</div>
+                <h2 className="ab-h2">
+                  Goklyn <em>Private Limited</em>
+                </h2>
+                <p className="ab-sub">
+                  At GOKLYN Technologies, we are committed to creating an inclusive
+                  and innovative ecosystem that fosters learning, collaboration, and
+                  technological advancement — empowering students from tier-3 and
+                  tier-4 colleges to become industry-ready.
+                </p>
+                <ul className="ab-list">
+                  {[
+                    { icon: "fa-solid fa-atom", title: "Quantum-First Approach", sub: "Every solution built on post-quantum cryptographic primitives for future-proof security." },
+                    { icon: "fa-solid fa-graduation-cap", title: "Academia–Industry Bridge", sub: "Real-world project exposure for students through partnerships with startups, enterprises, and government bodies." },
+                    { icon: "fa-solid fa-microscope", title: "Research-Driven Innovation", sub: "Continuous R&D in quantum ML, QKD networks, and AI-powered threat intelligence." },
+                  ].map((item, i) => (
+                    <li key={i}>
+                      <span className="ab-list-icon"><i className={item.icon}></i></span>
+                      <div>
+                        <div className="ab-list-title">{item.title}</div>
+                        <div className="ab-list-sub">{item.sub}</div>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ── FEATURES ── */}
+        <section id="ab-features">
+          <div className="ab-inner">
+            <div style={{ textAlign: "center", marginBottom: 52 }}>
+              <div className="ab-tag" style={{ justifyContent: "center" }}>Core Capabilities</div>
+              <h2 className="ab-h2">What We <em>Specialise In</em></h2>
+              <p className="ab-sub" style={{ margin: "0 auto" }}>
+                From quantum cryptography to AI-driven security operations — the technologies we build and teach.
+              </p>
+            </div>
+            <div className="ab-feat-grid">
+              {FEATURES.map((f, i) => (
+                <div className="ab-feat" key={i}>
+                  <span className="ab-feat-icon"><i className={f.icon}></i></span>
+                  <h4>{f.title}</h4>
+                  <p>{f.desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ── MISSION / VISION ── */}
+        <section id="ab-mv">
+          <div className="ab-inner">
+            <div style={{ textAlign: "center", marginBottom: 52 }}>
+              <div className="ab-tag" style={{ justifyContent: "center" }}>Purpose</div>
+              <h2 className="ab-h2">Our <em>Mission & Vision</em></h2>
+            </div>
+            <div className="ab-mv-grid">
+              <div className="ab-mv-card">
+                <div className="mv-icon"><i className="fa-solid fa-bullseye"></i></div>
+                <h3>Our Mission</h3>
+                <p>To create an accessible and innovative tech ecosystem where students, startups, and enterprises come together to shape the future of quantum technology and cybersecurity.</p>
+              </div>
+              <div className="ab-mv-card">
+                <div className="mv-icon"><i className="fa-solid fa-eye"></i></div>
+                <h3>Our Vision</h3>
+                <p>To empower individuals and organizations with quantum-grade skills, tools, and technologies needed to drive success and innovation in the post-quantum digital age.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ── TIMELINE ── */}
+        <section id="ab-timeline">
+          <div className="ab-inner">
+            <div style={{ textAlign: "center", marginBottom: 56 }}>
+              <div className="ab-tag" style={{ justifyContent: "center" }}>Our Journey</div>
+              <h2 className="ab-h2">Building the <em>Quantum Future</em></h2>
+            </div>
+            <div className="ab-timeline">
+              {TIMELINE.map((t, i) => (
+                <div className="ab-tl-item" key={i}>
+                  <div className="ab-tl-dot" />
+                  <div className="ab-tl-year">{t.year}</div>
+                  <div className="ab-tl-title">{t.title}</div>
+                  <div className="ab-tl-desc">{t.desc}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ── FOUNDERS ── */}
+        <section id="ab-founders">
+          <div className="ab-inner">
+            <div style={{ textAlign: "center", marginBottom: 52 }}>
+              <div className="ab-tag" style={{ justifyContent: "center" }}>Leadership</div>
+              <h2 className="ab-h2">The Visionaries Behind <em>GOKLYN</em></h2>
+              <p className="ab-sub" style={{ margin: "0 auto" }}>
+                Tech enthusiasts and industry veterans with a shared vision of bridging academia and industry through quantum innovation and cybersecurity excellence.
+              </p>
+            </div>
+            <div className="ab-founders-grid">
+              {founders.map((f, i) => (
+                <div className="ab-founder-card" key={i}>
+                  <img src={f.img} alt={f.name} className="ab-founder-avatar" />
+                  <div className="ab-founder-name">{f.name}</div>
+                  <div className="ab-founder-role">{f.role}</div>
+                  <p className="ab-founder-bio">{f.bio}</p>
+                  <div className="ab-founder-tags">
+                    {f.tags.map(tag => <span key={tag} className="ab-ftag">{tag}</span>)}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ── CTA ── */}
+        <section id="ab-cta">
+          <div className="inner">
+            <div className="ab-tag" style={{ justifyContent: "center" }}>Get Started</div>
+            <h2>Ready to Go <em>Quantum Secure?</em></h2>
+            <p>
+              Join 140+ organizations and students that trust Goklyn to defend their
+              digital future and accelerate their careers with real-world quantum and
+              cybersecurity experience.
+            </p>
+            <div className="ab-btns" style={{ justifyContent: "center" }}>
+              <a href="mailto:hr@goklyn.in" className="ab-btn-p">
+                <i className="fa-solid fa-envelope" />
+                Contact Us
+              </a>
+              <Link to="/services" className="ab-btn-g">
+                <i className="fa-solid fa-arrow-right" />
+                View Services
+              </Link>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </>
+  )
 }
 
 export default AboutUs

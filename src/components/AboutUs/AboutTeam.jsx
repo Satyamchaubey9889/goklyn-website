@@ -2,21 +2,21 @@ import React from "react";
 
 const TeamHighlights = [
   {
-    icon: "🚀",
+    icon: "fa-solid fa-rocket",
     tag: "Culture",
     title: "Student-Led Innovation",
     description:
       "Our team members actively contribute to cutting-edge projects, gaining practical knowledge and leadership skills in the ever-evolving tech landscape.",
   },
   {
-    icon: "🤝",
+    icon: "fa-solid fa-handshake",
     tag: "Growth",
     title: "Mentorship-Driven Approach",
     description:
       "Students work under the guidance of skilled professionals who provide personalized mentorship and support, shaping their careers with real-world experience.",
   },
   {
-    icon: "🌌",
+    icon: "fa-solid fa-layer-group",
     tag: "Capabilities",
     title: "Diverse Skill Sets",
     description:
@@ -46,7 +46,7 @@ const AboutTeam = () => {
           display: inline-flex; 
           align-items: center; 
           gap: 7px;
-          font-family: 'Space Mono', monospace; 
+          font-family: 'Poppins', sans-serif; 
           font-size: .66rem;
           letter-spacing: .14em; 
           text-transform: uppercase; 
@@ -62,7 +62,7 @@ const AboutTeam = () => {
         }
 
         .ab-team-h2 {
-          font-family: 'Syne', sans-serif;
+          font-family: 'Montserrat', sans-serif;
           font-size: clamp(1.7rem, 3.5vw, 2.7rem);
           font-weight: 800; 
           color: #fff; 
@@ -127,10 +127,11 @@ const AboutTeam = () => {
           font-size: 1.8rem;
           margin-bottom: 16px;
           display: block;
+          color: #00f0ff;
         }
 
         .ab-team-card-tag {
-          font-family: 'Space Mono', monospace;
+          font-family: 'Poppins', sans-serif;
           font-size: 0.6rem;
           letter-spacing: 0.05em;
           text-transform: uppercase;
@@ -140,7 +141,7 @@ const AboutTeam = () => {
         }
 
         .ab-team-card h4 {
-          font-family: 'Syne', sans-serif;
+          font-family: 'Montserrat', sans-serif;
           font-size: 1.1rem;
           font-weight: 700;
           color: #fff;
@@ -169,7 +170,7 @@ const AboutTeam = () => {
           -webkit-text-fill-color: transparent;
           background-clip: text;
           font-weight: 800;
-          font-family: 'Syne', sans-serif;
+          font-family: 'Montserrat', sans-serif;
         }
 
         /* ── Responsive Viewports ── */
@@ -220,7 +221,7 @@ const AboutTeam = () => {
           <div className="ab-team-grid">
             {TeamHighlights.map((item, index) => (
               <div className="ab-team-card" key={index}>
-                <span className="ab-team-icon">{item.icon}</span>
+                <span className="ab-team-icon"><i className={item.icon}></i></span>
                 <span className="ab-team-card-tag">{item.tag}</span>
                 <h4>{item.title}</h4>
                 <p>{item.description}</p>

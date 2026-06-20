@@ -23,8 +23,6 @@ const Header = () => {
   return (
     <>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Space+Mono:wght@400&display=swap');
-
         #gk-header {
           position: fixed;
           top: 0; left: 0; right: 0;
@@ -60,7 +58,7 @@ const Header = () => {
           // border: 1px solid rgba(0,240,255,0.25);
         }
         .gk-nav-logo-text {
-          font-family: 'Syne', sans-serif;
+          font-family: 'Montserrat', sans-serif;
           font-size: 1.2rem;
           font-weight: 800;
           color: #00f0ff;
@@ -85,7 +83,7 @@ const Header = () => {
           align-items: center;
           gap: 5px;
           padding: 6px 14px;
-          font-family: 'Space Mono', monospace;
+          font-family: 'Poppins', sans-serif;
           font-size: .7rem;
           letter-spacing: .06em;
           text-transform: uppercase;
@@ -128,7 +126,7 @@ const Header = () => {
         .gk-dropdown a {
           display: block;
           padding: 8px 12px;
-          font-family: 'Space Mono', monospace;
+          font-family: 'Poppins', sans-serif;
           font-size: .68rem;
           letter-spacing: .05em;
           text-transform: uppercase;
@@ -146,7 +144,7 @@ const Header = () => {
         /* ── CTA button ── */
         .gk-nav-cta {
           padding: 9px 20px;
-          font-family: 'Syne', sans-serif;
+          font-family: 'Montserrat', sans-serif;
           font-size: .72rem;
           font-weight: 700;
           letter-spacing: .08em;
@@ -223,7 +221,7 @@ const Header = () => {
           align-items: center;
           gap: 10px;
           padding: 13px 16px;
-          font-family: 'Space Mono', monospace;
+          font-family: 'Poppins', sans-serif;
           font-size: .78rem;
           letter-spacing: .07em;
           text-transform: uppercase;

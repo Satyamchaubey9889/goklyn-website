@@ -1,68 +1,66 @@
 import React from 'react';
 
 const Team = () => {
-    const team = [
-        {
-            id: 1,
-            name: "Harsh Saini",
-            role: "Team Member",
-            img: "/assets/newImages/harsh_saini_3.jpg",
-            linkedin: "https://www.linkedin.com/in/harsh-saini-26957424a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
-        },
-        {
-            id: 2,
-            name: "Akarsh Chaturvedi",
-            role: "Team Member",
-            img: "/assets/newImages/Akash_chaturvedi.jpeg",
-            linkedin: "https://www.linkedin.com/in/akarsh-chaturvedi-259271236?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-        },
-        {
-            id: 3,
-            name: "Ravindra Yadav",
-            role: "Team Member",
-            img: "/assets/newImages/Ravindra_yadav_2.jpg",
-            linkedin: "https://www.linkedin.com/in/ravindra-yadav04"
-        },
-        {
-            id: 4,
-            name: "Pranjali Khandelwal",
-            role: "Team Member",
-            img: "/assets/newImages/prachi_khandelwal_1.png",
-            linkedin: "https://www.linkedin.com/in/pranjali-khandelwal-0b4041272?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
-        },
-        {
-            id: 5,
-            name: "Sonam Sharma",
-            role: "Team Member",
-            img: "/assets/newImages/sonam_sharma_1.jpeg",
-            linkedin: 'https://www.linkedin.com/in/sonam-sharma-52847b255?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app',
-        },
-    ];
+  const team = [
+    {
+      id: 1,
+      name: "Harsh Saini",
+      role: "Team Member",
+      img: "/assets/newImages/harsh_saini_3.jpg",
+      linkedin: "https://www.linkedin.com/in/harsh-saini-26957424a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+    },
+    {
+      id: 2,
+      name: "Akarsh Chaturvedi",
+      role: "Team Member",
+      img: "/assets/newImages/Akash_chaturvedi.jpeg",
+      linkedin: "https://www.linkedin.com/in/akarsh-chaturvedi-259271236?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+    },
+    {
+      id: 3,
+      name: "Ravindra Yadav",
+      role: "Team Member",
+      img: "/assets/newImages/Ravindra_yadav_2.jpg",
+      linkedin: "https://www.linkedin.com/in/ravindra-yadav04"
+    },
+    {
+      id: 4,
+      name: "Pranjali Khandelwal",
+      role: "Team Member",
+      img: "/assets/newImages/prachi_khandelwal_1.png",
+      linkedin: "https://www.linkedin.com/in/pranjali-khandelwal-0b4041272?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+    },
+    {
+      id: 5,
+      name: "Sonam Sharma",
+      role: "Team Member",
+      img: "/assets/newImages/sonam_sharma_1.jpeg",
+      linkedin: 'https://www.linkedin.com/in/sonam-sharma-52847b255?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app',
+    },
+  ];
 
-    return (
-        <>
-            <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Space+Mono:wght@400;700&display=swap');
-
+  return (
+    <>
+      <style>{`
         #team-page {
           background: #04060f;
           min-height: 100vh;
           overflow-x: hidden;
-          font-family: 'Inter', sans-serif;
+          font-family: 'Poppins', sans-serif;
         }
 
         /* ── shared structural parameters ── */
         .tm-inner { max-width: 1280px; margin: 0 auto; }
         .tm-tag {
           display: inline-flex; align-items: center; gap: 7px;
-          font-family: 'Space Mono', monospace; font-size: .66rem;
+          font-family: 'Poppins', sans-serif; font-size: .66rem;
           letter-spacing: .14em; text-transform: uppercase; color: #00f0ff;
           margin-bottom: 14px;
         }
         .tm-tag::before { content:''; width:14px; height:1px; background:#00f0ff; flex-shrink:0; }
         
         .tm-h2 {
-          font-family: 'Syne', sans-serif;
+          font-family: 'Montserrat', sans-serif;
           font-size: clamp(1.7rem, 3.5vw, 2.7rem);
           font-weight: 800; color: #fff; line-height: 1.1; margin-bottom: 14px;
         }
@@ -95,7 +93,7 @@ const Team = () => {
         }
         .tm-breadcrumb {
           display: inline-flex; align-items: center; gap: 8px;
-          padding: 5px 14px; font-family: 'Space Mono', monospace;
+          padding: 5px 14px; font-family: 'Poppins', sans-serif;
           font-size: .68rem; letter-spacing: .1em; text-transform: uppercase;
           color: #00ff88; background: rgba(0,255,136,0.07);
           border: 1px solid rgba(0,255,136,0.2); border-radius: 100px; margin-bottom: 24px;
@@ -108,7 +106,7 @@ const Team = () => {
           0%,100%{opacity:1;box-shadow:0 0 6px #00ff88} 50%{opacity:.3;box-shadow:none}
         }
         #tm-hero h1 {
-          font-family: 'Syne', sans-serif;
+          font-family: 'Montserrat', sans-serif;
           font-size: clamp(2.4rem, 5vw, 4.2rem);
           font-weight: 800; line-height: 1.05; margin-bottom: 20px;
           color: #fff;
@@ -182,11 +180,11 @@ const Team = () => {
         }
 
         .tm-member-name {
-          font-family: 'Syne', sans-serif; font-size: 1.15rem; font-weight: 800;
+          font-family: 'Montserrat', sans-serif; font-size: 1.15rem; font-weight: 800;
           color: #fff; margin-bottom: 4px;
         }
         .tm-member-role {
-          font-family: 'Space Mono', monospace; font-size: .68rem;
+          font-family: 'Poppins', sans-serif; font-size: .68rem;
           letter-spacing: .07em; text-transform: uppercase; color: #00f0ff;
           margin-bottom: 20px;
         }
@@ -233,9 +231,9 @@ const Team = () => {
         }
         .tm-apart-card:hover::before { transform: scaleX(1); }
 
-        .tm-apart-icon { font-size: 1.8rem; margin-bottom: 16px; display: block; }
+        .tm-apart-icon { font-size: 1.8rem; margin-bottom: 16px; display: block; color: #00f0ff; }
         .tm-apart-card h4 {
-          font-family: 'Syne', sans-serif; font-size: 1.1rem; font-weight: 700;
+          font-family: 'Montserrat', sans-serif; font-size: 1.1rem; font-weight: 700;
           color: #fff; margin-bottom: 12px;
         }
         .tm-apart-card p {
@@ -249,7 +247,7 @@ const Team = () => {
         .tm-apart-footer span {
           background: linear-gradient(90deg, #00f0ff, #7b2fff);
           -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-          font-weight: 800; font-family: 'Syne', sans-serif;
+          font-weight: 800; font-family: 'Montserrat', sans-serif;
         }
 
         /* ── Responsive & Device Adaptations ── */
@@ -278,110 +276,110 @@ const Team = () => {
         }
       `}</style>
 
-            <div id="team-page">
+      <div id="team-page">
 
-                {/* ── BANNER / HERO SECTION ── */}
-                <section id="tm-hero">
-                    <div className="tm-inner">
-                        <div className="tm-hero-grid">
-                            <div>
-                                <div className="tm-breadcrumb">
-                                    <span className="tm-breadcrumb-dot" />
-                                    Home &nbsp;›&nbsp; Team
-                                </div>
-                                <h1>
-                                    Our <span>Ecosystem</span>
-                                </h1>
-                                <p className="hero-desc">
-                                    At GOKLYN Technologies, our team comprises a dynamic group of passionate
-                                    students from diverse educational backgrounds. Guided by experienced mentors,
-                                    we foster a culture of collaboration, innovation, and growth.
-                                </p>
-                            </div>
-                            <div className="tm-hero-img">
-                                <img src="/assets/newImages/teams.jpg" alt="Goklyn Infrastructure" />
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                {/* ── TEAM MEMBERS GRID SECTION ── */}
-                <section id="tm-members-section">
-                    <div className="tm-inner">
-                        <div style={{ textAlign: "center", marginBottom: 52 }}>
-                            <div className="tm-tag" style={{ justifyContent: "center" }}>Our Staff</div>
-                            <h2 className="tm-h2">Our Team <em>Members</em></h2>
-                        </div>
-
-                        <div className="tm-members-grid">
-                            {team.map((member) => (
-                                <div className="tm-member-card" key={member.id}>
-                                    <div className="tm-avatar-wrapper">
-                                        <img src={member.img} alt={member.name} className="tm-member-avatar" />
-                                    </div>
-                                    <div className="tm-member-name">{member.name}</div>
-                                    <div className="tm-member-role">{member.role}</div>
-                                    {member.linkedin && (
-                                        <a href={member.linkedin} target="_blank" rel="noopener noreferrer" className="tm-social-link" aria-label={`${member.name} LinkedIn Profile`}>
-                                            <i className="fa-brands fa-linkedin-in" aria-hidden="true"></i>
-                                        </a>
-                                    )}
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                </section>
-
-                {/* ── SPECIFICATION / ADVANTAGE SECTION ── */}
-                <section id="tm-apart-section">
-                    <div className="tm-inner">
-                        <div style={{ textAlign: "center" }}>
-                            <div className="tm-tag" style={{ justifyContent: "center" }}>Our Ecosystem</div>
-                            <h2 className="tm-h2">What Sets Our <em>Team Apart?</em></h2>
-                            <p style={{ margin: "0 auto 52px" }} className="tm-sub">
-                                Empowering next-generation engineers by cultivating an experimental,
-                                high-performance framework built to redefine modern standards.
-                            </p>
-                        </div>
-
-                        <div className="tm-apart-grid">
-                            {[
-                                {
-                                    icon: "🚀",
-                                    title: "Student-Led Innovation",
-                                    description: "Our team members actively contribute to cutting-edge projects, gaining practical knowledge and leadership skills in the ever-evolving tech landscape."
-                                },
-                                {
-                                    icon: "🤝",
-                                    title: "Mentorship-Driven Approach",
-                                    description: "Students work under the guidance of skilled professionals who provide personalized mentorship and support, shaping their careers with real-world experience."
-                                },
-                                {
-                                    icon: "🌌",
-                                    title: "Diverse Skill Sets",
-                                    description: "From AI to Cybersecurity, our team members bring expertise in various domains, enabling us to deliver comprehensive and innovative solutions tailored for the future."
-                                }
-                            ].map((item, index) => (
-                                <div className="tm-apart-card" key={index}>
-                                    <span className="tm-apart-icon">{item.icon}</span>
-                                    <h4>{item.title}</h4>
-                                    <p>{item.description}</p>
-                                </div>
-                            ))}
-                        </div>
-
-                        <div className="tm-apart-footer">
-                            <p style={{ margin: 0, fontWeight: 600 }}>
-                                At <span>GOKLYN</span>, we believe in the power of teamwork and the
-                                potential of young minds to drive technological progress.
-                            </p>
-                        </div>
-                    </div>
-                </section>
-
+        {/* ── BANNER / HERO SECTION ── */}
+        <section id="tm-hero">
+          <div className="tm-inner">
+            <div className="tm-hero-grid">
+              <div>
+                <div className="tm-breadcrumb">
+                  <span className="tm-breadcrumb-dot" />
+                  Home &nbsp;›&nbsp; Team
+                </div>
+                <h1>
+                  Our <span>Ecosystem</span>
+                </h1>
+                <p className="hero-desc">
+                  At GOKLYN Technologies, our team comprises a dynamic group of passionate
+                  students from diverse educational backgrounds. Guided by experienced mentors,
+                  we foster a culture of collaboration, innovation, and growth.
+                </p>
+              </div>
+              <div className="tm-hero-img">
+                <img src="/assets/newImages/teams.jpg" alt="Goklyn Infrastructure" />
+              </div>
             </div>
-        </>
-    );
+          </div>
+        </section>
+
+        {/* ── TEAM MEMBERS GRID SECTION ── */}
+        <section id="tm-members-section">
+          <div className="tm-inner">
+            <div style={{ textAlign: "center", marginBottom: 52 }}>
+              <div className="tm-tag" style={{ justifyContent: "center" }}>Our Staff</div>
+              <h2 className="tm-h2">Our Team <em>Members</em></h2>
+            </div>
+
+            <div className="tm-members-grid">
+              {team.map((member) => (
+                <div className="tm-member-card" key={member.id}>
+                  <div className="tm-avatar-wrapper">
+                    <img src={member.img} alt={member.name} className="tm-member-avatar" />
+                  </div>
+                  <div className="tm-member-name">{member.name}</div>
+                  <div className="tm-member-role">{member.role}</div>
+                  {member.linkedin && (
+                    <a href={member.linkedin} target="_blank" rel="noopener noreferrer" className="tm-social-link" aria-label={`${member.name} LinkedIn Profile`}>
+                      <i className="fa-brands fa-linkedin-in" aria-hidden="true"></i>
+                    </a>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ── SPECIFICATION / ADVANTAGE SECTION ── */}
+        <section id="tm-apart-section">
+          <div className="tm-inner">
+            <div style={{ textAlign: "center" }}>
+              <div className="tm-tag" style={{ justifyContent: "center" }}>Our Ecosystem</div>
+              <h2 className="tm-h2">What Sets Our <em>Team Apart?</em></h2>
+              <p style={{ margin: "0 auto 52px" }} className="tm-sub">
+                Empowering next-generation engineers by cultivating an experimental,
+                high-performance framework built to redefine modern standards.
+              </p>
+            </div>
+
+            <div className="tm-apart-grid">
+              {[
+                {
+                  icon: "fa-solid fa-rocket",
+                  title: "Student-Led Innovation",
+                  description: "Our team members actively contribute to cutting-edge projects, gaining practical knowledge and leadership skills in the ever-evolving tech landscape."
+                },
+                {
+                  icon: "fa-solid fa-handshake",
+                  title: "Mentorship-Driven Approach",
+                  description: "Students work under the guidance of skilled professionals who provide personalized mentorship and support, shaping their careers with real-world experience."
+                },
+                {
+                  icon: "fa-solid fa-layer-group",
+                  title: "Diverse Skill Sets",
+                  description: "From AI to Cybersecurity, our team members bring expertise in various domains, enabling us to deliver comprehensive and innovative solutions tailored for the future."
+                }
+              ].map((item, index) => (
+                <div className="tm-apart-card" key={index}>
+                  <span className="tm-apart-icon"><i className={item.icon}></i></span>
+                  <h4>{item.title}</h4>
+                  <p>{item.description}</p>
+                </div>
+              ))}
+            </div>
+
+            <div className="tm-apart-footer">
+              <p style={{ margin: 0, fontWeight: 600 }}>
+                At <span>GOKLYN</span>, we believe in the power of teamwork and the
+                potential of young minds to drive technological progress.
+              </p>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </>
+  );
 };
 
 export default Team;

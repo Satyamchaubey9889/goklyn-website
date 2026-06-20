@@ -2,30 +2,28 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 const WHY_JOIN = [
-    { icon: "🚀", title: "Real-World Experience", text: "Work on live projects and build an impressive portfolio." },
-    { icon: "💡", title: "Learn from Industry Experts", text: "Get mentorship from seasoned professionals." },
-    { icon: "🌍", title: "Flexible & Remote Opportunities", text: "Work from anywhere, at your own pace." },
-    { icon: "🎯", title: "Skill Development", text: "Enhance your expertise in AI, ML, Full-Stack Development, Cyber Security, SEO, and more." },
-    { icon: "🤝", title: "Networking & Career Growth", text: "Connect with top talents and unlock new opportunities." },
+    { icon: "fa-solid fa-rocket", title: "Real-World Experience", text: "Work on live projects and build an impressive portfolio." },
+    { icon: "fa-solid fa-lightbulb", title: "Learn from Industry Experts", text: "Get mentorship from seasoned professionals." },
+    { icon: "fa-solid fa-earth-americas", title: "Flexible & Remote Opportunities", text: "Work from anywhere, at your own pace." },
+    { icon: "fa-solid fa-bullseye", title: "Skill Development", text: "Enhance your expertise in AI, ML, Full-Stack Development, Cyber Security, SEO, and more." },
+    { icon: "fa-solid fa-handshake", title: "Networking & Career Growth", text: "Connect with top talents and unlock new opportunities." },
 ]
 
 const INTERNSHIPS = [
-    { icon: "⚛️", title: "Machine Learning & AI", text: "Work on predictive models, NLP, and deep learning solutions." },
-    { icon: "🌐", title: "Full-Stack Development", text: "Build scalable applications with modern frameworks." },
-    { icon: "📊", title: "Data Science & Analytics", text: "Analyze big data and extract meaningful insights." },
-    { icon: "🐍", title: "Python Development", text: "Create powerful applications and automate solutions." },
-    { icon: "⚡", title: "React Development", text: "Build dynamic, user-friendly web applications." },
-    { icon: "🛡️", title: "Cyber Security", text: "Work on ethical hacking, penetration testing, and security audits." },
-    { icon: "📈", title: "Digital Marketing & SEO", text: "Master online growth strategies and optimize digital presence." },
-    { icon: "✨", title: "And More!", text: "We are open to exploring new domains based on your skills and interests." },
+    { icon: "fa-solid fa-atom", title: "Machine Learning & AI", text: "Work on predictive models, NLP, and deep learning solutions." },
+    { icon: "fa-solid fa-globe", title: "Full-Stack Development", text: "Build scalable applications with modern frameworks." },
+    { icon: "fa-solid fa-chart-column", title: "Data Science & Analytics", text: "Analyze big data and extract meaningful insights." },
+    { icon: "fa-brands fa-python", title: "Python Development", text: "Create powerful applications and automate solutions." },
+    { icon: "fa-brands fa-react", title: "React Development", text: "Build dynamic, user-friendly web applications." },
+    { icon: "fa-solid fa-shield-halved", title: "Cyber Security", text: "Work on ethical hacking, penetration testing, and security audits." },
+    { icon: "fa-solid fa-chart-line", title: "Digital Marketing & SEO", text: "Master online growth strategies and optimize digital presence." },
+    { icon: "fa-solid fa-star", title: "And More!", text: "We are open to exploring new domains based on your skills and interests." },
 ]
 
 const CareerBanner = () => {
     return (
         <>
             <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Space+Mono:wght@400&display=swap');
-
         /* ── Page wrapper ── */
         #career-page {
           background: #04060f;
@@ -66,7 +64,7 @@ const CareerBanner = () => {
           align-items: center;
           gap: 8px;
           padding: 5px 14px;
-          font-family: 'Space Mono', monospace;
+          font-family: 'Poppins', sans-serif;
           font-size: .68rem;
           letter-spacing: .1em;
           text-transform: uppercase;
@@ -77,7 +75,7 @@ const CareerBanner = () => {
           margin-bottom: 24px;
         }
         #career-hero h1 {
-          font-family: 'Syne', sans-serif;
+          font-family: 'Montserrat', sans-serif;
           font-size: clamp(2.2rem, 5vw, 4rem);
           font-weight: 800;
           line-height: 1.06;
@@ -88,7 +86,7 @@ const CareerBanner = () => {
           background-clip: text;
         }
         #career-hero .sub-line {
-          font-family: 'Syne', sans-serif;
+          font-family: 'Montserrat', sans-serif;
           font-size: 1.15rem;
           font-weight: 700;
           color: #fff;
@@ -144,7 +142,7 @@ const CareerBanner = () => {
           display: inline-flex;
           align-items: center;
           gap: 7px;
-          font-family: 'Space Mono', monospace;
+          font-family: 'Poppins', sans-serif;
           font-size: .66rem;
           letter-spacing: .14em;
           text-transform: uppercase;
@@ -159,7 +157,7 @@ const CareerBanner = () => {
           flex-shrink: 0;
         }
         .ck-heading h2 {
-          font-family: 'Syne', sans-serif;
+          font-family: 'Montserrat', sans-serif;
           font-size: clamp(1.6rem, 3.5vw, 2.6rem);
           font-weight: 800;
           color: #fff;
@@ -219,7 +217,7 @@ const CareerBanner = () => {
           display: block;
         }
         .ck-card h5 {
-          font-family: 'Syne', sans-serif;
+          font-family: 'Montserrat', sans-serif;
           font-size: .92rem;
           font-weight: 700;
           color: #fff;
@@ -254,7 +252,7 @@ const CareerBanner = () => {
           z-index: 1;
         }
         #career-cta h2 {
-          font-family: 'Syne', sans-serif;
+          font-family: 'Montserrat', sans-serif;
           font-size: clamp(1.5rem, 3vw, 2.2rem);
           font-weight: 800;
           color: #fff;
@@ -294,7 +292,7 @@ const CareerBanner = () => {
           align-items: center;
           gap: 8px;
           padding: 13px 28px;
-          font-family: 'Syne', sans-serif;
+          font-family: 'Montserrat', sans-serif;
           font-size: .78rem;
           font-weight: 700;
           letter-spacing: .07em;
@@ -314,7 +312,7 @@ const CareerBanner = () => {
           align-items: center;
           gap: 8px;
           padding: 12px 26px;
-          font-family: 'Syne', sans-serif;
+          font-family: 'Montserrat', sans-serif;
           font-size: .78rem;
           font-weight: 700;
           letter-spacing: .07em;
@@ -389,7 +387,7 @@ const CareerBanner = () => {
                         <div className="ck-grid">
                             {WHY_JOIN.map((item, i) => (
                                 <div className="ck-card" key={i}>
-                                    <span className="ck-card-icon">{item.icon}</span>
+                                    <span className="ck-card-icon"><i className={item.icon}></i></span>
                                     <h5>{item.title}</h5>
                                     <p>{item.text}</p>
                                 </div>
@@ -411,7 +409,7 @@ const CareerBanner = () => {
                         <div className="ck-grid">
                             {INTERNSHIPS.map((item, i) => (
                                 <div className="ck-card" key={i}>
-                                    <span className="ck-card-icon">{item.icon}</span>
+                                    <span className="ck-card-icon"><i className={item.icon}></i></span>
                                     <h5>{item.title}</h5>
                                     <p>{item.text}</p>
                                 </div>
@@ -457,7 +455,7 @@ const CareerBanner = () => {
                             </Link>
                         </div>
 
-                        <p style={{ marginTop: 40, fontSize: '1.05rem', color: '#fff', fontFamily: "'Syne',sans-serif", fontWeight: 700 }}>
+                        <p style={{ marginTop: 40, fontSize: '1.05rem', color: '#fff', fontFamily: "'Montserrat',sans-serif", fontWeight: 700 }}>
                             Join Goklyn Technologies and turn your{' '}
                             <span style={{ background: 'linear-gradient(90deg,#00f0ff,#7b2fff)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
                                 passion into innovation!

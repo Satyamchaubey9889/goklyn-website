@@ -5,8 +5,6 @@ const WhoWeAre = () => {
     return (
         <>
             <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Space+Mono:wght@400;700&display=swap');
-
         #wwa-section {
           padding: 90px 6%;
           background: #04060f;
@@ -32,14 +30,14 @@ const WhoWeAre = () => {
 
         .wwa-tag {
           display: inline-flex; align-items: center; gap: 7px;
-          font-family: 'Space Mono', monospace; font-size: .66rem;
+          font-family: 'Poppins', sans-serif; font-size: .66rem;
           letter-spacing: .14em; text-transform: uppercase; color: #00f0ff;
           margin-bottom: 14px;
         }
         .wwa-tag::before { content:''; width:14px; height:1px; background:#00f0ff; flex-shrink:0; }
 
         .wwa-h2 {
-          font-family: 'Syne', sans-serif;
+          font-family: 'Montserrat', sans-serif;
           font-size: clamp(2rem, 4vw, 3rem);
           font-weight: 800; color: #fff; line-height: 1.1; margin-bottom: 20px;
         }
@@ -69,14 +67,14 @@ const WhoWeAre = () => {
           background: linear-gradient(90deg, transparent, #00f0ff, transparent);
         }
         .wwa-metric-score {
-          font-family: 'Syne', sans-serif; font-size: 1.8rem; font-weight: 800;
+          font-family: 'Montserrat', sans-serif; font-size: 1.8rem; font-weight: 800;
           color: #00f0ff; line-height: 1; margin-bottom: 6px;
         }
         .wwa-metric-stars {
           color: #00ff88; font-size: 0.7rem; display: flex; gap: 3px; margin-bottom: 8px;
         }
         .wwa-metric-label {
-          font-family: 'Space Mono', monospace; font-size: 0.65rem;
+          font-family: 'Poppins', sans-serif; font-size: 0.65rem;
           color: #fff; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 4px;
         }
         .wwa-metric-sub {
@@ -86,7 +84,7 @@ const WhoWeAre = () => {
         /* ── ACTION BUTTONS ── */
         .wwa-btn-p {
           display: inline-flex; align-items: center; gap: 8px; padding: 13px 28px;
-          font-family: 'Syne', sans-serif; font-size: .76rem; font-weight: 700;
+          font-family: 'Montserrat', sans-serif; font-size: .76rem; font-weight: 700;
           letter-spacing: .07em; color: #04060f; background: #00f0ff; border-radius: 8px;
           text-decoration: none; box-shadow: 0 0 24px rgba(0,240,255,0.28);
           transition: box-shadow .25s, transform .2s;

@@ -71,8 +71,6 @@ const Testimonial = () => {
     return (
         <>
             <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Space+Mono:wght@400;700&display=swap');
-
         #ts-section {
           padding: 90px 6%;
           background: #04060f;
@@ -86,14 +84,14 @@ const Testimonial = () => {
 
         .ts-tag {
           display: inline-flex; align-items: center; gap: 7px;
-          font-family: 'Space Mono', monospace; font-size: .66rem;
+          font-family: 'Poppins', sans-serif; font-size: .66rem;
           letter-spacing: .14em; text-transform: uppercase; color: #00f0ff;
           margin-bottom: 14px;
         }
         .ts-tag::before { content:''; width:14px; height:1px; background:#00f0ff; flex-shrink:0; }
 
         .ts-h2 {
-          font-family: 'Syne', sans-serif;
+          font-family: 'Montserrat', sans-serif;
           font-size: clamp(1.7rem, 3.5vw, 2.7rem);
           font-weight: 800; color: #fff; line-height: 1.1; margin-bottom: 52px;
         }
@@ -146,7 +144,7 @@ const Testimonial = () => {
         }
 
         .ts-client-name {
-          font-family: 'Syne', sans-serif; font-size: 1.05rem; font-weight: 700;
+          font-family: 'Montserrat', sans-serif; font-size: 1.05rem; font-weight: 700;
           color: #fff; margin-bottom: 2px;
         }
         .ts-client-meta {
@@ -161,7 +159,7 @@ const Testimonial = () => {
         }
 
         .ts-mini-badge {
-          display: inline-block; font-family: 'Space Mono', monospace; font-size: 0.58rem;
+          display: inline-block; font-family: 'Poppins', sans-serif; font-size: 0.58rem;
           color: #00f0ff; background: rgba(0,240,255,0.06);
           border: 1px solid rgba(0,240,255,0.18);
           padding: 3px 10px; border-radius: 4px; text-transform: uppercase;
@@ -171,7 +169,7 @@ const Testimonial = () => {
         .ts-vector-icon {
           position: absolute; bottom: 20px; right: 24px;
           font-size: 3rem; color: rgba(0, 240, 255, 0.03);
-          pointer-events: none; font-family: 'Syne', sans-serif; font-weight: 800;
+          pointer-events: none; font-family: 'Montserrat', sans-serif; font-weight: 800;
           line-height: 1; user-select: none;
         }
 
