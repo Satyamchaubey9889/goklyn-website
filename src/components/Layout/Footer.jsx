@@ -227,7 +227,7 @@ const Footer = () => {
                 <span className="gk-ft-logo-text">GOKLYN</span>
               </Link>
               <p className="gk-ft-desc">
-                GOKLYN Technologies — your all-in-one destination for
+                GOKLYN — your all-in-one destination for
                 cutting-edge internships, industrial project development, and
                 skill development. Whether you're a student or a business
                 seeking advanced tech solutions, we've got you covered.

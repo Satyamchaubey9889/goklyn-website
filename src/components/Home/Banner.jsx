@@ -578,7 +578,7 @@ const Banner = () => {
               <HeroCanvas />
               <img
                 src="/assets/newImages/home.jpg"
-                alt="Goklyn Technologies"
+                alt="Goklyn"
                 style={{
                   position: "absolute",
                   inset: 0,

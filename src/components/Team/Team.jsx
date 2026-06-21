@@ -291,7 +291,7 @@ const Team = () => {
                   Our <span>Ecosystem</span>
                 </h1>
                 <p className="hero-desc">
-                  At GOKLYN Technologies, our team comprises a dynamic group of passionate
+                  At GOKLYN, our team comprises a dynamic group of passionate
                   students from diverse educational backgrounds. Guided by experienced mentors,
                   we foster a culture of collaboration, innovation, and growth.
                 </p>

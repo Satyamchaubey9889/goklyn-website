@@ -9,7 +9,7 @@ const TeamBanner = () => {
                         <div className="col-lg-6 col-md-6 col-sm-12 col-12">
                             <div className="banner-section-content">
                                 <h1 className="text-white" data-aos="fade-up" data-aos-duration="2000">Our Team</h1>
-                                <p className="text-white" data-aos="fade-right" data-aos-duration="2000">At GOKLYN Technologies, our team comprises a dynamic group of passionate students from diverse educational backgrounds. Guided by experienced mentors, we foster a culture of collaboration, innovation, and growth.</p>
+                                <p className="text-white" data-aos="fade-right" data-aos-duration="2000">At GOKLYN, our team comprises a dynamic group of passionate students from diverse educational backgrounds. Guided by experienced mentors, we foster a culture of collaboration, innovation, and growth.</p>
                                 <div className="btn_wrapper" data-aos="fade-up" data-aos-duration="2000">
                                     <span> Home </span><i className="fa-solid fa-angles-right" aria-hidden="true"></i><span className="sub_span">Team</span>
                                 </div>

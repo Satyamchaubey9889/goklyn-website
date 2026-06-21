@@ -11,7 +11,7 @@ const founders = [
     name: "Monika Sharma",
     role: "Director",
     img: "/assets/newImages/Monika_sharma.jpeg",
-    bio: "Founder of Goklyn Technologies by Goklyn Pvt Ltd, holds a B.Sc. in Physics (Hons) and a B.Tech in Computer Science. She leads advancements in networking, cybersecurity, cryptography, quantum computing, and quantum machine learning & communication.",
+    bio: "Founder of Goklyn Pvt Ltd, holds a B.Sc. in Physics (Hons) and a B.Tech in Computer Science. She leads advancements in networking, cybersecurity, cryptography, quantum computing, and quantum machine learning & communication.",
   },
 ];
 

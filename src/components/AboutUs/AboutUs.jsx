@@ -21,18 +21,8 @@ const founders = [
 ]
 
 
-
-const FEATURES = [
-  { icon: "fa-solid fa-atom", title: "Quantum Computing", desc: "Harnessing quantum algorithms for exponential speedups in cryptanalysis, optimization, and threat modeling beyond classical limits." },
-  { icon: "fa-solid fa-shield-halved", title: "Post-Quantum Cryptography", desc: "NIST-standardized CRYSTALS-Kyber and Dilithium implementations protecting data against both classical and quantum adversaries." },
-  { icon: "fa-solid fa-magnifying-glass", title: "AI Threat Intelligence", desc: "Transformer-based anomaly detection trained on billions of threat events for real-time zero-day identification before exploitation." },
-  { icon: "fa-solid fa-globe", title: "Zero Trust Architecture", desc: "Never trust, always verify. Micro-segmented networks with continuous identity verification and behavioral analytics." },
-  { icon: "fa-solid fa-key", title: "Quantum Key Distribution", desc: "Physically unbreakable communication using quantum entanglement and BB84 protocol with satellite-assisted long-distance QKD." },
-  { icon: "fa-solid fa-chart-column", title: "24/7 Quantum SOC", desc: "Sub-millisecond response times with our hybrid classical-quantum threat pipeline processing millions of events per second." },
-]
-
 const TIMELINE = [
-  { year: "2025", title: "Founded", desc: "Goklyn Technologies established with a mission to bridge academia and industry through quantum and cybersecurity research." }]
+  { year: "2025", title: "Founded", desc: "Goklyn established with a mission to bridge academia and industry through quantum and cybersecurity research." }]
 
 const AboutUs = () => {
   return (
@@ -454,7 +444,7 @@ const AboutUs = () => {
                 </div>
                 <h1>
                   <span className="white">About</span>
-                  <span className="grad">Goklyn Technologies</span>
+                  <span className="grad">Goklyn</span>
                 </h1>
                 <p className="hero-desc">
                   We're building a platform where education meets quantum technology
@@ -473,7 +463,7 @@ const AboutUs = () => {
                 </div>
               </div>
               <div className="ab-hero-img">
-                <img src="/assets/newImages/about-us.jpg" alt="About Goklyn Technologies" />
+                <img src="/assets/newImages/about-us.jpg" alt="About Goklyn" />
               </div>
             </div>
           </div>
@@ -498,7 +488,7 @@ const AboutUs = () => {
                   Goklyn <em>Private Limited</em>
                 </h2>
                 <p className="ab-sub">
-                  At GOKLYN Technologies, we are committed to creating an inclusive
+                  At GOKLYN, we are committed to creating an inclusive
                   and innovative ecosystem that fosters learning, collaboration, and
                   technological advancement — empowering students from tier-3 and
                   tier-4 colleges to become industry-ready.
@@ -519,28 +509,6 @@ const AboutUs = () => {
                   ))}
                 </ul>
               </div>
-            </div>
-          </div>
-        </section>
-
-        {/* ── FEATURES ── */}
-        <section id="ab-features">
-          <div className="ab-inner">
-            <div style={{ textAlign: "center", marginBottom: 52 }}>
-              <div className="ab-tag" style={{ justifyContent: "center" }}>Core Capabilities</div>
-              <h2 className="ab-h2">What We <em>Specialise In</em></h2>
-              <p className="ab-sub" style={{ margin: "0 auto" }}>
-                From quantum cryptography to AI-driven security operations — the technologies we build and teach.
-              </p>
-            </div>
-            <div className="ab-feat-grid">
-              {FEATURES.map((f, i) => (
-                <div className="ab-feat" key={i}>
-                  <span className="ab-feat-icon"><i className={f.icon}></i></span>
-                  <h4>{f.title}</h4>
-                  <p>{f.desc}</p>
-                </div>
-              ))}
             </div>
           </div>
         </section>
