@@ -592,7 +592,7 @@ const AboutUs = () => {
               cybersecurity experience.
             </p>
             <div className="ab-btns" style={{ justifyContent: "center" }}>
-              <a href="mailto:hr@goklyn.in" className="ab-btn-p">
+              <a href="mailto:contact@goklyn.in" className="ab-btn-p">
                 <i className="fa-solid fa-envelope" />
                 Contact Us
               </a>

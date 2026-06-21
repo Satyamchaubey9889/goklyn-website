@@ -334,10 +334,6 @@ const ServicesBanner = () => {
           <div className="sv-hero-grid">
             {/* Text */}
             <div style={{ opacity: heroVis ? 1 : 0, animation: heroVis ? 'sv-fadein-left 0.8s ease both' : 'none' }}>
-              <div className="sv-pill">
-                <span className="sv-pill-dot" />
-                NIST Level-5 Certified Solutions
-              </div>
               <h1>
                 <span className="white">Quantum-Grade</span>
                 <span className="grad">Services & Solutions.</span>
@@ -348,7 +344,7 @@ const ServicesBanner = () => {
                 that power tomorrow's digital world.
               </p>
               <div className="sv-btns">
-                <a href="mailto:hr@goklyn.in" className="sv-btn-p">
+                <a href="mailto:contact@goklyn.in" className="sv-btn-p">
                   <i className="fa-solid fa-shield-halved" />
                   Get Protected
                 </a>

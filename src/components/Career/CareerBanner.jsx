@@ -2,28 +2,28 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 const WHY_JOIN = [
-    { icon: "fa-solid fa-rocket", title: "Real-World Experience", text: "Work on live projects and build an impressive portfolio." },
-    { icon: "fa-solid fa-lightbulb", title: "Learn from Industry Experts", text: "Get mentorship from seasoned professionals." },
-    { icon: "fa-solid fa-earth-americas", title: "Flexible & Remote Opportunities", text: "Work from anywhere, at your own pace." },
-    { icon: "fa-solid fa-bullseye", title: "Skill Development", text: "Enhance your expertise in AI, ML, Full-Stack Development, Cyber Security, SEO, and more." },
-    { icon: "fa-solid fa-handshake", title: "Networking & Career Growth", text: "Connect with top talents and unlock new opportunities." },
+  { icon: "fa-solid fa-rocket", title: "Real-World Experience", text: "Work on live projects and build an impressive portfolio." },
+  { icon: "fa-solid fa-lightbulb", title: "Learn from Industry Experts", text: "Get mentorship from seasoned professionals." },
+  { icon: "fa-solid fa-earth-americas", title: "Flexible & Remote Opportunities", text: "Work from anywhere, at your own pace." },
+  { icon: "fa-solid fa-bullseye", title: "Skill Development", text: "Enhance your expertise in AI, ML, Full-Stack Development, Cyber Security, SEO, and more." },
+  { icon: "fa-solid fa-handshake", title: "Networking & Career Growth", text: "Connect with top talents and unlock new opportunities." },
 ]
 
 const INTERNSHIPS = [
-    { icon: "fa-solid fa-atom", title: "Machine Learning & AI", text: "Work on predictive models, NLP, and deep learning solutions." },
-    { icon: "fa-solid fa-globe", title: "Full-Stack Development", text: "Build scalable applications with modern frameworks." },
-    { icon: "fa-solid fa-chart-column", title: "Data Science & Analytics", text: "Analyze big data and extract meaningful insights." },
-    { icon: "fa-brands fa-python", title: "Python Development", text: "Create powerful applications and automate solutions." },
-    { icon: "fa-brands fa-react", title: "React Development", text: "Build dynamic, user-friendly web applications." },
-    { icon: "fa-solid fa-shield-halved", title: "Cyber Security", text: "Work on ethical hacking, penetration testing, and security audits." },
-    { icon: "fa-solid fa-chart-line", title: "Digital Marketing & SEO", text: "Master online growth strategies and optimize digital presence." },
-    { icon: "fa-solid fa-star", title: "And More!", text: "We are open to exploring new domains based on your skills and interests." },
+  { icon: "fa-solid fa-atom", title: "Machine Learning & AI", text: "Work on predictive models, NLP, and deep learning solutions." },
+  { icon: "fa-solid fa-globe", title: "Full-Stack Development", text: "Build scalable applications with modern frameworks." },
+  { icon: "fa-solid fa-chart-column", title: "Data Science & Analytics", text: "Analyze big data and extract meaningful insights." },
+  { icon: "fa-brands fa-python", title: "Python Development", text: "Create powerful applications and automate solutions." },
+  { icon: "fa-brands fa-react", title: "React Development", text: "Build dynamic, user-friendly web applications." },
+  { icon: "fa-solid fa-shield-halved", title: "Cyber Security", text: "Work on ethical hacking, penetration testing, and security audits." },
+  { icon: "fa-solid fa-chart-line", title: "Digital Marketing & SEO", text: "Master online growth strategies and optimize digital presence." },
+  { icon: "fa-solid fa-star", title: "And More!", text: "We are open to exploring new domains based on your skills and interests." },
 ]
 
 const CareerBanner = () => {
-    return (
-        <>
-            <style>{`
+  return (
+    <>
+      <style>{`
         /* ── Page wrapper ── */
         #career-page {
           background: #04060f;
@@ -350,123 +350,123 @@ const CareerBanner = () => {
         }
       `}</style>
 
-            <div id="career-page">
+      <div id="career-page">
 
-                {/* ── Hero ── */}
-                <section id="career-hero">
-                    <div class="hero-inner">
-                        <div>
-                            <div className="breadcrumb-pill">
-                                <span style={{ display: 'inline-block', width: 6, height: 6, borderRadius: '50%', background: '#00ff88' }} />
-                                Home &nbsp;›&nbsp; Careers
-                            </div>
-                            <h1>Join Goklyn </h1>
-                            <div className="sub-line">Build the Future with Us!</div>
-                            <p>
-                                Are you passionate about AI, Machine Learning, Full-Stack Development,
-                                Data Science, Cyber Security, Python, React, SEO, or Digital Marketing?
-                                At Goklyn, we offer internships and project-based opportunities
-                                to help students and professionals gain real-world exposure while working
-                                on cutting-edge innovations.
-                            </p>
-                        </div>
-                        <div className="hero-img">
-                            <img src="/assets/newImages/career.jpg" alt="Careers at Goklyn" />
-                        </div>
-                    </div>
-                </section>
-
-                {/* ── Why Join ── */}
-                <section className="ck-section">
-                    <div className="ck-inner">
-                        <div className="ck-heading">
-                            <div className="ck-tag">Why Us</div>
-                            <h2>Why Join <em>Goklyn ?</em></h2>
-                            <p>Unlock real-world experience, mentorship, and career growth with us.</p>
-                        </div>
-                        <div className="ck-grid">
-                            {WHY_JOIN.map((item, i) => (
-                                <div className="ck-card" key={i}>
-                                    <span className="ck-card-icon"><i className={item.icon}></i></span>
-                                    <h5>{item.title}</h5>
-                                    <p>{item.text}</p>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                </section>
-
-                <div className="ck-divider" />
-
-                {/* ── Internships ── */}
-                <section className="ck-section ck-section-alt">
-                    <div className="ck-inner">
-                        <div className="ck-heading">
-                            <div className="ck-tag">Opportunities</div>
-                            <h2>Internships &amp; Projects <em>We Offer</em></h2>
-                            <p>Explore diverse opportunities tailored to your skills and interests.</p>
-                        </div>
-                        <div className="ck-grid">
-                            {INTERNSHIPS.map((item, i) => (
-                                <div className="ck-card" key={i}>
-                                    <span className="ck-card-icon"><i className={item.icon}></i></span>
-                                    <h5>{item.title}</h5>
-                                    <p>{item.text}</p>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                </section>
-
-                <div className="ck-divider" />
-
-                {/* ── CTA ── */}
-                <section id="career-cta">
-                    <div className="inner">
-                        <div className="ck-tag" style={{ justifyContent: 'center' }}>Get In Touch</div>
-                        <h2>Don't See Your <em>Domain Listed?</em></h2>
-                        <p>
-                            At Goklyn, we believe in continuous innovation. If you have
-                            expertise in a field not listed above but think you can contribute,
-                            we'd love to hear from you!
-                        </p>
-
-                        <div style={{ height: 1, background: 'rgba(0,240,255,0.08)', margin: '32px 0' }} />
-
-                        <h2>How to <em>Apply?</em></h2>
-                        <p>
-                            <i className="fa-solid fa-envelope" style={{ color: '#00f0ff', marginRight: 8 }} />
-                            Send your resume &amp; a short introduction to{' '}
-                            <a href="mailto:hr@goklyn.in">hr@goklyn.in</a>
-                        </p>
-                        <p>
-                            <i className="fa-solid fa-link" style={{ color: '#00f0ff', marginRight: 8 }} />
-                            Or visit our contact page to explore current opportunities.
-                        </p>
-
-                        <div className="cta-btns">
-                            <a href="mailto:hr@goklyn.in" className="btn-primary-gk">
-                                <i className="fa-solid fa-envelope" />
-                                Email Us Now
-                            </a>
-                            <Link to="/contact-us" className="btn-outline-gk">
-                                <i className="fa-solid fa-arrow-right" />
-                                Contact Page
-                            </Link>
-                        </div>
-
-                        <p style={{ marginTop: 40, fontSize: '1.05rem', color: '#fff', fontFamily: "'Montserrat',sans-serif", fontWeight: 700 }}>
-                            Join Goklyn and turn your{' '}
-                            <span style={{ background: 'linear-gradient(90deg,#00f0ff,#7b2fff)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
-                                passion into innovation!
-                            </span>
-                        </p>
-                    </div>
-                </section>
-
+        {/* ── Hero ── */}
+        <section id="career-hero">
+          <div class="hero-inner">
+            <div>
+              <div className="breadcrumb-pill">
+                <span style={{ display: 'inline-block', width: 6, height: 6, borderRadius: '50%', background: '#00ff88' }} />
+                Home &nbsp;›&nbsp; Careers
+              </div>
+              <h1>Join Goklyn </h1>
+              <div className="sub-line">Build the Future with Us!</div>
+              <p>
+                Are you passionate about AI, Machine Learning, Full-Stack Development,
+                Data Science, Cyber Security, Python, React, SEO, or Digital Marketing?
+                At Goklyn, we offer internships and project-based opportunities
+                to help students and professionals gain real-world exposure while working
+                on cutting-edge innovations.
+              </p>
             </div>
-        </>
-    )
+            <div className="hero-img">
+              <img src="/assets/newImages/career.jpg" alt="Careers at Goklyn" />
+            </div>
+          </div>
+        </section>
+
+        {/* ── Why Join ── */}
+        <section className="ck-section">
+          <div className="ck-inner">
+            <div className="ck-heading">
+              <div className="ck-tag">Why Us</div>
+              <h2>Why Join <em>Goklyn ?</em></h2>
+              <p>Unlock real-world experience, mentorship, and career growth with us.</p>
+            </div>
+            <div className="ck-grid">
+              {WHY_JOIN.map((item, i) => (
+                <div className="ck-card" key={i}>
+                  <span className="ck-card-icon"><i className={item.icon}></i></span>
+                  <h5>{item.title}</h5>
+                  <p>{item.text}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <div className="ck-divider" />
+
+        {/* ── Internships ── */}
+        <section className="ck-section ck-section-alt">
+          <div className="ck-inner">
+            <div className="ck-heading">
+              <div className="ck-tag">Opportunities</div>
+              <h2>Internships &amp; Projects <em>We Offer</em></h2>
+              <p>Explore diverse opportunities tailored to your skills and interests.</p>
+            </div>
+            <div className="ck-grid">
+              {INTERNSHIPS.map((item, i) => (
+                <div className="ck-card" key={i}>
+                  <span className="ck-card-icon"><i className={item.icon}></i></span>
+                  <h5>{item.title}</h5>
+                  <p>{item.text}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <div className="ck-divider" />
+
+        {/* ── CTA ── */}
+        <section id="career-cta">
+          <div className="inner">
+            <div className="ck-tag" style={{ justifyContent: 'center' }}>Get In Touch</div>
+            <h2>Don't See Your <em>Domain Listed?</em></h2>
+            <p>
+              At Goklyn, we believe in continuous innovation. If you have
+              expertise in a field not listed above but think you can contribute,
+              we'd love to hear from you!
+            </p>
+
+            <div style={{ height: 1, background: 'rgba(0,240,255,0.08)', margin: '32px 0' }} />
+
+            <h2>How to <em>Apply?</em></h2>
+            <p>
+              <i className="fa-solid fa-envelope" style={{ color: '#00f0ff', marginRight: 8 }} />
+              Send your resume &amp; a short introduction to{' '}
+              <a href="mailto:hr@goklyn.in">hr@goklyn.in</a>
+            </p>
+            <p>
+              <i className="fa-solid fa-link" style={{ color: '#00f0ff', marginRight: 8 }} />
+              Or visit our contact page to explore current opportunities.
+            </p>
+
+            <div className="cta-btns">
+              <a href="mailto:contact@goklyn.in" className="btn-primary-gk">
+                <i className="fa-solid fa-envelope" />
+                Email Us Now
+              </a>
+              <Link to="/contact-us" className="btn-outline-gk">
+                <i className="fa-solid fa-arrow-right" />
+                Contact Page
+              </Link>
+            </div>
+
+            <p style={{ marginTop: 40, fontSize: '1.05rem', color: '#fff', fontFamily: "'Montserrat',sans-serif", fontWeight: 700 }}>
+              Join Goklyn and turn your{' '}
+              <span style={{ background: 'linear-gradient(90deg,#00f0ff,#7b2fff)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
+                passion into innovation!
+              </span>
+            </p>
+          </div>
+        </section>
+
+      </div>
+    </>
+  )
 }
 
 export default CareerBanner

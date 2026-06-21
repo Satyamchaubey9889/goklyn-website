@@ -169,7 +169,7 @@ const SecurityProcess = () => {
                         and build the next generation of quantum-ready systems.
                     </p>
                     <div className="sv-btns" style={{ justifyContent: 'center' }}>
-                        <a href="mailto:hr@goklyn.in" className="sv-btn-p">
+                        <a href="mailto:contact@goklyn.in" className="sv-btn-p">
                             <i className="fa-solid fa-envelope" />
                             Book Free Assessment
                         </a>
