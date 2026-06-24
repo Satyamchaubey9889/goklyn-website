@@ -215,6 +215,7 @@ const CareerBanner = () => {
           font-size: 1.8rem;
           margin-bottom: 14px;
           display: block;
+          color: #00f0ff;
         }
         .ck-card h5 {
           font-family: 'Montserrat', sans-serif;
@@ -354,18 +355,18 @@ const CareerBanner = () => {
 
         {/* ── Hero ── */}
         <section id="career-hero">
-          <div class="hero-inner">
+          <div className="hero-inner">
             <div>
               <div className="breadcrumb-pill">
                 <span style={{ display: 'inline-block', width: 6, height: 6, borderRadius: '50%', background: '#00ff88' }} />
                 Home &nbsp;›&nbsp; Careers
               </div>
-              <h1>Join Goklyn </h1>
+              <h1>Join Goklyn Technologies</h1>
               <div className="sub-line">Build the Future with Us!</div>
               <p>
                 Are you passionate about AI, Machine Learning, Full-Stack Development,
                 Data Science, Cyber Security, Python, React, SEO, or Digital Marketing?
-                At Goklyn, we offer internships and project-based opportunities
+                At Goklyn Technologies, we offer internships and project-based opportunities
                 to help students and professionals gain real-world exposure while working
                 on cutting-edge innovations.
               </p>
@@ -381,7 +382,7 @@ const CareerBanner = () => {
           <div className="ck-inner">
             <div className="ck-heading">
               <div className="ck-tag">Why Us</div>
-              <h2>Why Join <em>Goklyn ?</em></h2>
+              <h2>Why Join <em>Goklyn Technologies?</em></h2>
               <p>Unlock real-world experience, mentorship, and career growth with us.</p>
             </div>
             <div className="ck-grid">
@@ -426,7 +427,7 @@ const CareerBanner = () => {
             <div className="ck-tag" style={{ justifyContent: 'center' }}>Get In Touch</div>
             <h2>Don't See Your <em>Domain Listed?</em></h2>
             <p>
-              At Goklyn, we believe in continuous innovation. If you have
+              At Goklyn Technologies, we believe in continuous innovation. If you have
               expertise in a field not listed above but think you can contribute,
               we'd love to hear from you!
             </p>
@@ -445,7 +446,7 @@ const CareerBanner = () => {
             </p>
 
             <div className="cta-btns">
-              <a href="mailto:contact@goklyn.in" className="btn-primary-gk">
+              <a href="mailto:hr@goklyn.in" className="btn-primary-gk">
                 <i className="fa-solid fa-envelope" />
                 Email Us Now
               </a>
@@ -456,7 +457,7 @@ const CareerBanner = () => {
             </div>
 
             <p style={{ marginTop: 40, fontSize: '1.05rem', color: '#fff', fontFamily: "'Montserrat',sans-serif", fontWeight: 700 }}>
-              Join Goklyn and turn your{' '}
+              Join Goklyn Technologies and turn your{' '}
               <span style={{ background: 'linear-gradient(90deg,#00f0ff,#7b2fff)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
                 passion into innovation!
               </span>
