@@ -36,6 +36,9 @@ app.use(
     },
   })
 );
+app.get("/", (req, res) => {
+  res.json({ success: true, message: "Welcome to the Goklyn Backend API" });
+});
 
 app.get("/api/health", (req, res) => {
   res.json({ success: true, message: "Goklyn backend is running" });
