@@ -14,8 +14,6 @@ const ServicesPage = () => {
       <Service />
       <SecurityProcess />
       <WhoWeAre />
-      <Tastimonial />
-      {/* <Meet/> */}
     </div>
   )
 }
