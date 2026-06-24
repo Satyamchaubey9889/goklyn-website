@@ -1,8 +1,10 @@
 import React, { useState } from 'react'
 
-const API_URL = process.env.REACT_APP_API_URL
-    ? `${process.env.REACT_APP_API_URL}/api/contact`
-    : 'http://localhost:5000/api/contact'
+const API_URL = (
+    process.env.REACT_APP_API_URL
+        ? process.env.REACT_APP_API_URL.replace(/\/+$/, '')
+        : 'http://localhost:5000'
+) + '/api/contact'
 
 const ContactUs = () => {
     const [formData, setFormData] = useState({
@@ -321,7 +323,7 @@ const ContactUs = () => {
                                         </div>
                                         <div>
                                             <h5>Email Us:</h5>
-                                            <p><a href="mailto:contact@goklyn.in">contact@goklyn.in</a></p>
+                                            <p><a href="mailto:hr@goklyn.in">hr@goklyn.in</a></p>
                                         </div>
                                     </div>
 
