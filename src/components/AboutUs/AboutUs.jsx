@@ -15,7 +15,7 @@ const founders = [
     role: "Director & Founder",
     initials: "MS",
     img: "/assets/newImages/Monika_sharma.jpeg",
-    bio: "Holds a B.Sc. in Physics (Hons) and B.Tech in Computer Science. Leads advancements in networking, cybersecurity, cryptography, quantum computing, and quantum machine learning.",
+    bio: "A tech entrepreneur with a deep passion for cybersecurity and innovation. Leads Goklyn's vision of making cutting-edge security accessible to every organisation, bridging the gap between advanced technology and real-world business needs.",
     tags: ["Quantum Computing", "Cybersecurity", "Cryptography"],
   },
 ]
