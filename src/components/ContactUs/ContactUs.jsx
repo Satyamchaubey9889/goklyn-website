@@ -148,47 +148,16 @@ const ContactUs = () => {
         #ct-communications {
           padding: 90px 6%; position: relative; z-index: 1;
         }
-        .ct-comms-grid {
-          display: grid; grid-template-columns: 0.85fr 1.15fr; gap: 64px;
-        }
-
-        .ct-info-stack { display: flex; flex-direction: column; gap: 20px; }
         
-        .ct-info-box {
-          background: rgba(255, 255, 255, 0.018);
-          border: 1px solid rgba(0, 240, 255, 0.08);
-          border-radius: 16px; padding: 24px;
-          display: flex; align-items: center; gap: 20px;
-          position: relative; overflow: hidden; backdrop-filter: blur(8px);
-          transition: border-color .3s, transform .3s, background .3s;
+        /* Two-column Master Layout Split matching your uploaded design framework */
+        .ct-comms-grid {
+          display: grid; 
+          grid-template-columns: 1.25fr 0.75fr; 
+          gap: 40px;
+          align-items: start;
         }
-        .ct-info-box::before {
-          content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
-          background: linear-gradient(90deg, transparent, #00f0ff, transparent);
-          transform: scaleX(0); transition: transform .35s;
-        }
-        .ct-info-box:hover {
-          border-color: rgba(0, 240, 255, 0.22); background: rgba(0, 240, 255, 0.03);
-          transform: translateX(6px);
-        }
-        .ct-info-box:hover::before { transform: scaleX(1); }
 
-        .ct-info-icon-frame {
-          width: 46px; height: 46px; border-radius: 10px;
-          background: rgba(0,240,255,0.06); border: 1px solid rgba(0,240,255,0.18);
-          display: flex; align-items: center; justify-content: center;
-          color: #00f0ff; font-size: 1.1rem; flex-shrink: 0;
-        }
-        .ct-info-box h5 {
-          font-family: 'Poppins', sans-serif; font-size: 0.65rem;
-          color: rgba(255,255,255,0.35); text-transform: uppercase; letter-spacing: 0.05em;
-          margin: 0 0 4px 0;
-        }
-        .ct-info-box p { font-size: 1rem; color: #fff; margin: 0; font-weight: 600; }
-        .ct-info-box p a { color: #fff; text-decoration: none; transition: color 0.2s; }
-        .ct-info-box p a:hover { color: #00f0ff; }
-
-        /* ── SECURE DISPATCH TRANSACTIONAL FORM ── */
+        /* Left Side: Form Panel */
         .ct-form-panel {
           background: rgba(255, 255, 255, 0.012);
           border: 1px solid rgba(255, 255, 255, 0.04);
@@ -202,10 +171,18 @@ const ContactUs = () => {
         .ct-form-panel h4 {
           font-family: 'Montserrat', sans-serif; font-size: 1.35rem; font-weight: 800;
           color: #fff; margin-bottom: 28px;
+          margin-top: 0;
         }
 
+        /* Nested input grid structure matching image reference alignment */
         .ct-form-row {
-          display: grid; grid-template-columns: 1fr; gap: 20px; margin-bottom: 24px;
+          display: grid; 
+          grid-template-columns: 1fr 1fr; 
+          gap: 20px; 
+          margin-bottom: 24px;
+        }
+        .ct-full-width-input {
+          grid-column: span 2;
         }
 
         .ct-input-field {
@@ -224,12 +201,13 @@ const ContactUs = () => {
         textarea.ct-input-field { resize: none; }
 
         .ct-submit-btn {
-          display: inline-flex; align-items: center; gap: 8px; padding: 14px 32px;
+          display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 14px 32px;
           font-family: 'Montserrat', sans-serif; font-size: .78rem; font-weight: 700;
           letter-spacing: .07em; color: #04060f; background: #00f0ff; border-radius: 8px;
           border: none; cursor: pointer; text-transform: uppercase;
           box-shadow: 0 0 24px rgba(0,240,255,0.22);
           transition: box-shadow .25s, transform .2s, background-color .2s;
+          width: 100%; /* Spans full width at bottom of form card */
         }
         .ct-submit-btn:hover {
           box-shadow: 0 0 48px rgba(0,240,255,0.45); transform: translateY(-2px);
@@ -243,7 +221,7 @@ const ContactUs = () => {
         }
 
         .ct-field-error {
-          color: #ff5470; font-size: 0.76rem; margin-top: -14px; margin-bottom: 14px;
+          color: #ff5470; font-size: 0.76rem; margin-top: 4px;
         }
 
         .ct-status-msg {
@@ -257,6 +235,69 @@ const ContactUs = () => {
           background: rgba(255, 60, 90, 0.08); border: 1px solid rgba(255, 60, 90, 0.3); color: #ff8597;
         }
 
+        /* Right Side: Information Content Stack */
+        .ct-info-stack { display: flex; flex-direction: column; gap: 24px; }
+        
+        .ct-info-box {
+          background: rgba(255, 255, 255, 0.012);
+          border: 1px solid rgba(0, 240, 255, 0.08);
+          border-radius: 20px; padding: 36px;
+          backdrop-filter: blur(8px);
+          box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+        }
+        .ct-details-wrapper {
+          display: flex;
+          flex-direction: column;
+          gap: 20px;
+        }
+        .ct-info-row-item {
+          display: flex;
+          align-items: flex-start;
+          gap: 16px;
+        }
+        .ct-info-icon-frame {
+          width: 24px; height: 24px;
+          display: flex; align-items: center; justify-content: center;
+          color: #00f0ff; font-size: 1.1rem; flex-shrink: 0;
+        }
+        .ct-info-row-item h5 {
+          font-family: 'Poppins', sans-serif; font-size: 0.65rem;
+          color: rgba(255,255,255,0.35); text-transform: uppercase; letter-spacing: 0.05em;
+          margin: 0 0 4px 0;
+          display: none; /* Removed title strings contextually for sleek alignment */
+        }
+        .ct-info-row-item p { font-size: 0.95rem; color: #fff; margin: 0; font-weight: 500; line-height: 1.5; }
+        .ct-info-row-item p a { color: #fff; text-decoration: none; transition: color 0.2s; }
+        .ct-info-row-item p a:hover { color: #00f0ff; }
+
+        /* Map Embed Alignment Frame */
+        .ct-map-box {
+          background: rgba(255, 255, 255, 0.012);
+          border: 1px solid rgba(0, 240, 255, 0.08);
+          border-radius: 20px;
+          overflow: hidden;
+          width: 100%;
+          height: 250px;
+          position: relative;
+          box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
+          transition: border-color .3s;
+        }
+        .ct-map-box:hover {
+          border-color: rgba(0, 240, 255, 0.22);
+        }
+        .ct-map-box iframe {
+          width: 100%;
+          height: 100%;
+          border: 0;
+          filter: grayscale(1) invert(0.92) contrast(1.2); 
+          opacity: 0.85;
+          transition: filter 0.3s, opacity 0.3s;
+        }
+        .ct-map-box:hover iframe {
+          filter: grayscale(0.3) invert(0) contrast(1);
+          opacity: 1;
+        }
+
         /* ── Responsive Viewports ── */
         @media (max-width: 991px) {
           .ct-hero-grid { grid-template-columns: 1fr; gap: 48px; }
@@ -267,6 +308,8 @@ const ContactUs = () => {
         }
 
         @media (max-width: 768px) {
+          .ct-form-row { grid-template-columns: 1fr; }
+          .ct-full-width-input { grid-column: span 1; }
           section[id^="ct-"], #ct-hero, #ct-communications { padding: 60px 24px; }
         }
       `}</style>
@@ -280,7 +323,7 @@ const ContactUs = () => {
                             <div>
                                 <div className="ct-breadcrumb">
                                     <span className="ct-breadcrumb-dot" />
-                                    Home &nbsp;<i className="fa-solid fa-angles-right"></i>&nbsp; <span className="sub_span">Contact</span>
+                                    Home  <i className="fa-solid fa-angles-right"></i>  <span className="sub_span">Contact</span>
                                 </div>
                                 <h1 className="ct-hero-title">Contact Us</h1>
                                 <p className="ct-hero-desc">
@@ -301,45 +344,7 @@ const ContactUs = () => {
                     <div className="ct-inner">
                         <div className="ct-comms-grid">
 
-                            {/* Telemetry Information Cards Stack */}
-                            <div>
-                                <div className="ct-tag">Secure Nodes</div>
-                                <h2 className="ct-h2">Contact Info</h2>
-
-                                <div className="ct-info-stack">
-                                    <div className="ct-info-box">
-                                        <div className="ct-info-icon-frame">
-                                            <i className="fa-solid fa-location-dot" />
-                                        </div>
-                                        <div>
-                                            <h5>Location:</h5>
-                                            <p>Jaipur</p>
-                                        </div>
-                                    </div>
-
-                                    <div className="ct-info-box">
-                                        <div className="ct-info-icon-frame">
-                                            <i className="fa-solid fa-envelope" />
-                                        </div>
-                                        <div>
-                                            <h5>Email Us:</h5>
-                                            <p><a href="mailto:hr@goklyn.in">hr@goklyn.in</a></p>
-                                        </div>
-                                    </div>
-
-                                    <div className="ct-info-box">
-                                        <div className="ct-info-icon-frame">
-                                            <i className="fa-solid fa-phone" />
-                                        </div>
-                                        <div>
-                                            <h5>Phone:</h5>
-                                            <p><a href="tel:+919024466472">+91 9024466472</a></p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            {/* Secure Messaging Dispatch Panel */}
+                            {/* Left Side Container: Dynamic Message Fields */}
                             <div>
                                 <div className="ct-form-panel">
                                     <h4>Send us a Message</h4>
@@ -359,56 +364,64 @@ const ContactUs = () => {
 
                                     <form onSubmit={handleSubmit} noValidate>
                                         <div className="ct-form-row">
-                                            <input
-                                                type="text"
-                                                name="fullname"
-                                                id="name"
-                                                className="ct-input-field"
-                                                placeholder="Name:"
-                                                value={formData.fullname}
-                                                onChange={handleChange}
-                                                disabled={status.state === 'submitting'}
-                                                required
-                                            />
-                                            {fieldErrors.fullname && <div className="ct-field-error">{fieldErrors.fullname}</div>}
+                                            <div>
+                                                <input
+                                                    type="text"
+                                                    name="fullname"
+                                                    id="name"
+                                                    className="ct-input-field"
+                                                    placeholder="Name:"
+                                                    value={formData.fullname}
+                                                    onChange={handleChange}
+                                                    disabled={status.state === 'submitting'}
+                                                    required
+                                                />
+                                                {fieldErrors.fullname && <div className="ct-field-error">{fieldErrors.fullname}</div>}
+                                            </div>
 
-                                            <input
-                                                type="tel"
-                                                name="phone"
-                                                id="phonenum"
-                                                className="ct-input-field"
-                                                placeholder="Phone:"
-                                                value={formData.phone}
-                                                onChange={handleChange}
-                                                disabled={status.state === 'submitting'}
-                                            />
-                                            {fieldErrors.phone && <div className="ct-field-error">{fieldErrors.phone}</div>}
+                                            <div>
+                                                <input
+                                                    type="email"
+                                                    name="emailaddress"
+                                                    id="emailaddrs"
+                                                    className="ct-input-field"
+                                                    placeholder="Email:"
+                                                    value={formData.emailaddress}
+                                                    onChange={handleChange}
+                                                    disabled={status.state === 'submitting'}
+                                                    required
+                                                />
+                                                {fieldErrors.email && <div className="ct-field-error">{fieldErrors.email}</div>}
+                                            </div>
 
-                                            <input
-                                                type="email"
-                                                name="emailaddress"
-                                                id="emailaddrs"
-                                                className="ct-input-field"
-                                                placeholder="Email:"
-                                                value={formData.emailaddress}
-                                                onChange={handleChange}
-                                                disabled={status.state === 'submitting'}
-                                                required
-                                            />
-                                            {fieldErrors.email && <div className="ct-field-error">{fieldErrors.email}</div>}
+                                            <div className="ct-full-width-input">
+                                                <input
+                                                    type="tel"
+                                                    name="phone"
+                                                    id="phonenum"
+                                                    className="ct-input-field"
+                                                    placeholder="Phone:"
+                                                    value={formData.phone}
+                                                    onChange={handleChange}
+                                                    disabled={status.state === 'submitting'}
+                                                />
+                                                {fieldErrors.phone && <div className="ct-field-error">{fieldErrors.phone}</div>}
+                                            </div>
 
-                                            <textarea
-                                                rows="4"
-                                                name="msg"
-                                                id="comment"
-                                                className="ct-input-field"
-                                                placeholder="Message:"
-                                                value={formData.msg}
-                                                onChange={handleChange}
-                                                disabled={status.state === 'submitting'}
-                                                required
-                                            ></textarea>
-                                            {fieldErrors.message && <div className="ct-field-error">{fieldErrors.message}</div>}
+                                            <div className="ct-full-width-input">
+                                                <textarea
+                                                    rows="5"
+                                                    name="msg"
+                                                    id="comment"
+                                                    className="ct-input-field"
+                                                    placeholder="Message:"
+                                                    value={formData.msg}
+                                                    onChange={handleChange}
+                                                    disabled={status.state === 'submitting'}
+                                                    required
+                                                ></textarea>
+                                                {fieldErrors.message && <div className="ct-field-error">{fieldErrors.message}</div>}
+                                            </div>
                                         </div>
 
                                         <button
@@ -425,6 +438,61 @@ const ContactUs = () => {
                                             )}
                                         </button>
                                     </form>
+                                </div>
+                            </div>
+
+                            {/* Right Side Container: Info stack card & Map box */}
+                            <div className="ct-info-stack">
+                                <div className="ct-info-box">
+                                    <h2 className="ct-h2" style={{ fontSize: '1.5rem', marginBottom: '24px' }}>Contact Info</h2>
+
+                                    <div className="ct-details-wrapper">
+                                        <div className="ct-info-row-item">
+                                            <div className="ct-info-icon-frame">
+                                                <i className="fa-solid fa-location-dot" />
+                                            </div>
+                                            <div>
+                                                <h5>Location:</h5>
+                                                <p>
+                                                    <a href="https://maps.app.goo.gl/DapSZegfKc3xs84w8" target="_blank" rel="noreferrer">
+                                                        Jaipur
+                                                    </a>
+                                                </p>
+                                            </div>
+                                        </div>
+
+                                        <div className="ct-info-row-item">
+                                            <div className="ct-info-icon-frame">
+                                                <i className="fa-solid fa-envelope" />
+                                            </div>
+                                            <div>
+                                                <h5>Email Us:</h5>
+                                                <p><a href="mailto:hr@goklyn.in">hr@goklyn.in</a></p>
+                                            </div>
+                                        </div>
+
+                                        <div className="ct-info-row-item">
+                                            <div className="ct-info-icon-frame">
+                                                <i className="fa-solid fa-phone" />
+                                            </div>
+                                            <div>
+                                                <h5>Phone:</h5>
+                                                <p><a href="tel:+919024466472">+91 9024466472</a></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {/* ── GOOGLE MAPS EMBED BOX ── */}
+                                <div className="ct-map-box">
+                                    <iframe
+                                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d541785.9429943709!2d75.66306809093062!3d26.863336021043917!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396dc17923ff319f%3A0x858197dd7f260fb2!2sGoklyn%20PVT.%20LTD!5e0!3m2!1sen!2sin!4v1782753163267!5m2!1sen!2sin"
+                                        style={{ border: 0 }}
+                                        allowFullScreen=""
+                                        loading="lazy"
+                                        referrerPolicy="strict-origin-when-cross-origin"
+                                        title="Goklyn Location Map Telemetry"
+                                    />
                                 </div>
                             </div>
 

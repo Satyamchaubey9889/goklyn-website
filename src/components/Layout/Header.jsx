@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
 
 const Header = () => {
@@ -8,17 +8,33 @@ const Header = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [companyOpen, setCompanyOpen] = useState(false);
 
+  // Create a ref for the dropdown container to detect clicks outside
+  const dropdownRef = useRef(null);
+
+  // Handle header background change on scroll
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Close mobile menu on route change
+  // Close mobile and desktop dropdown menus on route change
   useEffect(() => {
     setMobileOpen(false);
     setCompanyOpen(false);
   }, [location]);
+
+  // Handle closing desktop dropdown when clicking anywhere outside of it
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setCompanyOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
 
   return (
     <>
@@ -53,9 +69,6 @@ const Header = () => {
         .gk-nav-logo img {
           height: 60px;
           width: 60px;
-          // object-fit: contain;
-          // border-radius: 8px;
-          // border: 1px solid rgba(0,240,255,0.25);
         }
         .gk-nav-logo-text {
           font-family: 'Montserrat', sans-serif;
@@ -323,11 +336,10 @@ const Header = () => {
               Home
             </Link>
           </li>
-          <li>
+          <li ref={dropdownRef}>
             <button
               className={["/about-us", "/our-team", "/career"].includes(path) ? "gk-active" : ""}
               onClick={() => setCompanyOpen(o => !o)}
-              onBlur={() => setTimeout(() => setCompanyOpen(false), 150)}
             >
               Our Company <i className="fa-solid fa-angle-down" style={{ fontSize: ".6rem" }}></i>
             </button>

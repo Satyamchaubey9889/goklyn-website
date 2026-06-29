@@ -11,9 +11,8 @@ const HomePage = () => {
         <div>
             {/* Quantum redesigned hero + marquee + services grid + stats band */}
             <Banner />
-            <HowWeWork/>
+            <HowWeWork />
             {/* Original sections below — kept exactly as-is */}
-            <Statistics />
             <About />
             <WhoWeAre />
         </div>

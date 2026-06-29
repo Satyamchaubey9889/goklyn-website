@@ -50,9 +50,6 @@ const Footer = () => {
         .gk-ft-logo img {
           height: 60px;
           width: 60px;
-          // object-fit: contain;
-          // border-radius: 8px;
-          // border: 1px solid rgba(0,240,255,0.25);
         }
         .gk-ft-logo-text {
           font-family: 'Montserrat', sans-serif;
@@ -239,7 +236,7 @@ const Footer = () => {
                   </a>
                 </li>
                 <li>
-                  <a href="#" title="GitHub">
+                  <a href="https://github.com/goklyn01" target="_blank" rel="noreferrer" title="GitHub">
                     <i className="fa-brands fa-github"></i>
                   </a>
                 </li>
@@ -283,7 +280,9 @@ const Footer = () => {
                   <span className="gk-ft-ci">
                     <i className="fa-solid fa-location-dot"></i>
                   </span>
-                  <span>Jaipur, Rajasthan, India</span>
+                  <a href="https://www.google.com/maps/place/Goklyn+PVT.+LTD/@26.8306225,76.0550289,17z/data=!3m1!4b1!4m6!3m5!1s0x396dc17923ff319f:0x858197dd7f260fb2!8m2!3d26.8306225!4d76.0550289!16s%2Fg%2F11xzl3ll39?entry=ttu&g_ep=EgoyMDI2MDYyNC4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noreferrer">
+                    Jaipur, Rajasthan, India
+                  </a>
                 </li>
               </ul>
             </div>

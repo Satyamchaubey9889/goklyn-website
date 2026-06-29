@@ -22,7 +22,17 @@ const founders = [
 
 
 const TIMELINE = [
-  { year: "2025", title: "Founded", desc: "Goklyn established with a mission to bridge academia and industry through quantum and cybersecurity research." }]
+  {
+    year: "2025",
+    title: "Founded",
+    desc: "Goklyn established with a mission to bridge academia and industry through quantum and cybersecurity research."
+  },
+  {
+    year: "2026 – Present",
+    title: "Expansion & Real-World Impact",
+    desc: "Delivered numerous full-stack web development projects while empowering the next generation through advanced industrial training, hands-on internships, and seminars in cybersecurity and quantum computing."
+  }
+];
 
 const AboutUs = () => {
   return (
