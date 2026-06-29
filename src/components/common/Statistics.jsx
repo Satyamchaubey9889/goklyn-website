@@ -307,7 +307,8 @@ const Statistics = () => {
 
                 <div className="st-inner">
 
-                
+                    {/* Breadcrumb */}
+
                     {/* Title */}
                     <h2
                         className="st-title"
