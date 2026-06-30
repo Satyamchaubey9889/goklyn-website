@@ -49,7 +49,6 @@ const Statistics = () => {
                     z-index: 1;
                 }
 
-                /* ambient radial gradients matching ProjectBanner */
                 #st-section::before {
                     content: ''; position: absolute; inset: 0; pointer-events: none;
                     background:
@@ -65,7 +64,7 @@ const Statistics = () => {
                     border-radius: 50%;
                     background: radial-gradient(circle,
                         rgba(0,240,255,0.07) 0%,
-                        rgba(123,47,255,0.04) 40%,
+                        rgba(123,47,255,0.05) 40%,
                         transparent 70%
                     );
                     pointer-events: none;
@@ -101,38 +100,14 @@ const Statistics = () => {
                     align-items: center;
                 }
 
-                /* ── BREADCRUMB (mirrors .pj-breadcrumb) ── */
-                .st-breadcrumb {
-                    display: inline-flex; align-items: center; gap: 8px;
-                    padding: 5px 14px;
-                    font-family: 'Poppins', sans-serif;
-                    font-size: .68rem; letter-spacing: .1em; text-transform: uppercase;
-                    color: #00f0ff;
-                    background: rgba(0,240,255,0.07);
-                    border: 1px solid rgba(0,240,255,0.2);
-                    border-radius: 100px;
-                    margin-bottom: 32px;
-                    cursor: default;
-                }
-                .st-breadcrumb-dot {
-                    width: 6px; height: 6px; border-radius: 50%; background: #00f0ff;
-                    animation: st-blink 2s ease-in-out infinite;
-                }
-                .st-breadcrumb .sub_span { color: #7b2fff; font-weight: 700; }
-                .st-breadcrumb i { font-size: 0.6rem; color: rgba(255,255,255,0.3); }
-                @keyframes st-blink {
-                    0%,100% { opacity:1; box-shadow: 0 0 6px #00f0ff; }
-                    50%     { opacity:.3; box-shadow: none; }
-                }
-
-                /* ── SECTION TITLE (mirrors .pj-hero-title) ── */
+                /* ── SECTION TITLE ── */
                 .st-title {
                     font-family: 'Montserrat', sans-serif;
                     font-size: clamp(2.4rem, 5vw, 4rem);
                     font-weight: 800;
                     line-height: 1.05;
                     margin-bottom: 16px;
-                    background: linear-gradient(100deg, #00f0ff 0%, #7b2fff 55%, #ff2060 100%);
+                    background: linear-gradient(100deg, #00f0ff 0%, #7b2fff 100%);
                     -webkit-background-clip: text;
                     -webkit-text-fill-color: transparent;
                     background-clip: text;
@@ -140,7 +115,6 @@ const Statistics = () => {
                     position: relative;
                 }
 
-                /* animated underline accent */
                 .st-title::after {
                     content: '';
                     display: block;
@@ -152,6 +126,19 @@ const Statistics = () => {
                     transition: width 0.4s ease;
                 }
                 .st-title:hover::after { width: 90px; }
+                .st-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: rgba(0,240,255,0.06);
+    border: 1px solid rgba(0,240,255,0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 26px;
+    color: #00f0ff;
+    animation: st-pulse 2.4s ease-in-out infinite;
+}
 
                 /* ── COMING SOON CARD ── */
                 .st-card {
@@ -206,7 +193,7 @@ const Statistics = () => {
                     50%      { box-shadow: 0 0 0 14px rgba(0,240,255,0); }
                 }
 
-                /* ── STATUS PILL (mirrors .pj-breadcrumb style) ── */
+                /* ── STATUS PILL ── */
                 .st-pill {
                     font-family: 'Poppins', sans-serif;
                     font-size: 0.68rem;
@@ -225,7 +212,7 @@ const Statistics = () => {
                     font-family: 'Montserrat', sans-serif;
                     font-size: clamp(1.6rem, 3vw, 2.2rem);
                     font-weight: 800;
-                    background: linear-gradient(100deg, #00f0ff 0%, #7b2fff 55%, #ff2060 100%);
+                    background: linear-gradient(100deg, #00f0ff 0%, #7b2fff 100%);
                     -webkit-background-clip: text;
                     -webkit-text-fill-color: transparent;
                     background-clip: text;
@@ -233,7 +220,7 @@ const Statistics = () => {
                     text-align: center;
                 }
 
-                /* ── DESCRIPTION (mirrors .pj-hero-desc) ── */
+                /* ── DESCRIPTION ── */
                 .st-card-desc {
                     font-family: 'Poppins', sans-serif;
                     font-size: 0.95rem;
@@ -244,7 +231,7 @@ const Statistics = () => {
                     max-width: 340px;
                 }
 
-                /* ── DOT LOADER with cyan accent ── */
+                /* ── DOT LOADER (red swapped for purple) ── */
                 .st-dots {
                     display: flex;
                     gap: 7px;
@@ -258,7 +245,7 @@ const Statistics = () => {
                     animation: st-bounce 1.4s ease-in-out infinite;
                 }
                 .st-dots span:nth-child(2) { animation-delay: 0.2s; background: #7b2fff; }
-                .st-dots span:nth-child(3) { animation-delay: 0.4s; background: #ff2060; }
+                .st-dots span:nth-child(3) { animation-delay: 0.4s; background: #00f0ff; opacity: 0.6; }
                 @keyframes st-bounce {
                     0%, 80%, 100% { transform: translateY(0);   opacity: 0.4; }
                     40%           { transform: translateY(-8px); opacity: 1;   }
@@ -285,9 +272,9 @@ const Statistics = () => {
                 {/* Cursor glow */}
                 <div className="st-cursor-glow" ref={cursorGlowRef} />
 
-                {/* Ambient floating particles */}
+                {/* Ambient floating particles (red removed, cyan/purple only) */}
                 {[...Array(7)].map((_, i) => {
-                    const colors = ['rgba(0,240,255,0.18)', 'rgba(123,47,255,0.18)', 'rgba(255,32,96,0.14)']
+                    const colors = ['rgba(0,240,255,0.18)', 'rgba(123,47,255,0.18)']
                     return (
                         <div
                             key={i}
@@ -297,7 +284,7 @@ const Statistics = () => {
                                 height: `${5 + (i % 3) * 4}px`,
                                 left: `${8 + i * 13}%`,
                                 bottom: `${4 + (i % 4) * 7}%`,
-                                background: colors[i % 3],
+                                background: colors[i % 2],
                                 animationDuration: `${4.5 + i * 0.7}s`,
                                 animationDelay: `${i * 0.5}s`,
                             }}
@@ -306,10 +293,6 @@ const Statistics = () => {
                 })}
 
                 <div className="st-inner">
-
-                    {/* Breadcrumb */}
-
-                    {/* Title */}
                     <h2
                         className="st-title"
                         data-aos="fade-up"
@@ -319,14 +302,13 @@ const Statistics = () => {
                         Projects
                     </h2>
 
-                    {/* Coming Soon Card */}
                     <div
                         className="st-card"
                         data-aos="fade-up"
                         data-aos-duration="1000"
                         data-aos-delay="180"
                     >
-                        <div className="st-icon">🚀</div>
+                        <div className="st-icon"><i className="fa-solid fa-rocket"></i></div>
                         <span className="st-pill">In Progress</span>
                         <h3 className="st-card-title">Coming Soon</h3>
                         <p className="st-card-desc">
@@ -336,10 +318,8 @@ const Statistics = () => {
                             <span /><span /><span />
                         </div>
                     </div>
-
                 </div>
 
-                {/* Original background shapes preserved */}
                 <figure className="statistics_left_shape mb-0 position-absolute top_bottom_shape">
                     <img src="/assets/images/statistics_lefts_shape.png" alt="" className="img-fluid" />
                 </figure>
