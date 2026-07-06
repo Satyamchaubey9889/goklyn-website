@@ -11,6 +11,8 @@ import TeamPage from './pages/TeamPage';
 import ContactUsPage from './pages/ContactUsPage';
 import ScrollTop from './components/ScrollTop/ScrollTop';
 import CareerPage from './pages/CareerPage';
+import BlogList from './components/Blog/BlogList';
+import BlogDetail from './components/Blog/BlogDetail';
 
 const AppWrapper = () => {
   const location = useLocation();
@@ -46,8 +48,10 @@ const AppWrapper = () => {
           <Route path='/portfolio' element={<ProjectPage />} />
           <Route path='/our-team' element={<TeamPage />} />
           <Route path='/contact-us' element={<ContactUsPage />} />
-          <Route path ='/career' element={<CareerPage/>} />
-         </Routes>
+          <Route path='/career' element={<CareerPage />} />
+          <Route path="/blog" element={<BlogList />} />
+          <Route path="/blog/:slug" element={<BlogDetail />} />
+        </Routes>
         <Footer />
       </ScrollTop>
     </div>

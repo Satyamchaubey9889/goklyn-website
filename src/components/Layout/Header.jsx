@@ -352,6 +352,9 @@ const Header = () => {
           <li>
             <Link to="/services" className={path === "/services" ? "gk-active" : ""}>Services</Link>
           </li>
+          <li className="nav-item">
+            <Link to="/blog" className={path === "/blog" ? "gk-active" : ""}>Blog</Link>
+          </li>
           <li>
             <Link to="/portfolio" className={path === "/portfolio" ? "gk-active" : ""}>Projects</Link>
           </li>
@@ -382,6 +385,7 @@ const Header = () => {
         <Link to="/our-team" className={path === "/our-team" ? "gk-active" : ""}>Our Team</Link>
         <Link to="/career" className={path === "/career" ? "gk-active" : ""}>Careers</Link>
         <Link to="/services" className={path === "/services" ? "gk-active" : ""}>Services</Link>
+        <Link to="/blog" className={path === "/blog" ? "gk-active" : ""}>Blog</Link>
         <Link to="/portfolio" className={path === "/portfolio" ? "gk-active" : ""}>Projects</Link>
         <Link to="/contact-us" className={path === "/contact-us" ? "gk-active" : ""}>Contact Us</Link>
         <div className="gk-mobile-divider" />
