@@ -21,14 +21,14 @@ const SERVICES_DATA = [
     tags: ["PenTesting", "Zero-Trust", "SOC Pipelines"],
     img: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=700&q=85"
   },
-  {
-    id: "ba",
-    icon: "fa-solid fa-chart-column",
-    title: "Data & Business Analysis",
-    desc: "Converting structural information repositories into real-time visual streams to empower predictive data modeling and modern strategic analysis.",
-    tags: ["Python BI", "Predictive Systems", "Databases"],
-    img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=700&q=85"
-  },
+  // {
+  //   id: "ba",
+  //   icon: "fa-solid fa-chart-column",
+  //   title: "Data & Business Analysis",
+  //   desc: "Converting structural information repositories into real-time visual streams to empower predictive data modeling and modern strategic analysis.",
+  //   tags: ["Python BI", "Predictive Systems", "Databases"],
+  //   img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=700&q=85"
+  // },
   {
     id: "web",
     icon: "fa-solid fa-globe",
@@ -37,14 +37,14 @@ const SERVICES_DATA = [
     tags: ["Next.js", "Tailwind CSS", "Figma Frameworks"],
     img: "https://images.unsplash.com/photo-1547658719-da2b51169166?w=700&q=85"
   },
-  {
-    id: "mktg",
-    icon: "fa-solid fa-chart-line",
-    title: "Digital Growth & Marketing",
-    desc: "Optimizing audience interaction across network matrices using predictive automation tools to scale target performance metrics reliably.",
-    tags: ["Growth Engines", "Data Attribution", "SEO Matrices"],
-    img: "https://images.unsplash.com/photo-1533750349088-cd871a92f312?w=700&q=85"
-  },
+  // {
+  //   id: "mktg",
+  //   icon: "fa-solid fa-chart-line",
+  //   title: "Digital Growth & Marketing",
+  //   desc: "Optimizing audience interaction across network matrices using predictive automation tools to scale target performance metrics reliably.",
+  //   tags: ["Growth Engines", "Data Attribution", "SEO Matrices"],
+  //   img: "https://images.unsplash.com/photo-1533750349088-cd871a92f312?w=700&q=85"
+  // },
   {
     id: "cyber-seminar",
     icon: "fa-solid fa-chalkboard-user",

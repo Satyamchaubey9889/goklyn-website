@@ -754,14 +754,14 @@ const Banner = () => {
                 tags: ["PenTesting", "Zero-Trust", "SOC Pipelines"],
                 link: "/services"
               },
-              {
-                icon: "fa-solid fa-chart-column",
-                title: "Data & Business Analysis",
-                desc: "Converting structural information repositories into real-time visual streams to empower predictive data modeling and modern strategic analysis.",
-                img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=700&q=85",
-                tags: ["Python BI", "Predictive Systems", "Databases"],
-                link: "/services"
-              },
+              // {
+              //   icon: "fa-solid fa-chart-column",
+              //   title: "Data & Business Analysis",
+              //   desc: "Converting structural information repositories into real-time visual streams to empower predictive data modeling and modern strategic analysis.",
+              //   img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=700&q=85",
+              //   tags: ["Python BI", "Predictive Systems", "Databases"],
+              //   link: "/services"
+              // },
               {
                 icon: "fa-solid fa-globe",
                 title: "Web Development & UI/UX",
@@ -786,14 +786,15 @@ const Banner = () => {
                 img: "/assets/newImages/teams.jpg",
                 tags: ["Bootcamps", "Certification", "QML Curriculum"],
                 link: "/services"
-              }, {
-                icon: "fa-solid fa-chart-line",
-                title: "Digital Growth & Marketing",
-                desc: "Optimizing audience interaction across network matrices using predictive automation tools to scale target performance metrics reliably.",
-                img: "https://images.unsplash.com/photo-1533750349088-cd871a92f312?w=700&q=85",
-                tags: ["Growth Engines", "Data Attribution", "SEO Matrices"],
-                link: "/services"
               }
+              //  {
+              //   icon: "fa-solid fa-chart-line",
+              //   title: "Digital Growth & Marketing",
+              //   desc: "Optimizing audience interaction across network matrices using predictive automation tools to scale target performance metrics reliably.",
+              //   img: "https://images.unsplash.com/photo-1533750349088-cd871a92f312?w=700&q=85",
+              //   tags: ["Growth Engines", "Data Attribution", "SEO Matrices"],
+              //   link: "/services"
+              // }
             ].map((svc, i) => (
               <div
                 key={i}
