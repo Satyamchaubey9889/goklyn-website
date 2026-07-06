@@ -14,9 +14,8 @@ const INTERNSHIPS = [
   { icon: "fa-solid fa-globe", title: "Full-Stack Development", text: "Build scalable applications with modern frameworks." },
   { icon: "fa-solid fa-chart-column", title: "Data Science & Analytics", text: "Analyze big data and extract meaningful insights." },
   { icon: "fa-brands fa-python", title: "Python Development", text: "Create powerful applications and automate solutions." },
-  { icon: "fa-brands fa-react", title: "React Development", text: "Build dynamic, user-friendly web applications." },
   { icon: "fa-solid fa-shield-halved", title: "Cyber Security", text: "Work on ethical hacking, penetration testing, and security audits." },
-  { icon: "fa-solid fa-chart-line", title: "Digital Marketing & SEO", text: "Master online growth strategies and optimize digital presence." },
+  // { icon: "fa-solid fa-chart-line", title: "Digital Marketing & SEO", text: "Master online growth strategies and optimize digital presence." },
   { icon: "fa-solid fa-star", title: "And More!", text: "We are open to exploring new domains based on your skills and interests." },
 ]
 
